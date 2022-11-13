@@ -26,7 +26,7 @@ const Login = () => {
 
     return (
         <>
-            <h1>Login</h1>
+            <h1 className="text-3xl font-bold underline bg-green-600">Login</h1>
             <hr />
             <form onSubmit={handleSubmit}>
                 <input
@@ -46,7 +46,7 @@ const Login = () => {
                 <button type="submit">Login | </button>
 
                 {/* ¿No tienes cuenta? Regístrate - Mirar su correcto funcionamiento */}
-                <button type="submit">Regístrate...</button>
+                {/* <button type="submit">Regístrate...</button> */}
             </form>
         </>
     );

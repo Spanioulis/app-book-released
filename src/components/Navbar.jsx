@@ -15,7 +15,7 @@ const Navbar = () => {
     };
 
     return (
-        <div>
+        <div className="bg-stone-400">
             {user ? (
                 <>
                     <NavLink to="/home">Home | </NavLink>

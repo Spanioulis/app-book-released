@@ -1,12 +1,13 @@
 import { useContext } from 'react';
+import { UserContext } from './context/UserProvider';
 import { Routes, Route } from 'react-router-dom';
 import Home from './routes/Home';
+import Landing from './routes/Landing';
 import Login from './routes/Login';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import Register from './routes/Register';
 import './App.css';
-import { UserContext } from './context/UserProvider';
 
 function App() {
     const { user } = useContext(UserContext);
@@ -22,7 +23,6 @@ function App() {
             <hr />
             <Navbar />
             <Routes>
-                {/* Hacer un Landing (public) -> path="/" */}
                 <Route
                     path="/home"
                     element={
@@ -34,6 +34,8 @@ function App() {
                 />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                {/* Hacer un Landing (public) */}
+                <Route path="/" element={<Landing />} />
             </Routes>
         </>
     );
