@@ -1,26 +1,35 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
 
-const Login = () => {
-    const [email, setEmail] = useState('pani@pani.com');
-    const [password, setPassword] = useState('123456');
+import { formValidate } from '../utils/formValidate';
+import { firebaseErrors } from '../utils/firebaseErrors';
+import FormError from '../components/FormError';
+import FormInput from '../components/FormInput';
+import FormLabel from '../components/FormLabel';
 
+const Login = () => {
     const { loginUser } = useContext(UserContext);
     const navigate = useNavigate();
+    const {
+        register,
+        handleSubmit,
+        setError,
+        formState: { errors }
+    } = useForm();
+    const { required, patternEmail, minLength, validateTrim } = formValidate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log('probando submit', email, password);
-
+    const onSubmit = async (data) => {
+        const { email, password } = data;
         try {
             await loginUser(email, password);
             navigate('/home');
-            console.log('Usuario logeado');
         } catch ({ code }) {
-            // TODO -> setTime ("regístrese...")
-            navigate('/register');
-            console.log(code);
+            console.log('code...añadir a firebaseErrors los que vayan saliendo...', code);
+            setError('firebase', {
+                message: firebaseErrors(code)
+            });
         }
     };
 
@@ -28,25 +37,42 @@ const Login = () => {
         <>
             <h1 className="text-3xl font-bold underline bg-green-600">Login</h1>
             <hr />
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    placeholder="Ingrese e-mail"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Ingrese password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Login | </button>
+            <FormError error={errors.firebase} />
 
-                {/* ¿No tienes cuenta? Regístrate - Mirar su correcto funcionamiento */}
-                {/* <button type="submit">Regístrate...</button> */}
+            <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center">
+                <div className="form-control w-full max-w-xs">
+                    <FormLabel className="label" classnamespan="label-text" message="Email" />
+                    <FormInput
+                        type="email"
+                        placeholder="Ingrese e-mail"
+                        className="input input-bordered w-full max-w-xs"
+                        {...register('email', {
+                            required,
+                            pattern: patternEmail
+                        })}
+                    ></FormInput>
+                    <FormError error={errors.email} />
+                    <FormLabel className="label" classnamespan="label-text" message="Password" />
+                    <FormInput
+                        type="password"
+                        placeholder="Ingrese password"
+                        className="input input-bordered w-full max-w-xs"
+                        // button "ver contraseña"
+                        {...register('password', {
+                            minLength,
+                            validate: validateTrim
+                        })}
+                    ></FormInput>
+                    <FormError error={errors.password} />
+                    <FormInput
+                        className="btn btn-sm btn-active btn-ghost min-w-fit mt-5"
+                        type="submit"
+                    >
+                        Login
+                    </FormInput>
+                    {/* ¿No tienes cuenta? Regístrate - Mirar su correcto funcionamiento */}
+                    {/* <button type="submit">Regístrate...</button> */}
+                </div>
             </form>
         </>
     );

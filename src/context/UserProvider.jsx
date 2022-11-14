@@ -11,12 +11,13 @@ import { useEffect } from 'react';
 
 export const UserContext = createContext();
 
-const UseProvider = (props) => {
-    // TODO -> traer la llamada de la API aquí, y repartirlo...
+const UseProvider = ({ children }) => {
+    // TODO -> traer la llamada de la API aquí, y repartirlo...(el district ha de ser global (para el Home, Profile, etc.))
     const [user, setUser] = useState(false);
 
+    // TODO -> ¿Se tiene que usar este district realmente?
     const registerUser = (email, password, district) =>
-        createUserWithEmailAndPassword(auth, email, password, district);
+        createUserWithEmailAndPassword(auth, email, password);
 
     //! district también en el login??
     const loginUser = (email, password) => signInWithEmailAndPassword(auth, email, password);
@@ -29,7 +30,8 @@ const UseProvider = (props) => {
         const unsuscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 const { email, photoURL, displayName, uid } = user;
-                setUser({ email, photoURL, displayName, uid });
+                //TODO -> Aquí añadiremos el distrito de manera global...
+                setUser({ email, photoURL, displayName, uid, distrito: 'Por defecto...' });
             } else {
                 setUser(null);
             }
@@ -41,7 +43,7 @@ const UseProvider = (props) => {
     return (
         <UserContext.Provider value={{ user, setUser, registerUser, loginUser, signOutUser }}>
             {' '}
-            {props.children}{' '}
+            {children}{' '}
         </UserContext.Provider>
     );
 };

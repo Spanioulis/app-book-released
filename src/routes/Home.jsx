@@ -4,7 +4,9 @@ import { UserContext } from '../context/UserProvider';
 
 const Home = () => {
     const { user } = useContext(UserContext);
-    console.log('user home', user);
+    console.log('User', user);
+    console.log('Current district: ', user.distrito);
+    console.log('User home', user);
 
     return (
         <>

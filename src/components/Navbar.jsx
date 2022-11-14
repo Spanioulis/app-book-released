@@ -4,7 +4,6 @@ import { UserContext } from '../context/UserProvider';
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(UserContext);
-    console.log('user', user);
 
     const handleLogout = async () => {
         try {

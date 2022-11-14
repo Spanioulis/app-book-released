@@ -11,6 +11,7 @@ import './App.css';
 
 function App() {
     const { user } = useContext(UserContext);
+    console.log('Current user App: ', user);
 
     if (user === false) {
         // TODO -> "spinner" or screen loading
