@@ -10,7 +10,8 @@ import { firebaseErrors } from '../utils/firebaseErrors';
 import { formValidate } from '../utils/formValidate';
 import FormError from '../components/FormError';
 import FormInput from '../components/FormInput';
-import FormLabel from '../components/FormLabel';
+import FormLabel from '../components/FormButton';
+import FormButton from '../components/FormButton';
 
 const Register = () => {
     // TODO -> Enviar la obtención de datos API al 'context' ¿?
@@ -41,11 +42,12 @@ const Register = () => {
         try {
             // Validación BACKEND
             await registerUser(email, password);
-            navigate('/home');
-        } catch ({ code }) {
-            console.log('code...añadir a firebaseErrors los que vayan saliendo...', code);
-            setError('firebase', {
-                message: firebaseErrors(code)
+            navigate('/');
+        } catch (error) {
+            console.log('code...añadir a firebaseErrors los que vayan saliendo...', error.code);
+            const { code, message } = firebaseErrors(error.code);
+            setError(code, {
+                message
             });
         }
     };
@@ -59,69 +61,71 @@ const Register = () => {
 
     return (
         <>
-            <h1 className="text-3xl font-bold underline bg-slate-500">Register</h1>
-            <hr />
-            <FormError error={errors.firebase} />
-            <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center">
-                <div className="form-control w-full max-w-xs">
-                    <FormLabel className="label" classnamespan="label-text" message="Email" />
-                    <FormInput
-                        type="email"
-                        placeholder="Ingrese e-mail"
-                        className="input input-bordered w-full max-w-xs"
-                        {...register('email', {
-                            required,
-                            pattern: patternEmail
-                        })}
-                    ></FormInput>
-                    <FormError error={errors.email} />
-                    <FormLabel className="label" classnamespan="label-text" message="Password" />
-                    <FormInput
-                        type="password"
-                        placeholder="Ingrese password"
-                        className="input input-bordered w-full max-w-xs"
-                        // button "ver contraseña"
-                        {...register('password', {
-                            minLength,
-                            validate: validateTrim
-                        })}
-                    ></FormInput>
-                    <FormError error={errors.password} />
-                    <FormInput
-                        type="password"
-                        placeholder="Repita password"
-                        className="input input-bordered w-full max-w-xs mt-2"
-                        {...register('repassword', {
-                            validate: validateEquals(getValues)
-                        })}
-                    ></FormInput>
-                    <FormError error={errors.repassword} />
-                    <FormLabel className="label" classnamespan="label-text" message="Distrito" />
-                    {/* TODO -> Hacer el FormSelect... (https://react-hook-form.com/api/useform/register) */}
-                    <select
-                        className="select select-bordered w-full max-w-xs"
-                        {...register('district', {
-                            required: {
-                                value: true,
-                                message: 'Campo obligatorio'
-                            }
-                        })}
-                    >
-                        <option value="">--Selecciona distrito--</option>
-                        {optionList.map((item) => {
-                            return (
-                                <option key={uuid4()} value={item}>
-                                    {item}
-                                </option>
-                            );
-                        })}
-                    </select>
-                    <FormError error={errors.district} />
-                    <FormInput className="btn btn-outline mt-5" type="submit">
-                        Registrar
-                    </FormInput>
-                </div>
-            </form>
+            <h1 className="text-2xl mx-auto my-10  text-center font-bold">Register</h1>
+            <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center">
+                    <div className="form-control w-full max-w-xs">
+                        <FormInput
+                            type="email"
+                            label="Email"
+                            placeholder="Ingrese e-mail"
+                            error={errors.email}
+                            {...register('email', {
+                                required,
+                                pattern: patternEmail
+                            })}
+                        />
+                        <FormError error={errors.email} />
+                        <FormInput
+                            type="password"
+                            label="Password"
+                            placeholder="Ingrese password"
+                            error={errors.password}
+                            // button "ver contraseña"
+                            {...register('password', {
+                                minLength,
+                                validate: validateTrim
+                            })}
+                        />
+                        <FormError error={errors.password} />
+                        <FormInput
+                            type="password"
+                            label="Repita password"
+                            placeholder="Repita password"
+                            error={errors.repassword}
+                            {...register('repassword', {
+                                validate: validateEquals(getValues('password'))
+                            })}
+                        />
+                        <FormError error={errors.repassword} />
+                        {/* TODO -> Hacer el FormSelect... (https://react-hook-form.com/api/useform/register) */}
+                        <select
+                            className="select select-bordered w-full max-w-xs mt-5"
+                            {...register('district', {
+                                required: {
+                                    value: true,
+                                    message: 'Campo obligatorio'
+                                }
+                            })}
+                        >
+                            <option value="">--Selecciona distrito--</option>
+                            {optionList.map((item) => {
+                                return (
+                                    <option key={uuid4()} value={item}>
+                                        {item}
+                                    </option>
+                                );
+                            })}
+                        </select>
+                        <FormError error={errors.district} />
+                        <FormButton
+                            text="Registrar"
+                            type="submit"
+                            className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 my-5 w-min"
+                        />
+                    </div>
+                </form>
+            </div>
         </>
     );
 };
