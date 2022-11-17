@@ -1,4 +1,9 @@
+import { useContext } from 'react';
+import { UserContext } from '../context/UserProvider';
+
 const Profile = () => {
+    const { front } = useContext(UserContext);
+    console.log(front);
     return (
         <>
             <h1>Profile</h1>

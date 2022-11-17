@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { createContext } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
@@ -7,19 +6,14 @@ import {
     signOut
 } from 'firebase/auth';
 import { auth } from '../firebase/firebaseConfig';
-import { useEffect } from 'react';
 
 export const UserContext = createContext();
 
 const UseProvider = ({ children }) => {
-    // TODO -> traer la llamada de la API aquí, y repartirlo...(el district ha de ser global (para el Home, Profile, etc.))
     const [user, setUser] = useState(false);
 
-    // TODO -> ¿Se tiene que usar este district realmente?
-    const registerUser = (email, password, district) =>
-        createUserWithEmailAndPassword(auth, email, password);
+    const registerUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
-    //! district también en el login??
     const loginUser = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
     const signOutUser = () => signOut(auth);
@@ -30,8 +24,7 @@ const UseProvider = ({ children }) => {
         const unsuscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 const { email, photoURL, displayName, uid } = user;
-                //TODO -> Aquí añadiremos el distrito de manera global...
-                setUser({ email, photoURL, displayName, uid, distrito: 'Por defecto...' });
+                setUser({ email, photoURL, displayName, uid });
             } else {
                 setUser(null);
             }

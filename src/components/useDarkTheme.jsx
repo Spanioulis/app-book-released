@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 function useDarkTheme() {
-    const [theme, setTheme] = useState('dark');
+    const [theme, setTheme] = useState(localStorage.getItem('theme'));
     const colorTheme = theme === 'dark' ? 'light' : 'dark';
 
     useEffect(() => {
@@ -9,6 +9,7 @@ function useDarkTheme() {
 
         root.classList.remove(colorTheme);
         root.classList.add(theme);
+        localStorage.setItem('theme', theme);
     }, [theme, colorTheme]);
 
     return [colorTheme, setTheme];

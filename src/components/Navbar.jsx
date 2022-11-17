@@ -7,7 +7,6 @@ import useDarkTheme from './useDarkTheme';
 const Navbar = () => {
     const { user, signOutUser } = useContext(UserContext);
     const [colorTheme, setTheme] = useDarkTheme();
-    console.log('colorTheme', colorTheme);
 
     const handleLogout = async () => {
         try {
@@ -19,7 +18,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar px-16 mb-10 dark:bg-gray-800 dark:bg-opacity-30  dark:text-gray-300  sticky top-0 z-50 backdrop-blur-sm">
+            <nav className="navbar px-16 mb-5 dark:bg-gray-800 dark:bg-opacity-30  dark:text-gray-300 sticky top-0 z-50 backdrop-blur-sm">
                 <div className="flex-1 my-5">
                     <Link to="/" className="flex items-center">
                         <img
@@ -35,14 +34,18 @@ const Navbar = () => {
                 <div className="flex-none my-5 gap-2">
                     <div className="form-control">
                         {/* Añadir onChange para realizar la búsqueda... */}
-                        <input type="text" placeholder="Search" className="input input-bordered" />
+                        <input
+                            type="text"
+                            placeholder="Busca un libro..."
+                            className="input input-bordered hover:border-cyan-600"
+                        />
                     </div>
 
                     <span
                         onClick={() => setTheme(colorTheme)}
-                        className=" mx-5 bg-blue-900 w-10 h-10 rounded-full shadow-lg cursor-pointer flex items-center justify-center"
+                        className="text-gray-200 dark:text-blue-400 mx-5 bg-gray-400 dark:bg-blue-900 w-10 h-10 rounded-full shadow-lg cursor-pointer flex items-center justify-center"
                     >
-                        {colorTheme === 'dark' ? (
+                        {colorTheme === 'light' ? (
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -76,7 +79,10 @@ const Navbar = () => {
                     </span>
 
                     <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                        <label
+                            tabIndex={0}
+                            className="btn btn-ghost btn-circle avatar hover:border-slate-700"
+                        >
                             <div className="w-10 rounded-full">
                                 {/* Poner foto de perfil de cada usuario...(photoURL del registro...) */}
                                 <img src={'https://placeimg.com/80/80/people'} />
@@ -84,7 +90,7 @@ const Navbar = () => {
                         </label>
                         <ul
                             tabIndex={0}
-                            className="gap-2 mt-3 p-4 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 text-base font-medium"
+                            className="gap-2 mt-3 p-5 shadow menu menu-compact dropdown-content rounded-box w-44 font-medium bg-gray-100 dark:bg-gray-700"
                         >
                             {user ? (
                                 <>
@@ -125,7 +131,7 @@ const Navbar = () => {
                                             className={({ isActive }) =>
                                                 isActive
                                                     ? 'font-semibold text-blue-600/100 ease-in duration-500 hover:scale-110'
-                                                    : 'hover:font-bold ease-in duration-500 hover:scale-110'
+                                                    : 'hover:font-bold hover:scale-110 ease-in duration-500'
                                             }
                                         >
                                             Register

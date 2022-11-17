@@ -2,20 +2,25 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/UserProvider';
+import '../styles/loading.css';
 // uuid4 y axios en useContext???? Pueden ser globales...
-import uuid4 from 'uuid4';
-import axios from 'axios';
+// import uuid4 from 'uuid4';
+// import axios from 'axios';
 
 import { firebaseErrors } from '../utils/firebaseErrors';
 import { formValidate } from '../utils/formValidate';
 import FormError from '../components/FormError';
 import FormInput from '../components/FormInput';
-import FormLabel from '../components/FormButton';
+// import FormLabel from '../components/FormButton';
 import FormButton from '../components/FormButton';
+import FormSelect from '../components/FormSelect';
 
 const Register = () => {
-    // TODO -> Enviar la obtención de datos API al 'context' ¿?
-    const API_URL = 'https://w33.bcn.cat/geoBCN/serveis/territori/districtes/';
+    const [loading, setLoading] = useState(false);
+    const [registerList, setRegisterList] = useState(
+        JSON.parse(localStorage.getItem('Register')) || []
+    );
+
     const { registerUser } = useContext(UserContext);
     const navigate = useNavigate();
     const {
@@ -27,21 +32,18 @@ const Register = () => {
     } = useForm();
     const { required, patternEmail, minLength, validateTrim, validateEquals } = formValidate();
 
-    //* useStates
-    const [district, setDistrict] = useState('');
-    const [optionList, setOptionList] = useState([]);
-
-    // Enviar datos del formulario
     const onSubmit = async (data) => {
         const { email, password, district } = data;
+
         // Ver si necesitamos esta información más adelante (parte FRONTEND)
         //TODO -> para registrar y relacionar districto con el usuario, lo que podemos hacer es un array de objetos donde se registrará por la parte del Frontend todos los usuarios con su respectivo distrito
-        //
-        setDistrict(district);
+        setRegisterList([{ email, password, district }, ...registerList]);
 
         try {
-            // Validación BACKEND
+            setLoading(true);
             await registerUser(email, password);
+            console.log('entra aquí?');
+
             navigate('/');
         } catch (error) {
             console.log('code...añadir a firebaseErrors los que vayan saliendo...', error.code);
@@ -49,19 +51,28 @@ const Register = () => {
             setError(code, {
                 message
             });
+        } finally {
+            setLoading(false);
         }
     };
 
     useEffect(() => {
-        axios.get(API_URL).then(({ data }) => {
-            const districtList = data.resultats.map((item) => item.descripcio);
-            setOptionList(districtList);
-        });
-    }, []);
+        localStorage.setItem('Register', JSON.stringify(registerList));
+    }, [registerList]);
 
-    return (
+    // useEffect(() => {
+    //     localStorage.setItem(
+    //         'user register',
+    //         JSON.stringify(...userRegister, { email, password, district })
+    //     );
+    //     setUserRegister([...userRegister, { email, password, district }]);
+    // }, [])
+
+    return loading ? (
+        <div class="spinner"></div>
+    ) : (
         <>
-            <h1 className="text-2xl mx-auto my-10  text-center font-bold">Register</h1>
+            <h1 className="text-2xl mx-auto my-5 text-center font-bold">Register</h1>
             <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center">
                     <div className="form-control w-full max-w-xs">
@@ -98,25 +109,15 @@ const Register = () => {
                             })}
                         />
                         <FormError error={errors.repassword} />
-                        {/* TODO -> Hacer el FormSelect... (https://react-hook-form.com/api/useform/register) */}
-                        <select
-                            className="select select-bordered w-full max-w-xs mt-5"
+                        <FormSelect
                             {...register('district', {
                                 required: {
                                     value: true,
                                     message: 'Campo obligatorio'
                                 }
                             })}
-                        >
-                            <option value="">--Selecciona distrito--</option>
-                            {optionList.map((item) => {
-                                return (
-                                    <option key={uuid4()} value={item}>
-                                        {item}
-                                    </option>
-                                );
-                            })}
-                        </select>
+                        />
+
                         <FormError error={errors.district} />
                         <FormButton
                             text="Registrar"

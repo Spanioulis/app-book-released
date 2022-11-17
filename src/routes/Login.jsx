@@ -1,7 +1,8 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
+import '../styles/loading.css';
 
 import { formValidate } from '../utils/formValidate';
 import { firebaseErrors } from '../utils/firebaseErrors';
@@ -10,6 +11,7 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 
 const Login = () => {
+    const [loading, setLoading] = useState(false);
     const { loginUser } = useContext(UserContext);
     const navigate = useNavigate();
     const {
@@ -22,7 +24,9 @@ const Login = () => {
 
     const onSubmit = async (data) => {
         const { email, password } = data;
+
         try {
+            setLoading(true);
             await loginUser(email, password);
             navigate('/');
         } catch (error) {
@@ -31,14 +35,21 @@ const Login = () => {
             setError(code, {
                 message
             });
+        } finally {
+            setLoading(false);
         }
     };
 
-    return (
+    return loading ? (
+        <div class="spinner"></div>
+    ) : (
         <>
             <h1 className="text-2xl mx-auto my-10 text-center font-bold">Login</h1>
             <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center ">
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="flex justify-center  dark:bg-gray-700 dark:rounded-lg"
+                >
                     <div className="form-control w-full max-w-xs">
                         {' '}
                         <FormInput

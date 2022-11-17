@@ -22,6 +22,11 @@ export const firebaseErrors = (code) => {
                 code: 'password',
                 message: 'Password incorrecto'
             };
+        case 'auth/too-many-requests':
+            return {
+                code: 'password',
+                message: 'Número de intentos excedido; retee el password'
+            };
         default:
             return 'ERROR en el "server" -> Añadir error a "firebaseErrors"';
     }
