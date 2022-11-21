@@ -3,24 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/UserProvider';
 import '../styles/loading.css';
-// uuid4 y axios en useContext???? Pueden ser globales...
-// import uuid4 from 'uuid4';
-// import axios from 'axios';
 
 import { firebaseErrors } from '../utils/firebaseErrors';
 import { formValidate } from '../utils/formValidate';
+
 import FormError from '../components/FormError';
 import FormInput from '../components/FormInput';
 // import FormLabel from '../components/FormButton';
 import FormButton from '../components/FormButton';
 import FormSelect from '../components/FormSelect';
+import { addDoc, collection } from 'firebase/firestore/lite';
+import { auth, db } from '../firebase/firebaseConfig';
 
 const Register = () => {
     const [loading, setLoading] = useState(false);
-    const [registerList, setRegisterList] = useState(
-        JSON.parse(localStorage.getItem('Register')) || []
-    );
-
     const { registerUser } = useContext(UserContext);
     const navigate = useNavigate();
     const {
@@ -32,18 +28,36 @@ const Register = () => {
     } = useForm();
     const { required, patternEmail, minLength, validateTrim, validateEquals } = formValidate();
 
+    // Quitar cuando no nos sirva
+    // const [registerList, setRegisterList] = useState(
+    //     JSON.parse(localStorage.getItem('Register')) || []
+    // );
+
     const onSubmit = async (data) => {
         const { email, password, district } = data;
+        const usersCollectionRef = collection(db, 'users');
+
+        console.log({ email, password, district });
+        //TODO -> Hay que añadir el auth.currentUser.uid para relacionarlo ;)
+        // await addDoc(usersCollectionRef, {});
+        //* {email: 'a@a.com', password: '123456', district: 'Sant Andreu'}
 
         // Ver si necesitamos esta información más adelante (parte FRONTEND)
-        //TODO -> para registrar y relacionar districto con el usuario, lo que podemos hacer es un array de objetos donde se registrará por la parte del Frontend todos los usuarios con su respectivo distrito
-        setRegisterList([{ email, password, district }, ...registerList]);
+        // Para registrar y relacionar districto con el usuario, lo que podemos hacer es un array de objetos donde se registrará por la parte del Frontend todos los usuarios con su respectivo distrito
+        //! Quitarlo cuando no nos sirva (contacto con backend)
+        // setRegisterList([{ email, password, district }, ...registerList]);
 
         try {
             setLoading(true);
             await registerUser(email, password);
-            console.log('entra aquí?');
-
+            // await db.collection('users').doc().set({ email, password, district });
+            await addDoc(usersCollectionRef, {
+                email,
+                district,
+                uid: auth.currentUser.uid
+            });
+            console.log('...registro COMPLETADO!');
+            console.log(auth.currentUser.uid);
             navigate('/');
         } catch (error) {
             console.log('code...añadir a firebaseErrors los que vayan saliendo...', error.code);
@@ -56,24 +70,17 @@ const Register = () => {
         }
     };
 
-    useEffect(() => {
-        localStorage.setItem('Register', JSON.stringify(registerList));
-    }, [registerList]);
-
+    //! ¿NECESARIO? Ya tenemos contacto con el backend
     // useEffect(() => {
-    //     localStorage.setItem(
-    //         'user register',
-    //         JSON.stringify(...userRegister, { email, password, district })
-    //     );
-    //     setUserRegister([...userRegister, { email, password, district }]);
-    // }, [])
+    //     localStorage.setItem('Register', JSON.stringify(registerList));
+    // }, [registerList]);
 
     return loading ? (
-        <div class="spinner"></div>
+        <div className="spinner"></div>
     ) : (
         <>
             <h1 className="text-2xl mx-auto my-5 text-center font-bold">Register</h1>
-            <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-stone-800 dark:border-stone-700">
                 <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center">
                     <div className="form-control w-full max-w-xs">
                         <FormInput

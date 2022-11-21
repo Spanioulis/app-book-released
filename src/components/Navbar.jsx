@@ -6,6 +6,7 @@ import useDarkTheme from './useDarkTheme';
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(UserContext);
+    console.log('user', user);
     const [colorTheme, setTheme] = useDarkTheme();
 
     const handleLogout = async () => {
@@ -18,7 +19,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar px-16 mb-5 dark:bg-gray-800 dark:bg-opacity-30  dark:text-gray-300 sticky top-0 z-50 backdrop-blur-sm">
+            <nav className="navbar px-5 lg:px-16 mb-5 dark:bg-stone-900 dark:bg-opacity-30  dark:text-gray-300 sticky top-0 z-50 backdrop-blur-sm">
                 <div className="flex-1 my-5">
                     <Link to="/" className="flex items-center">
                         <img
@@ -37,7 +38,8 @@ const Navbar = () => {
                         <input
                             type="text"
                             placeholder="Busca un libro..."
-                            className="input input-bordered hover:border-cyan-600"
+                            className="input input-bordered hover:border-cyan-600 w-18 md:w-38 lg:w-48
+                            "
                         />
                     </div>
 
@@ -78,7 +80,7 @@ const Navbar = () => {
                         )}
                     </span>
 
-                    <div className="dropdown dropdown-end">
+                    <div className="dropdown dropdown-end mt-1">
                         <label
                             tabIndex={0}
                             className="btn btn-ghost btn-circle avatar hover:border-slate-700"
@@ -88,12 +90,19 @@ const Navbar = () => {
                                 <img src={'https://placeimg.com/80/80/people'} />
                             </div>
                         </label>
+                        {/* {user.email !== null && (
+                            <p className="text-gray-400 text-sm">{user.email}</p>
+                        )} */}
                         <ul
                             tabIndex={0}
                             className="gap-2 mt-3 p-5 shadow menu menu-compact dropdown-content rounded-box w-44 font-medium bg-gray-100 dark:bg-gray-700"
                         >
                             {user ? (
                                 <>
+                                    <li className="text-sm text-center dark:text-slate-400 text-stone-700">
+                                        {user.email}
+                                    </li>
+                                    <hr />
                                     <li>
                                         <NavLink
                                             to="/profile"

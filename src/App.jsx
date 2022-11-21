@@ -22,7 +22,7 @@ function App() {
 
     return (
         <>
-            <div className="bg-gray-200 dark:bg-zinc-800 min-h-screen text-black dark:text-gray-300">
+            <div className="bg-gray-200 dark:bg-stone-800 min-h-screen text-black dark:text-gray-300">
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<ProtectedRoute />}>

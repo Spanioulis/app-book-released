@@ -41,7 +41,7 @@ const Login = () => {
     };
 
     return loading ? (
-        <div class="spinner"></div>
+        <div className="spinner"></div>
     ) : (
         <>
             <h1 className="text-2xl mx-auto my-10 text-center font-bold">Login</h1>
