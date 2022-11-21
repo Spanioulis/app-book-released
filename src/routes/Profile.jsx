@@ -3,6 +3,10 @@ import { auth } from '../firebase/firebaseConfig';
 import { useBooks } from '../hooks/useBooks';
 import { useUsers } from '../hooks/useUsers';
 import '../styles/loading.css';
+import '../styles/cards.css';
+
+// TODO -> Idea para la biblioteca o para la búsqueda:
+// https://codepen.io/Snowing/pen/JZRxOK
 
 const Profile = () => {
     const { error, getBooks, loading, userBooks } = useBooks();
@@ -26,7 +30,6 @@ const Profile = () => {
             <h1 className="text-center text-stone-800 dark:text-amber-800 font-bold my-5">
                 Biblioteca
             </h1>
-            {/* <h1>Profile</h1>
 
             <h3>Este va a ser tu perfil, tu biblioteca</h3>
             <div>
@@ -35,7 +38,7 @@ const Profile = () => {
                     <ul>Favoritos</ul>
                     <ul>Otra información de relevancia...</ul>
                 </li>
-            </div> */}
+            </div>
 
             {userBooks.length === 0 ? (
                 <p>No tiene imágenes...AÑADIR IMAGEN</p>
@@ -43,7 +46,7 @@ const Profile = () => {
                 <div className="flex justify-around gap-10">
                     {userBooks.map((item) => (
                         <div
-                            className="max-w-sm bg-grey-200 border border-gray-200 rounded-lg shadow-md dark:bg-stone-800 dark:border-stone-700"
+                            // className="max-w-sm bg-grey-200 border border-gray-200 rounded-lg shadow-md dark:bg-stone-800 dark:border-stone-700"
                             key={item.id}
                         >
                             <a href="#" className="flex justify-center px-5">
