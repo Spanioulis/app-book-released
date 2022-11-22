@@ -1,22 +1,31 @@
-import { collection, getDocs } from 'firebase/firestore/lite';
+import { collection, getDocs, query, where } from 'firebase/firestore/lite';
 import { useState } from 'react';
-import { db } from '../firebase/firebaseConfig';
+import { auth, db } from '../firebase/firebaseConfig';
 
 export const useUsers = () => {
     const [users, setUsers] = useState([]);
+    const [currentUser, setCurrentUser] = useState([]);
     const [error, setError] = useState();
     // const [loading, setLoading] = useState(false);
     const usersCollectionRef = collection(db, 'users');
 
     const getUsers = async () => {
         try {
-            // setLoading(true);
-            const data = await getDocs(usersCollectionRef);
+            //
+            const q = query(usersCollectionRef, where('uid', '==', auth.currentUser.uid));
+            const data = await getDocs(q);
             const dataDB = data.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data()
             }));
-            setUsers(dataDB);
+            setCurrentUser(dataDB);
+            // setLoading(true);
+            const allData = await getDocs(usersCollectionRef);
+            const allDataDB = allData.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            setUsers(allDataDB);
         } catch (error) {
             console.log(error.message);
             setError(error.message);
@@ -27,6 +36,7 @@ export const useUsers = () => {
 
     return {
         error,
+        currentUser,
         getUsers,
         // loading,
         users

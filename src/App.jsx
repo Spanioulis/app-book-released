@@ -11,6 +11,7 @@ import Profile from './routes/Profile';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
+import UploadBook from './routes/UploadBook';
 
 function App() {
     const { user } = useContext(UserContext);
@@ -28,6 +29,7 @@ function App() {
                     <Route path="/" element={<ProtectedRoute />}>
                         <Route index element={<Home />} />
                         <Route path="/profile" element={<Profile />} />
+                        <Route path="/uppload" element={<UploadBook />} />
                     </Route>
 
                     <Route>

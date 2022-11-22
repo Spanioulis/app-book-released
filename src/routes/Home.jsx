@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import CardsHome from '../components/CardsHome';
 import { UserContext } from '../context/UserProvider';
 import { useBooks } from '../hooks/useBooks';
@@ -17,13 +18,16 @@ const Home = () => {
     if (error) return <p>{error}</p>;
 
     return (
-        <>
+        <div>
             <h1 className="">HERO</h1>
+            <Link to="/uppload" style={{ color: 'yellowgreen' }}>
+                SUBIR LIBRO
+            </Link>
             <div className="flex flex-col my-10">
                 <h1 className="text-center font-extrabold my-5">TODOS LOS LIBROS</h1>
                 <CardsHome />
             </div>
-        </>
+        </div>
     );
 };
 

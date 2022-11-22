@@ -75,9 +75,7 @@ const Register = () => {
     //     localStorage.setItem('Register', JSON.stringify(registerList));
     // }, [registerList]);
 
-    return loading ? (
-        <div className="spinner"></div>
-    ) : (
+    return (
         <>
             <h1 className="text-2xl mx-auto my-5 text-center font-bold">Register</h1>
             <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-stone-800 dark:border-stone-700">
@@ -126,11 +124,15 @@ const Register = () => {
                         />
 
                         <FormError error={errors.district} />
-                        <FormButton
-                            text="Registrar"
-                            type="submit"
-                            className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 my-5 w-min"
-                        />
+                        {loading ? (
+                            <button className="btn text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-3 w-min loading mr-5 my-5" />
+                        ) : (
+                            <FormButton
+                                text="Registrar"
+                                type="submit"
+                                className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 my-5 w-min"
+                            />
+                        )}
                     </div>
                 </form>
             </div>
