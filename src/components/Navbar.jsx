@@ -1,12 +1,13 @@
 import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
+import SearchInput from './SearchInput';
 import useDarkTheme from './useDarkTheme';
 // import { icon } from '../assets/user_icon.png';
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(UserContext);
-    console.log('user', user);
+    // console.log('user', user);
     const [colorTheme, setTheme] = useDarkTheme();
 
     const handleLogout = async () => {
@@ -19,8 +20,8 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar px-5 lg:px-16 mb-5 dark:bg-stone-900 dark:bg-opacity-30  dark:text-gray-300 sticky top-0 z-50 backdrop-blur-sm">
-                <div className="flex-1 my-5">
+            <nav className="navbar px-5 py-0 lg:px-16 dark:bg-stone-900 dark:bg-opacity-30  dark:text-gray-300 sticky top-0 z-50 backdrop-blur-sm">
+                <div className="flex-1 my-3">
                     <Link to="/" className="flex items-center">
                         <img
                             src="https://flowbite.com/docs/images/logo.svg"
@@ -32,20 +33,16 @@ const Navbar = () => {
                         </span>
                     </Link>
                 </div>
-                <div className="flex-none my-5 gap-2">
-                    <div className="form-control">
-                        {/* Añadir onChange para realizar la búsqueda... */}
-                        <input
-                            type="text"
-                            placeholder="Busca un libro..."
-                            className="input input-bordered hover:border-cyan-600 w-18 md:w-38 lg:w-48
-                            "
-                        />
-                    </div>
-
+                <div className="flex-none my-3 gap-2">
+                    {/* SEARCH AQUÍ... */}
+                    <SearchInput
+                        text="text"
+                        placeholder="Busca un libro..."
+                        className="input input-ghost hover:border-sky-900 dark:focus:bg-stone-800 dark:text-gray-400 sm:text-xs lg:text-base"
+                    />
                     <span
                         onClick={() => setTheme(colorTheme)}
-                        className="text-gray-200 dark:text-blue-400 mx-5 bg-gray-400 dark:bg-blue-900 w-10 h-10 rounded-full shadow-lg cursor-pointer flex items-center justify-center"
+                        className="text-gray-200 dark:text-zinc-800 mx-5 bg-gray-400 dark:bg-sky-900 w-10 h-10 rounded-full shadow-lg cursor-pointer flex items-center justify-center"
                     >
                         {colorTheme === 'light' ? (
                             <svg

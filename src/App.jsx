@@ -10,15 +10,17 @@ import Profile from './routes/Profile';
 
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
-import './App.css';
 import UploadBook from './routes/UploadBook';
+import Search from './routes/Search';
+import './App.css';
+import './styles/loading.css';
 
 function App() {
     const { user } = useContext(UserContext);
 
     if (user === false) {
         // TODO -> "spinner" or screen loading
-        return <p>Loading...</p>;
+        return <div className="spinner"></div>;
     }
 
     return (
@@ -37,6 +39,7 @@ function App() {
                         <Route path="/register" element={<Register />} />
                         {/* Hacer un Landing (public) */}
                         <Route path="/landing" element={<Landing />} />
+                        <Route path="/search/:q" element={<Search />} />
                     </Route>
 
                     {/* Crea componente 404notFound */}

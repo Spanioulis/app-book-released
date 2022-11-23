@@ -46,7 +46,7 @@ const Login = () => {
             <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="flex justify-center  dark:bg-gray-700 dark:rounded-lg"
+                    className="flex justify-center  dark:bg-zinc-800 dark:rounded-lg"
                 >
                     <div className="form-control w-full max-w-xs">
                         {' '}

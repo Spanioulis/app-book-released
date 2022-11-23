@@ -78,7 +78,7 @@ const Register = () => {
     return (
         <>
             <h1 className="text-2xl mx-auto my-5 text-center font-bold">Register</h1>
-            <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-stone-800 dark:border-stone-700">
+            <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-zinc-800 dark:border-zinc-800">
                 <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center">
                     <div className="form-control w-full max-w-xs">
                         <FormInput

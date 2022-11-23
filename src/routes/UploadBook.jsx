@@ -78,6 +78,7 @@ const UploadBook = () => {
                 .then(({ data }) => {
                     if (data.items !== undefined) {
                         setBooksAPI(data.items);
+                        console.log(data.items);
                     }
                 })
                 .catch(({ message }) => console.log(message));
@@ -88,8 +89,11 @@ const UploadBook = () => {
     useEffect(() => {
         const exists = booksAPI.filter((book) => book.volumeInfo.title === bookSelected);
         if (bookSelected) {
-            if (exists[0].volumeInfo.imageLinks === undefined) {
-                setMessage('No tiene imagen, elige otro libro.');
+            if (
+                exists[0].volumeInfo.imageLinks === undefined ||
+                exists[0].volumeInfo.averageRating === undefined
+            ) {
+                setMessage('* No tiene imagen y/o average-rating, elige otro libro.');
                 setTimeout(() => {
                     setMessage('');
                 }, 3000);
@@ -102,8 +106,7 @@ const UploadBook = () => {
                     category: exists[0].volumeInfo.categories[0],
                     image: exists[0].volumeInfo.imageLinks.thumbnail,
                     description: exists[0].volumeInfo.description,
-                    averageRating: exists[0].volumeInfo.averageRating,
-                    averageRating: exists[0].volumeInfo.infoLink
+                    averageRating: exists[0].volumeInfo.averageRating
                 });
             }
         }
@@ -118,7 +121,7 @@ const UploadBook = () => {
     return (
         <>
             <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-stone-800 dark:border-stone-700">
-                <p className="text-center text-lg mt-3 text-red-600">{message}</p>
+                <p className="text-center text-lg mt-5 mx-7  text-red-500">{message}</p>
                 <form onSubmit={handleSubmit} className="flex flex-col p-5 gap-2 my-3">
                     <input
                         type="text"

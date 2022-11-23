@@ -4,6 +4,7 @@ import CardsHome from '../components/CardsHome';
 import { UserContext } from '../context/UserProvider';
 import { useBooks } from '../hooks/useBooks';
 import '../styles/loading.css';
+import image from '../assets/leather-bound-book-open-on-table.jpg';
 
 const Home = () => {
     const { user } = useContext(UserContext);
@@ -19,10 +20,28 @@ const Home = () => {
 
     return (
         <div>
-            <h1 className="">HERO</h1>
-            <Link to="/uppload" style={{ color: 'yellowgreen' }}>
-                SUBIR LIBRO
-            </Link>
+            <div className="hero min-h-screen" style={{ backgroundImage: `url(${image})` }}>
+                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-content text-center text-neutral-content">
+                    <div className="max-w-md">
+                        <h1 className="mb-5 text-5xl font-bold">Bienvenido a Ed Mundo!</h1>
+                        <p className="mb-5">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore,
+                            soluta hic! Nam minus consequatur ex, non veritatis sunt ad perspiciatis
+                            dicta magnam eos unde eius distinctio qui dignissimos illum voluptates
+                            voluptatum incidunt tempore libero, provident veniam exercitationem
+                            dolores laudantium. Vitae.
+                        </p>
+                        <button className="btn glass">
+                            {' '}
+                            <Link to="/uppload" style={{ color: 'goldenrod' }}>
+                                Liberar LIBRO
+                            </Link>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div className="flex flex-col my-10">
                 <h1 className="text-center font-extrabold my-5">TODOS LOS LIBROS</h1>
                 <CardsHome />

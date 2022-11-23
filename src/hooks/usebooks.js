@@ -5,7 +5,7 @@ import { db, auth } from '../firebase/firebaseConfig';
 export const useBooks = () => {
     // Obtenemos todos los books
     const [userBooks, setUserBooks] = useState([]);
-    console.log('userBooks', userBooks);
+    // console.log('userBooks', userBooks);
     const [books, setBooks] = useState([]);
     const [error, setError] = useState();
     const [loading, setLoading] = useState(false);
