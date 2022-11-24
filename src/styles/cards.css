@@ -1,11 +1,12 @@
 .container-home {
     /* position: absolute; */
-    height: 100vh;
+    /* height: 100vh; */
     max-width: 900px;
     top: 60px;
     left: calc(60% - 300px);
     display: flex;
     justify-content: center;
+    margin-bottom: 3rem;
 }
 
 .card-home {

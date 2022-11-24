@@ -43,25 +43,25 @@ export const useBooks = () => {
 
     // AÑADIR LIBRO
     //* addDoc (para book subido) -> No le pasamos el id, y él solito lo gestiona. Lo gestionaremos en el componente "UploadBook" o similar
-    const addBook = async (book) => {
-        try {
-            setLoading(true);
-            const newDoc = {
-                title,
-                authors,
-                pageCount,
-                imgURL,
-                enabled,
-                // SINOPSIS
-                // también...
-                uid: auth.currentUser.id
-            };
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setLoading(false);
-        }
-    };
+    // const addBook = async (book) => {
+    //     try {
+    //         setLoading(true);
+    //         const newDoc = {
+    //             title,
+    //             authors,
+    //             pageCount,
+    //             imgURL,
+    //             enabled,
+    //             // SINOPSIS
+    //             // también...
+    //             uid: auth.currentUser.id
+    //         };
+    //     } catch (error) {
+    //         console.log(error);
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
 
     return {
         auth,

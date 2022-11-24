@@ -5,6 +5,7 @@ import { UserContext } from '../context/UserProvider';
 import { useBooks } from '../hooks/useBooks';
 import '../styles/loading.css';
 import image from '../assets/leather-bound-book-open-on-table.jpg';
+import Modal from '../components/ReserveModal';
 
 const Home = () => {
     const { user } = useContext(UserContext);
@@ -32,12 +33,9 @@ const Home = () => {
                             voluptatum incidunt tempore libero, provident veniam exercitationem
                             dolores laudantium. Vitae.
                         </p>
-                        <button className="btn glass">
-                            {' '}
-                            <Link to="/uppload" style={{ color: 'goldenrod' }}>
-                                Liberar LIBRO
-                            </Link>
-                        </button>
+                        <Link to="/uppload" style={{ color: 'goldenrod' }} className="btn glass">
+                            Liberar LIBRO
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -45,6 +43,7 @@ const Home = () => {
             <div className="flex flex-col my-10">
                 <h1 className="text-center font-extrabold my-5">TODOS LOS LIBROS</h1>
                 <CardsHome />
+                <Modal />
             </div>
         </div>
     );

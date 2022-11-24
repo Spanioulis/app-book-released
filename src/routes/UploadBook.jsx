@@ -20,8 +20,10 @@ const UploadBook = () => {
         author: '',
         pages: '',
         category: '',
-        enabled: true
+        enabled: true,
+        publisher: ''
     });
+    // console.log('book', book);
     const { currentUser, getUsers } = useUsers();
     const navigate = useNavigate();
     const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS;
@@ -89,24 +91,23 @@ const UploadBook = () => {
     useEffect(() => {
         const exists = booksAPI.filter((book) => book.volumeInfo.title === bookSelected);
         if (bookSelected) {
-            if (
-                exists[0].volumeInfo.imageLinks === undefined ||
-                exists[0].volumeInfo.averageRating === undefined
-            ) {
-                setMessage('* No tiene imagen y/o average-rating, elige otro libro.');
+            if (exists[0].volumeInfo.imageLinks === undefined) {
+                setMessage('* No tiene imagen, elige otro libro, por favor.');
                 setTimeout(() => {
                     setMessage('');
                 }, 3000);
             } else {
                 setBook({
+                    // TODO-> Errores en la búsqueda...
                     enable: true,
                     title: exists[0].volumeInfo.title,
                     author: exists[0].volumeInfo.authors[0],
                     pages: exists[0].volumeInfo.pageCount,
-                    category: exists[0].volumeInfo.categories[0],
+                    category: exists[0]?.volumeInfo.categories[0],
                     image: exists[0].volumeInfo.imageLinks.thumbnail,
-                    description: exists[0].volumeInfo.description,
-                    averageRating: exists[0].volumeInfo.averageRating
+                    description: exists[0]?.volumeInfo.description,
+                    publisher: exists[0].volumeInfo.publisher,
+                    infoLink: exists[0].volumeInfo.infoLink
                 });
             }
         }
@@ -119,10 +120,10 @@ const UploadBook = () => {
     // ****** BREAKPOINT!!!!
 
     return (
-        <>
-            <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-stone-800 dark:border-stone-700">
-                <p className="text-center text-lg mt-5 mx-7  text-red-500">{message}</p>
-                <form onSubmit={handleSubmit} className="flex flex-col p-5 gap-2 my-3">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-center gap-10 w-4/5 lg:w-1/2 mx-auto mt-3">
+            <div className="card mx-auto flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-stone-800 dark:border-stone-700">
+                <p className="text-center text-base mt-5 mx-7 text-red-500">{message}</p>
+                <form onSubmit={handleSubmit} className="flex flex-col p-5 gap-1 mb-1">
                     <input
                         type="text"
                         placeholder="Busca el título..."
@@ -173,30 +174,45 @@ const UploadBook = () => {
                         name="pages"
                         className="input input-bordered w-full max-w-xs mt-2 dark:bg-zinc-800"
                         onChange={handleInput}
+                        required
                     />
-
+                    <input
+                        type="text"
+                        placeholder="Editorial"
+                        value={book.publisher}
+                        name="publisher"
+                        className="input input-bordered w-full max-w-xs mt-2 dark:bg-zinc-800"
+                        onChange={handleInput}
+                        required
+                    />
                     <input
                         type="text"
                         placeholder="Categoría"
                         value={book.category}
                         name="category"
                         className="input input-bordered w-full max-w-xs mt-2 dark:bg-zinc-800"
+                        onChange={handleInput}
+                        required
                         disabled
                     />
                     <div className="form-control w-full max-w-xs">
                         {loading ? (
-                            <button className="btn text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-3 w-min loading" />
+                            <button className="btn text-white bg-gradient-to-r from-orange-500 via-orange-500 to-orange-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-orange-800 shadow-lg shadow-orange-600/50 dark:shadow-lg dark:shadow-orange/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-min loading" />
                         ) : (
                             <FormButton
                                 text="Subir"
                                 type="submit"
-                                className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-3 w-min"
+                                className="text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 shadow-lg shadow-orange-500/50 dark:shadow-lg dark:shadow-orange-800/40 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-3 w-min"
                             />
                         )}
                     </div>
                 </form>
             </div>
-        </>
+            <div className="flex flex-col lg:mt-5 mx-auto max-w-fit max-h-fit">
+                <h3 className="text-center text-amber-600 italic mb-3">Imagen preliminar</h3>
+                <img src={book.image} alt={book.title} className="rounded-sm" />
+            </div>
+        </div>
     );
 };
 

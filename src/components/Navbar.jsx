@@ -28,21 +28,39 @@ const Navbar = () => {
                             className="mr-3 h-6 sm:h-9"
                             alt="Flowbite Logo"
                         />
-                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white ">
+                        <span className="self-center text-base sm:text-2xl font-semibold whitespace-nowrap dark:text-gray-200 ">
                             Ed Mundo!
                         </span>
                     </Link>
                 </div>
                 <div className="flex-none my-3 gap-2">
-                    {/* SEARCH AQUÍ... */}
                     <SearchInput
                         text="text"
                         placeholder="Busca un libro..."
-                        className="input input-ghost hover:border-sky-900 dark:focus:bg-stone-800 dark:text-gray-400 sm:text-xs lg:text-base"
+                        className="input input-ghost hover:border-sky-900 dark:focus:bg-stone-800 dark:text-gray-400 text-sm lg:text-base"
                     />
+                    <div>
+                        <Link to="/uppload" title="Liberar libro">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-6 h-6 ml-3 hover:w-7 hover:h-7 hover:ml-2 hover:text-amber-600"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+                                />
+                            </svg>
+                        </Link>
+                    </div>
+
                     <span
                         onClick={() => setTheme(colorTheme)}
-                        className="text-gray-200 dark:text-zinc-800 mx-5 bg-gray-400 dark:bg-sky-900 w-10 h-10 rounded-full shadow-lg cursor-pointer flex items-center justify-center"
+                        className="text-gray-200 dark:text-zinc-800 mx-2 lg:mx-5 bg-gray-400 dark:bg-blue-900 w-10 h-10 rounded-full shadow-lg cursor-pointer flex items-center justify-center"
                     >
                         {colorTheme === 'light' ? (
                             <svg
@@ -92,7 +110,7 @@ const Navbar = () => {
                         )} */}
                         <ul
                             tabIndex={0}
-                            className="gap-2 mt-3 p-5 shadow menu menu-compact dropdown-content rounded-box w-44 font-medium bg-gray-100 dark:bg-gray-700"
+                            className="gap-2 mt-3 p-5 shadow menu menu-compact dropdown-content rounded-box w-44 font-medium bg-gray-100 dark:bg-zinc-800"
                         >
                             {user ? (
                                 <>
@@ -111,7 +129,7 @@ const Navbar = () => {
                                     <li>
                                         <button
                                             onClick={handleLogout}
-                                            className="text-red-800 font-bold hover:bg-red-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 hover:font-bold hover:scale-110 ease-in duration-700"
+                                            className="text-red-700 font-bold hover:bg-red-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm text-center  dark:hover:bg-red-700 dark:focus:ring-red-800 hover:font-bold hover:scale-110 ease-in duration-700"
                                         >
                                             Logout
                                         </button>

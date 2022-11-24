@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
-import uuid4 from 'uuid4';
 import { useBooks } from '../hooks/useBooks';
 import '../styles/cards.css';
+import uuid4 from 'uuid4';
+import { doc, updateDoc } from 'firebase/firestore/lite';
+import { db } from '../firebase/firebaseConfig';
 
 const CardsHome = () => {
     const { books, getBooks } = useBooks();
@@ -12,6 +14,13 @@ const CardsHome = () => {
         // console.log('geBooks Home');
         getBooks();
     }, []);
+
+    const handleUpdate = async (id) => {
+        const bookRef = doc(db, 'books', id);
+        await updateDoc(bookRef, {
+            enable: false
+        });
+    };
 
     return (
         <div className="container-home mx-auto">
@@ -26,10 +35,17 @@ const CardsHome = () => {
                         </figure>
                         <div className="card-body py-10">
                             <h2 className="card-title">{book.title}</h2>
-                            <p>{book.author}</p>
+                            <p className="text-base">{book.author}</p>
+                            <p className="text-sm">Distrito: {book.district}</p>
                             {/* <p>{book.district}</p> */}
                             <div className="card-actions justify-start">
-                                <button className="btn btn-primary">Reservar</button>
+                                <label
+                                    htmlFor="my-modal-6"
+                                    className="btn btn-ghost hover:btn-primary text-blue-700 dark:text-blue-600 dark:hover:text-gray-200"
+                                    onClick={() => handleUpdate(book.id)}
+                                >
+                                    Reservar
+                                </label>
                             </div>
                         </div>
                     </div>

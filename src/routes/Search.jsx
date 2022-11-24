@@ -2,20 +2,24 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useBooks } from '../hooks/useBooks';
 import uuid4 from 'uuid4';
-import SearchInput from '../components/SearchInput';
+import Modal from '../components/ReserveModal';
+// import uuid4 from 'uuid4';
+// import SearchInput from '../components/SearchInput';
 
 const Search = () => {
     const { q } = useParams();
     const { books, getBooks } = useBooks();
-    console.log('books', books);
 
     const searchList = books.filter(
         (book) =>
             book.title.toLowerCase().includes(q.toLowerCase()) ||
             book.author.toLowerCase().includes(q.toLowerCase())
     );
+    // console.log('searchList', searchList);
+    // TODO -> Realizar un 'loading'
 
     useEffect(() => {
+        console.log('useEffect');
         getBooks();
     }, []);
 
@@ -27,19 +31,21 @@ const Search = () => {
                     <p className="text-slate-600"> Add filtros (distrito/categoría)</p>
                     <p className="text-yellow-500">
                         Búsqueda actual:{' '}
-                        <span className="text-stone-900 dark:text-gray-400">{q}</span>
+                        <span className="text-stone-900 dark:text-gray-400 italic">{q}</span>
                     </p>
                 </div>
-                {/* AQUÍ */}
 
-                <h1 className="text-3xl text-red-900 mb-5">Listado de libros</h1>
+                <Modal />
 
                 {searchList.length === 0 ? (
                     <p>Lo siento, no hay coincidencias...</p>
                 ) : (
                     <>
                         {searchList.map((book) => (
-                            <div className="max-w-4xl mx-auto text-slate-900 mb-5 shadow-[0_35px_60px_-10px_rgba(0,0,0,0.7)] rounded-xl backdrop-blur-sm dark:bg-opacity-10">
+                            <div
+                                key={uuid4()}
+                                className="max-w-4xl mx-5 lg:mx-auto text-slate-900 mb-5 shadow-[0_35px_60px_-10px_rgba(0,0,0,0.7)] rounded-xl backdrop-blur-sm dark:bg-opacity-10"
+                            >
                                 <div className="relative m-0 shadow-lg flex rounded-3xl">
                                     <div className="flex-no-shrink min-w-fit">
                                         <img
@@ -59,15 +65,26 @@ const Search = () => {
                                             <p className="text-sm text-grey block mt-6">
                                                 Autor: {book.author} - Páginas: {book.pages}
                                             </p>
-                                            <p className="text-sm text-orange-900 dark:text-yellow-400 block mt-2">
-                                                Distrito: <i>{book.district}</i>
-                                            </p>
-                                            <a
-                                                className="-m-4 w-12 h-12 bg-blue-dark flex items-center justify-center text-center no-underline rounded-full text-white hover:bg-blue-darker absolute pin-t pin-r"
-                                                href="#"
-                                            >
-                                                <i className="text-xl fa fa-plus" />
-                                            </a>
+
+                                            <div className="flex justify-center align-middle gap-5 mt-3">
+                                                <p className="text-sm text-orange-900 dark:text-yellow-400 my-auto">
+                                                    Distrito: <i>{book.district}</i>
+                                                </p>
+                                                <label
+                                                    htmlFor="my-modal-6"
+                                                    className="font-bold text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
+                                                >
+                                                    Reservar
+                                                </label>
+                                                <a
+                                                    href={book.infoLink}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="underline text-sm my-auto text-emerald-700"
+                                                >
+                                                    Link Info
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
