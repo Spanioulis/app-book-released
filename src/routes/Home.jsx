@@ -41,7 +41,9 @@ const Home = () => {
             </div>
 
             <div className="flex flex-col my-10">
-                <h1 className="text-center font-extrabold my-5">TODOS LOS LIBROS</h1>
+                <h1 className="text-center font-extrabold my-5 text-2xl text-zinc-900 dark:text-gray-400">
+                    Encuentra tu libro...
+                </h1>
                 <CardsHome />
                 <Modal />
             </div>

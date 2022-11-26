@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
 import SearchInput from './SearchInput';
 import useDarkTheme from './useDarkTheme';
@@ -9,10 +9,12 @@ const Navbar = () => {
     const { user, signOutUser } = useContext(UserContext);
     // console.log('user', user);
     const [colorTheme, setTheme] = useDarkTheme();
+    const navigate = useNavigate();
 
     const handleLogout = async () => {
         try {
             await signOutUser();
+            navigate('/landing');
         } catch ({ code }) {
             console.log(code);
         }

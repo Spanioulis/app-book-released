@@ -32,6 +32,7 @@ function App() {
                         <Route index element={<Home />} />
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/uppload" element={<UploadBook />} />
+                        <Route path="/search/:q" element={<Search />} />
                     </Route>
 
                     <Route>
@@ -39,9 +40,7 @@ function App() {
                         <Route path="/register" element={<Register />} />
                         {/* Hacer un Landing (public) */}
                         <Route path="/landing" element={<Landing />} />
-                        <Route path="/search/:q" element={<Search />} />
                     </Route>
-
                     {/* Crea componente 404notFound */}
                     {/* <Route path="*" element ={<NotFound />} */}
                 </Routes>

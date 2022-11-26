@@ -7,8 +7,15 @@ import { db } from '../firebase/firebaseConfig';
 
 const CardsHome = () => {
     const { books, getBooks } = useBooks();
-    const random = books.sort(() => (Math.random() > 0.5 ? 1 : -1));
+    console.log('books', books);
+    //* Elimina los NO disponibles (hecho)
+    const available = books.filter((book) => book.enable === true);
+    const random = available.sort(() => (Math.random() > 0.5 ? 1 : -1));
     const booksCover = random.splice(0, 3);
+    /* 
+    TODO -> En landing saldrán todos los libros, tal y cómo está ahora. Pero en el Home no saldrán los libros del usuario logeado:
+    ! const available = books.filter((book) => book.enable === true) && book.uid !== auth.currentUser.uid;
+    */
 
     useEffect(() => {
         // console.log('geBooks Home');
@@ -20,6 +27,7 @@ const CardsHome = () => {
         await updateDoc(bookRef, {
             enable: false
         });
+        await getBooks();
     };
 
     return (

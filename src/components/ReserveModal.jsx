@@ -4,7 +4,7 @@ const Modal = () => {
     return (
         <>
             <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-            <div className="modal modal-bottom sm:modal-middle">
+            <div className="modal modal-bottom sm:modal-middle backdrop-blur-sm">
                 <div className="modal-box  dark:bg-emerald-900">
                     <h3 className="font-bold text-lg">!Enhorabuena, has reservado este libro!</h3>
                     <p className="py-4">

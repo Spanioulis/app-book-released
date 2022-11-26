@@ -24,7 +24,7 @@ const Profile = () => {
         const bookRef = doc(db, 'books', id);
         await deleteDoc(bookRef);
         //TODO -> Substituir por 'onSnapshot'
-        getBooks();
+        await getBooks();
     };
 
     return (
@@ -44,43 +44,47 @@ const Profile = () => {
                 <p>No tiene imágenes...AÑADIR IMAGEN</p>
             ) : (
                 <div className="flex justify-around gap-10 flex-wrap mt-5 mx-5">
-                    {userBooks.map((item) => (
+                    {userBooks.map((book) => (
                         <div
                             className="w-72 min-h-full bg-grey-200 rounded-lg dark:bg-zinc-800 shadow-[0_35px_60px_-10px_rgba(0,0,0,0.8)] backdrop-blur-sm dark:bg-opacity-10 flex flex-col justify-around"
-                            key={item.id}
+                            key={book.id}
                         >
                             <div className="flex justify-between">
                                 <img
                                     className="rounded-t-lg pl-5 mt-5"
-                                    src={item.image}
-                                    alt={item.title}
+                                    src={book.image}
+                                    alt={book.title}
                                 />
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-6 h-6 mx-5 mt-5 hover:text-red-700"
-                                    onClick={() => handleDelete(item.id)}
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
+                                {book.enable ? (
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={1.5}
+                                        stroke="currentColor"
+                                        className="w-6 h-6 mx-5 mt-5 hover:text-red-700 hover:cursor-pointer"
+                                        onClick={() => handleDelete(book.id)}
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M6 18L18 6M6 6l12 12"
+                                        />
+                                    </svg>
+                                ) : (
+                                    <p className="text-lg text-green-500 mt-4 mr-4">Reservado</p>
+                                )}
                             </div>
 
                             <div className="p-5 h-fu">
                                 <div>
                                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        {item.title}
+                                        {book.title}
                                     </h5>
                                 </div>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex flex-col">
-                                    <span>{item.author}</span>
-                                    <span>{item.pages} páginas</span>
+                                    <span>{book.author}</span>
+                                    <span>{book.pages} páginas</span>
                                 </p>
                             </div>
                         </div>
