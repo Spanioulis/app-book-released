@@ -21,6 +21,28 @@ body {
   width: 100%;
 }
 
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+  background: #262626;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #171717;
+  border-radius: 4px;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+body::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.8);
+}
+
+/* Cambiamos el fondo cuando esté en active */
+body::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
 .navlink {
   color: blue
 }
@@ -33,4 +55,20 @@ body {
   mix-blend-mode: multiply;
   filter: brightness(1);
   width: 40%;
+}
+
+.body:app::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.body:app::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Cambiamos el fondo cuando esté en active */
+.body:app::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
 }
