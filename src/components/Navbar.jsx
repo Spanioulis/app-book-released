@@ -3,7 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
 import SearchInput from './SearchInput';
 import useDarkTheme from './useDarkTheme';
-import logo from '../assets/book-stack.png';
+import logo from '../assets/book-tree.png';
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(UserContext);
@@ -45,7 +45,7 @@ const Navbar = () => {
                                 viewBox="0 0 24 24"
                                 strokeWidth={1.5}
                                 stroke="currentColor"
-                                className="w-6 h-6 ml-3 hover:w-7 hover:h-7 hover:ml-2 hover:text-amber-600"
+                                className="w-6 h-6 ml-3 hover:w-7 hover:h-7 hover:ml-2 hover:text-amber-600 text-zinc-800 dark:text-gray-400"
                             >
                                 <path
                                     strokeLinecap="round"

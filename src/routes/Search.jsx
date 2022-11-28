@@ -30,7 +30,7 @@ const Search = () => {
     // console.log('searchList', searchList);
 
     useEffect(() => {
-        console.log('useEffect');
+        // console.log('useEffect');
         getBooks();
     }, []);
 

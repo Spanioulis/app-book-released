@@ -6,6 +6,7 @@ import { useBooks } from '../hooks/useBooks';
 import '../styles/loading.css';
 import image from '../assets/leather-bound-book-open-on-table.jpg';
 import Modal from '../components/ReserveModal';
+import Footer from '../components/Footer';
 
 const Home = () => {
     const { user } = useContext(UserContext);
@@ -46,6 +47,7 @@ const Home = () => {
                 </h1>
                 <CardsHome />
                 <Modal />
+                <Footer />
             </div>
         </div>
     );
