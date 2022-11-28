@@ -3,7 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
 import SearchInput from './SearchInput';
 import useDarkTheme from './useDarkTheme';
-// import { icon } from '../assets/user_icon.png';
+import logo from '../assets/book-stack.png';
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(UserContext);
@@ -25,11 +25,7 @@ const Navbar = () => {
             <nav className="navbar px-5 py-0 lg:px-16 dark:bg-stone-900 dark:bg-opacity-30  dark:text-gray-300 sticky top-0 z-50 backdrop-blur-sm">
                 <div className="flex-1 my-3">
                     <Link to="/" className="flex items-center">
-                        <img
-                            src="https://flowbite.com/docs/images/logo.svg"
-                            className="mr-3 h-6 sm:h-9"
-                            alt="Flowbite Logo"
-                        />
+                        <img src={logo} className="mr-3 h-11 sm:h-14" alt="Logo Ed Mundo!" />
                         <span className="self-center text-base sm:text-2xl font-semibold whitespace-nowrap dark:text-gray-200 ">
                             Ed Mundo!
                         </span>

@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useBooks } from '../hooks/useBooks';
-import uuid4 from 'uuid4';
-import Modal from '../components/ReserveModal';
+import { UserContext } from '../context/UserProvider';
 import { doc, updateDoc } from 'firebase/firestore/lite';
 import { db } from '../firebase/firebaseConfig';
-import { useContext } from 'react';
-import { UserContext } from '../context/UserProvider';
+import uuid4 from 'uuid4';
+import Modal from '../components/ReserveModal';
+import img from '../assets/undraw_Not_found.png';
+import '../App.css';
 // import uuid4 from 'uuid4';
 // import SearchInput from '../components/SearchInput';
 
@@ -16,16 +17,17 @@ const Search = () => {
     const { q } = useParams();
     const { books, getBooks } = useBooks();
     const { user } = useContext(UserContext);
-    console.log('user', user);
+    // console.log('user', user.uid);
 
     // TODO -> Realizar un 'loading'
     // Filtro de búsqueda (título || autor/a)
     const searchList = books.filter(
         (book) =>
-            book.title.toLowerCase().includes(q.toLowerCase()) ||
-            (book.author.toLowerCase().includes(q.toLowerCase()) && book.uid !== user.uid)
+            (book.title.toLowerCase().includes(q.toLowerCase()) ||
+                book.author.toLowerCase().includes(q.toLowerCase())) &&
+            book.uid !== user.uid
     );
-    console.log('searchList', searchList);
+    // console.log('searchList', searchList);
 
     useEffect(() => {
         console.log('useEffect');
@@ -42,7 +44,7 @@ const Search = () => {
 
     return (
         <div className="text-center">
-            <h1 className="text-3xl my-5">Search</h1>
+            <h1 className="text-3xl my-5"># Búsqueda #</h1>
             <div className="flex px-10 gap-10 my-5">
                 <p className="text-slate-600"> Add filtros (distrito/categoría)</p>
                 <p className="text-yellow-500">
@@ -54,7 +56,10 @@ const Search = () => {
             <Modal />
 
             {searchList.length === 0 ? (
-                <p>Lo siento, no hay coincidencias...</p>
+                <>
+                    <img src={img} alt="Not found books" className="illustration mx-auto" />
+                    <p>¡Lo sentimos, no hay coincidencias!</p>
+                </>
             ) : (
                 <>
                     {searchList.map((book) => (

@@ -21,7 +21,7 @@ const SearchInput = ({ text, placeholder, className }) => {
     };
 
     return (
-        <div className="form-control h-10 w-30 sm:w-48">
+        <div className="form-control h-10 w-28 sm:w-48">
             {/* Añadir onChange para realizar la búsqueda... */}
             <input
                 type={text}

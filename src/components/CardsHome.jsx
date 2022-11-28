@@ -3,18 +3,19 @@ import { useBooks } from '../hooks/useBooks';
 import '../styles/cards.css';
 import uuid4 from 'uuid4';
 import { doc, updateDoc } from 'firebase/firestore/lite';
-import { db } from '../firebase/firebaseConfig';
+import { auth, db } from '../firebase/firebaseConfig';
 
 const CardsHome = () => {
     const { books, getBooks } = useBooks();
-    console.log('books', books);
+    // console.log('books', books);
     //* Elimina los NO disponibles (hecho)
-    const available = books.filter((book) => book.enable === true);
+    const available = books.filter(
+        (book) => book.enable === true && book.uid !== auth.currentUser.uid
+    );
     const random = available.sort(() => (Math.random() > 0.5 ? 1 : -1));
     const booksCover = random.splice(0, 3);
     /* 
-    TODO -> En landing saldrán todos los libros, tal y cómo está ahora. Pero en el Home no saldrán los libros del usuario logeado:
-    ! const available = books.filter((book) => book.enable === true) && book.uid !== auth.currentUser.uid;
+    TODO -> En landing saldrán todos los libros (enable === true), a diferencia de ahora, que no se ven los del usuario.
     */
 
     useEffect(() => {

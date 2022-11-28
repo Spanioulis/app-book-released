@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { useBooks } from '../hooks/useBooks';
-import '../styles/loading.css';
-import '../styles/cards.css';
 import { db } from '../firebase/firebaseConfig';
 import { collection, deleteDoc, doc } from 'firebase/firestore/lite';
+import img from '../assets/undraw_Books.png';
+import '../App.css';
+import '../styles/loading.css';
+import '../styles/cards.css';
+import { Link } from 'react-router-dom';
 
 // TODO -> Idea para la biblioteca o para la búsqueda:
 // https://codepen.io/Snowing/pen/JZRxOK
@@ -13,7 +16,7 @@ const Profile = () => {
     // console.log('userBooks', userBooks);
 
     useEffect(() => {
-        console.log('getBooks & getUsers -> Profile');
+        // console.log('getBooks & getUsers -> Profile');
         getBooks();
     }, []);
 
@@ -28,20 +31,27 @@ const Profile = () => {
     };
 
     return (
-        <>
-            <h1 className="text-center text-3xl text-stone-800 dark:text-amber-700 font-bold my-5">
+        <div className="text-center">
+            <h1 className="text-3xl text-stone-800 dark:text-amber-700 font-bold my-5">
                 # Mi biblioteca #
             </h1>
-
-            <div>
+            {/* <div>
                 <ul>
                     <li>Favoritos</li>
                     <li>Otra información de relevancia...</li>
                 </ul>
-            </div>
-
+            </div> */}
             {userBooks.length === 0 ? (
-                <p>No tiene imágenes...AÑADIR IMAGEN</p>
+                <>
+                    <img src={img} alt="Not found books" className="illustration mx-auto" />
+                    <p>
+                        ¡No has subido ningún libro, hazlo{' '}
+                        <Link to="/uppload" className="text-green-500 dark:text-blue-700">
+                            aquí
+                        </Link>
+                        !
+                    </p>
+                </>
             ) : (
                 <div className="flex justify-around gap-10 flex-wrap mt-5 mx-5">
                     {userBooks.map((book) => (
@@ -91,7 +101,7 @@ const Profile = () => {
                     ))}
                 </div>
             )}
-        </>
+        </div>
     );
 };
 

@@ -7,6 +7,7 @@ import Landing from './routes/Landing';
 import Login from './routes/Login';
 import Register from './routes/Register';
 import Profile from './routes/Profile';
+import NotFound from './routes/NotFound';
 
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -25,7 +26,7 @@ function App() {
 
     return (
         <>
-            <div className="pattern-size-3 pattern-isometric pattern-bg-gray-200 pattern-gray-300 pattern-opacity-100 dark:pattern-cross dark:pattern-size-4 dark:pattern-stone-800 dark:pattern-bg-stone-900 min-h-screen text-black dark:text-gray-300">
+            <div className="pattern-size-2 pattern-dots pattern-bg-gray-100 pattern-gray-200 pattern-opacity-100 dark:pattern-cross dark:pattern-size-4 dark:pattern-stone-800 dark:pattern-bg-stone-900 min-h-screen text-black dark:text-gray-300">
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<ProtectedRoute />}>
@@ -40,9 +41,9 @@ function App() {
                         <Route path="/register" element={<Register />} />
                         {/* Hacer un Landing (public) */}
                         <Route path="/landing" element={<Landing />} />
+                        <Route path="*" element={<NotFound />} />
                     </Route>
                     {/* Crea componente 404notFound */}
-                    {/* <Route path="*" element ={<NotFound />} */}
                 </Routes>
             </div>
         </>

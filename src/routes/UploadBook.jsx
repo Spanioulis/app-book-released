@@ -54,7 +54,7 @@ const UploadBook = () => {
                 district: currentUser[0].district,
                 uid: currentUser[0].uid
             });
-            console.log('...registro COMPLETADO!');
+            // console.log('...subida COMPLETADA!');
             navigate('/profile');
         } catch (error) {
             console.log(error.message);
@@ -80,7 +80,7 @@ const UploadBook = () => {
                 .then(({ data }) => {
                     if (data.items !== undefined) {
                         setBooksAPI(data.items);
-                        console.log(data.items);
+                        // console.log(data.items);
                     }
                 })
                 .catch(({ message }) => console.log(message));
