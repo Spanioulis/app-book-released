@@ -6,6 +6,17 @@ module.exports = {
         'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
     ],
     theme: {
+        colors: {
+            transparent: 'transparent',
+            current: 'currentColor',
+            dark: '#222831',
+            purple: '#3f3cbb',
+            midnight: '#121063',
+            // metal: '#565584',
+            metal: '#393E46',
+            tahiti: '#00ADB5',
+            silver: '#EEEEEE'
+        },
         extend: {},
         patterns: {
             opacities: {

@@ -23,7 +23,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar px-5 py-0 lg:px-16 dark:bg-stone-900 dark:bg-opacity-30  dark:text-gray-300 sticky top-0 z-50 backdrop-blur-sm gap-10">
+            <nav className="navbar text-metal dark:text-gray-300 px-5 py-0 lg:px-16 dark:bg-stone-900 dark:bg-opacity-30  sticky top-0 z-50 backdrop-blur-sm gap-10">
                 <div className="flex-1 my-3 gap-10">
                     <Link to="/" className="flex items-center">
                         <img src={logo} className="mr-3 h-11 sm:h-14" alt="Logo Ed Mundo!" />
@@ -56,7 +56,7 @@ const Navbar = () => {
 
                     <span
                         onClick={() => setTheme(colorTheme)}
-                        className="text-gray-200 bg-transparent dark:bg-transparent dark:text-zinc-800 mx-2 lg:mx-5 bg-gray-100 dark:bg-zinc-900 w-9 h-9 cursor-pointer flex items-center justify-center"
+                        className="text-metal dark:text-gray-400 mx-2 lg:mx-5 dark:bg- w-9 h-9 cursor-pointer flex items-center justify-center"
                     >
                         {colorTheme === 'light' ? (
                             <div className="flex flex-col">
@@ -86,7 +86,7 @@ const Navbar = () => {
                         )} */}
                         <ul
                             tabIndex={0}
-                            className="gap-2 mt-3 p-5 shadow menu menu-compact dropdown-content rounded-box w-44 font-medium bg-gray-100 dark:bg-zinc-800"
+                            className="gap-2 mt-3 p-5 shadow menu menu-compact dropdown-content rounded-box w-44 font-medium bg-gray-100 dark:bg-dark"
                         >
                             {user ? (
                                 <>
@@ -97,7 +97,7 @@ const Navbar = () => {
                                     <li>
                                         <NavLink
                                             to="/profile"
-                                            className="font-semibold hover:font-bold ease-in duration-500 hover:scale-110"
+                                            className="font-semibold text-metal dark:text-tahiti bg-transparent hover:text-white dark:hover:text-white hover:bg-tahiti hover:font-bold ease-in duration-500"
                                         >
                                             Perfil
                                         </NavLink>
@@ -105,7 +105,7 @@ const Navbar = () => {
                                     <li>
                                         <button
                                             onClick={handleLogout}
-                                            className="text-red-700 font-bold hover:bg-red-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm text-center  dark:hover:bg-red-700 dark:focus:ring-red-800 hover:font-bold hover:scale-110 ease-in duration-700"
+                                            className="text-red-700 font-bold hover:bg-red-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm text-center  dark:hover:bg-red-700 dark:focus:ring-red-800 hover:font-bold ease-in duration-500"
                                         >
                                             Logout
                                         </button>

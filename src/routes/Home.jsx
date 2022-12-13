@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import CardsHome from '../components/CardsHome';
 import { UserContext } from '../context/UserProvider';
 import { useBooks } from '../hooks/useBooks';
 import '../styles/loading.css';
@@ -8,6 +7,7 @@ import image from '../assets/book-transparent.png';
 import Modal from '../components/ReserveModal';
 import Footer from '../components/Footer';
 import SearchInput from '../components/SearchInput';
+import MostRecent from '../components/MostRecent';
 
 const Home = () => {
     const { user } = useContext(UserContext);
@@ -26,7 +26,7 @@ const Home = () => {
             <section>
                 <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
                     <div className="mr-auto place-self-center lg:col-span-7">
-                        <h1 className="max-w-2xl mb-4 text-base font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-gray-100">
+                        <h1 className="max-w-2xl mb-4 text-base font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-tahiti dark:text-gray-300">
                             Busca tu libro de proximidad
                         </h1>
                         <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
@@ -53,7 +53,12 @@ const Home = () => {
             <h1 className="text-center font-extrabold mt-20 mb-8 text-2xl text-zinc-900 dark:text-gray-400">
                 Libros disponibles...
             </h1>
-            <CardsHome />
+            <MostRecent />
+            <div className="text-center text-blue-600">
+                <h4>Últimas novedades</h4>
+                <h4>Los más seguidos (con likes)</h4>
+                <h4>Por autor...(selección aletoria de autores)</h4>
+            </div>
             <Modal />
             <Footer />
         </>
