@@ -8,13 +8,24 @@ import CardsHome from './CardsHome';
 
 const MostRecent = () => {
     const { books, getBooks } = useBooks();
-    // console.log('books', books);
     //* Elimina los NO disponibles (hecho)
+    // const sort = books.sort((a, b) => {
+    //     if (a.date < b.date) return -1;
+    //     else if (a.date > b.date) return 1;
+    //     return 0;
+    // });
+    // console.log(sort);
     const available = books.filter(
         (book) => book.enable === true && book.uid !== auth.currentUser.uid
     );
-    const random = available.sort(() => (Math.random() > 0.5 ? 1 : -1));
-    const booksCover = random.splice(0, 2);
+    // Guardar...
+    // const mostRecentBooks = available.sort(() => (Math.random() > 0.5 ? 1 : -1));
+    const mostRecentBooks = available.sort((a, b) => {
+        if (a.date < b.date) return 1;
+        else if (a.date > b.date) return -1;
+        return 0;
+    });
+    const booksCover = mostRecentBooks.splice(0, 3);
     /* 
     TODO -> En landing saldrán todos los libros (enable === true), a diferencia de ahora, que no se ven los del usuario.
     */
@@ -34,8 +45,8 @@ const MostRecent = () => {
 
     return (
         <div className="container-home mx-auto flex">
+            <i className="rotate-90 my-10">Últimas novedades</i>
             {booksCover.map((book) => {
-                console.log(book);
                 return (
                     <CardsHome
                         author={book.author}

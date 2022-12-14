@@ -29,6 +29,16 @@ const UploadBook = () => {
     const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS;
     const API_URL = `https://www.googleapis.com/books/v1/volumes?q=intitle:${search}&${API_KEY}`;
     // &maxResults=40
+    const options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    };
+    const date = new Date();
+    // console.log(date.toLocaleDateString('en-US', options));
 
     //* Buscar coincidencias de la búsqueda con la lista de libros
     const handleSearch = (e) => {
@@ -52,7 +62,8 @@ const UploadBook = () => {
             await addDoc(usersCollectionRef, {
                 ...book,
                 district: currentUser[0].district,
-                uid: currentUser[0].uid
+                uid: currentUser[0].uid,
+                date: date.toLocaleDateString('en-US', options)
             });
             // console.log('...subida COMPLETADA!');
             navigate('/profile');

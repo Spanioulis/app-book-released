@@ -50,12 +50,11 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <h1 className="text-center font-extrabold mt-20 mb-8 text-2xl text-zinc-900 dark:text-gray-400">
+            {/* <h1 className="text-center font-extrabold mt-20 mb-8 text-2xl text-zinc-900 dark:text-gray-400">
                 Libros disponibles...
-            </h1>
+            </h1> */}
             <MostRecent />
             <div className="text-center text-blue-600">
-                <h4>Últimas novedades</h4>
                 <h4>Los más seguidos (con likes)</h4>
                 <h4>Por autor...(selección aletoria de autores)</h4>
             </div>
