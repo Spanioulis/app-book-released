@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useBooks } from '../hooks/useBooks';
-import '../styles/cards.css';
-import uuid4 from 'uuid4';
 import { doc, updateDoc } from 'firebase/firestore/lite';
 import { auth, db } from '../firebase/firebaseConfig';
 import CardsHome from './CardsHome';
+import uuid4 from 'uuid4';
+import '../styles/cards.css';
+import '../styles/shelf.css';
 
 const MostRecent = () => {
     const { books, getBooks } = useBooks();
@@ -44,21 +45,25 @@ const MostRecent = () => {
     };
 
     return (
-        <div className="container-home mx-auto flex">
-            <i className="rotate-90 my-10">Últimas novedades</i>
-            {booksCover.map((book) => {
-                return (
-                    <CardsHome
-                        author={book.author}
-                        district={book.district}
-                        handleUpdate={() => handleUpdate(book.id)}
-                        image={book.image}
-                        key={uuid4()}
-                        title={book.title}
-                    />
-                );
-            })}
-        </div>
+        <>
+            <div className="container-home mx-auto flex">
+                <div className="my-12">
+                    <p className="-rotate-90 text-base">Últimas novedades</p>
+                </div>
+                {booksCover.map((book) => {
+                    return (
+                        <CardsHome
+                            author={book.author}
+                            district={book.district}
+                            handleUpdate={() => handleUpdate(book.id)}
+                            image={book.image}
+                            key={uuid4()}
+                            title={book.title}
+                        />
+                    );
+                })}
+            </div>
+        </>
     );
 };
 

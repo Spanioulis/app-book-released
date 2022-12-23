@@ -5,7 +5,7 @@ const Cards = ({ key, image, title, author, district, handleUpdate }) => {
         <>
             <div
                 // className="card card-home card-side w-72 h-52 rounded-xl shadow-[0_35px_60px_-10px_rgba(0,0,0,0.4)] bg-gray-200 dark:bg-stone-800 hover:scale-105"
-                className="card card-home card-side w-72 h-52 bg-silver dark:bg-dark hover:scale-105 shadow-[0_35px_60px_-10px_rgba(0,0,0,0.4)]"
+                className="card card-home card-side w-72 h-52 bg-silver dark:bg-dark dark:text-gray-300 hover:scale-110"
                 key={key}
             >
                 <figure className="ml-4 w-1/3">

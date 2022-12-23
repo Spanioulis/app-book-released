@@ -5,10 +5,12 @@ import { UserContext } from '../context/UserProvider';
 import { doc, updateDoc } from 'firebase/firestore/lite';
 import { db } from '../firebase/firebaseConfig';
 import uuid4 from 'uuid4';
-import Modal from '../components/ReserveModal';
+import Modal from '../components/SearchModal';
 import img from '../assets/undraw_Not_found.png';
 import '../App.css';
 import SearchInput from '../components/SearchInput';
+import CardsSearch from '../components/CardsSearch';
+import '../styles/loading.css';
 // import uuid4 from 'uuid4';
 // import SearchInput from '../components/SearchInput';
 
@@ -37,6 +39,7 @@ const Search = () => {
         getBooks();
     }, []);
 
+    // Reservar Libro -> Activar de nuevo en el Modal, solo cuando no esté en Mis libros
     const handleUpdate = async (id) => {
         const bookRef = doc(db, 'books', id);
         await updateDoc(bookRef, {
@@ -47,10 +50,24 @@ const Search = () => {
 
     return (
         <div className="text-center">
-            <h1 className="text-3xl my-5"># Todos los libros... #</h1>
-            <div className="flex justify-around px-10 gap-10 my-5">
-                <p className="text-slate-600 flex-none "> Add filtros (distrito/categoría)</p>
-                <p className="text-yellow-500 flex-none ">
+            <div className="flex justify-between px-10 gap-10 my-10">
+                <div className="dropdown dropdown-right text-sm">
+                    <label tabIndex={0} className="btn m-1">
+                        Galería
+                    </label>
+                    <ul
+                        tabIndex={0}
+                        className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                        <li>
+                            <a>Mis libros</a>
+                        </li>
+                        <li>
+                            <a>Resto de usuarios</a>
+                        </li>
+                    </ul>
+                </div>
+                <p className="text-tahiti flex-none ">
                     Búsqueda actual:{' '}
                     <span className="text-stone-900  dark:text-gray-400 italic">{q}</span>
                 </p>
@@ -61,16 +78,65 @@ const Search = () => {
                     classButton="btn btn-square dark:bg-zinc-800 hover:bg-zinc-900"
                 />
             </div>
-            <Modal />
 
             {searchList.length === 0 ? (
                 <>
-                    <img src={img} alt="Not found books" className="illustration mx-auto" />
-                    <p>¡Lo sentimos, no hay coincidencias!</p>
+                    {/* TODO -> Poner todas las búsuqedas cuando cambiemos la ficha a un listado... */}
+                    <div className="spinner"></div>
+                    {/* <img src={img} alt="Not found books" className="illustration mx-auto" />
+                    <p>¡Lo sentimos, no hay coincidencias!</p> */}
                 </>
             ) : (
                 <>
-                    {searchList.map((book) => (
+                    <div className="overflow-x-auto">
+                        <table className="table table-zebra w-full text-sm">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Título</th>
+                                    <th>Autor</th>
+                                    <th>Páginas</th>
+                                    <th>Fecha</th>
+                                    <th>Distrito</th>
+                                    <th>Información</th>
+                                </tr>
+                            </thead>
+                            {searchList.map((book, index) => (
+                                <>
+                                    <CardsSearch
+                                        author={book.author}
+                                        date={book.date}
+                                        district={book.district}
+                                        image={book.image}
+                                        index={index}
+                                        pages={book.pages}
+                                        title={book.title}
+                                    />
+                                    <Modal
+                                        author={book.author}
+                                        date={book.date}
+                                        district={book.district}
+                                        image={book.image}
+                                        index={index}
+                                        pages={book.pages}
+                                        title={book.title}
+                                    />
+                                </>
+                            ))}
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th>Título</th>
+                                    <th>Autor</th>
+                                    <th>Páginas</th>
+                                    <th>Fecha</th>
+                                    <th>Distrito</th>
+                                    <th>Información</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    {/* {searchList.map((book) => (
                         <div
                             key={uuid4()}
                             className="max-w-4xl mx-5 lg:mx-auto mb-5 shadow-[0_35px_60px_-10px_rgba(0,0,0,0.7)] rounded-xl"
@@ -133,7 +199,7 @@ const Search = () => {
                                 </div>
                             </div>
                         </div>
-                    ))}
+                    ))} */}
                 </>
             )}
         </div>

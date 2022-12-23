@@ -91,7 +91,7 @@ const UploadBook = () => {
                 .then(({ data }) => {
                     if (data.items !== undefined) {
                         setBooksAPI(data.items);
-                        // console.log(data.items);
+                        console.log(data.items);
                     }
                 })
                 .catch(({ message }) => console.log(message));
