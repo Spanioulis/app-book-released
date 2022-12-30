@@ -18,7 +18,7 @@ export const useBooks = () => {
             setLoading(true);
             const booksRefCollection = collection(db, 'books');
             // Books por 'usuer'
-            // TODO -> Hacerlo dinámico!
+            //! No funciona correctamente
             const q = query(booksRefCollection, where('uid', '==', auth.currentUser.uid));
             const data = await getDocs(q);
             const dataDB = data.docs.map((doc) => ({

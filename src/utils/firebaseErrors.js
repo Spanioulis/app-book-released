@@ -15,7 +15,7 @@ export const firebaseErrors = (code) => {
         case 'auth/user-not-found':
             return {
                 code: 'email',
-                message: 'Usuario no registrado (añadir emoticono)'
+                message: 'Usuario no registrado 😪'
             };
         case 'auth/wrong-password':
             return {

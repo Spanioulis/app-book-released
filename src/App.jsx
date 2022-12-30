@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { UserContext } from './context/UserProvider';
 import { Routes, Route } from 'react-router-dom';
 
@@ -13,14 +13,17 @@ import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import UploadBook from './routes/UploadBook';
 import Search from './routes/Search';
+import Chat from './routes/Chat';
+
 import './App.css';
-import './styles/loading.css';
+// import './styles/loading.css';
 
 function App() {
     const { user } = useContext(UserContext);
+    console.log('user', user);
+    //* Enviar esta información a cada componente donde se vaya a usar...
 
     if (user === false) {
-        // TODO -> "spinner" or screen loading
         return <div className="spinner"></div>;
     }
 
@@ -34,6 +37,7 @@ function App() {
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/uppload" element={<UploadBook />} />
                         <Route path="/search/:q" element={<Search />} />
+                        <Route path="/chat" element={<Chat />} />
                     </Route>
 
                     <Route>

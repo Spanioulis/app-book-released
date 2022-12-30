@@ -65,7 +65,7 @@ const Profile = () => {
                                     src={book.image}
                                     alt={book.title}
                                 />
-                                {book.enable ? (
+                                {book.available ? (
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"

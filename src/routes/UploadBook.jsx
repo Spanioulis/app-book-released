@@ -20,7 +20,7 @@ const UploadBook = () => {
         author: '',
         pages: '',
         category: '',
-        enabled: true,
+        available: true,
         publisher: ''
     });
     // console.log('book', book);
@@ -109,7 +109,7 @@ const UploadBook = () => {
                 }, 3000);
             } else {
                 setBook({
-                    enable: true,
+                    available: true,
                     title: exists?.[0]?.volumeInfo?.title,
                     author: exists?.[0]?.volumeInfo?.authors?.[0],
                     pages: exists?.[0]?.volumeInfo?.pageCount ?? 'Info no disponible',

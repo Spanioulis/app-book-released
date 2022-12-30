@@ -21,6 +21,7 @@ body {
   width: 100%;
 }
 
+/* scrollbar */
 body::-webkit-scrollbar {
   width: 10px;
   height: 8px;
@@ -32,30 +33,15 @@ body::-webkit-scrollbar-thumb {
   border-radius: 4px;
 }
 
-/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
 body::-webkit-scrollbar-thumb:hover {
   background: #52525b;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.8);
 }
 
-/* Cambiamos el fondo cuando esté en active */
 body::-webkit-scrollbar-thumb:active {
   background-color: #999999;
 }
 
-.navlink {
-  color: blue
-}
-
-.navlink-active {
-  color: #28A745 !important;
-}
-
-.illustration {
-  mix-blend-mode: multiply;
-  filter: brightness(1);
-  width: 40%;
-}
 
 .body:app::-webkit-scrollbar-thumb {
   background: #ccc;
@@ -71,4 +57,70 @@ body::-webkit-scrollbar-thumb:active {
 /* Cambiamos el fondo cuando esté en active */
 .body:app::-webkit-scrollbar-thumb:active {
   background-color: #999999;
+}
+
+/* navbar */
+.navlink {
+  color: blue
+}
+
+.navlink-active {
+  color: #28A745 !important;
+}
+
+.illustration {
+  mix-blend-mode: multiply;
+  filter: brightness(1);
+  width: 40%;
+}
+
+/* stream-chat */
+.str-chat__channel-list {
+  width: 30%;
+  min-height: 100vh;
+}
+
+.str-chat__channel {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+.str-chat__thread {
+  width: 45%;
+}
+
+/* loading-spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: rgb(126, 119, 119);
+
+  border-radius: 100%;
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0)
+  }
+
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
 }

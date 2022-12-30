@@ -34,7 +34,7 @@ const Register = () => {
     // );
 
     const onSubmit = async (data) => {
-        const { email, password, district } = data;
+        const { email, password, district, username } = data;
         const usersCollectionRef = collection(db, 'users');
 
         console.log({ email, password, district });
@@ -49,11 +49,13 @@ const Register = () => {
 
         try {
             setLoading(true);
-            await registerUser(email, password);
+            await registerUser(email, password, username);
             // await db.collection('users').doc().set({ email, password, district });
             await addDoc(usersCollectionRef, {
                 email,
                 district,
+                // TODO -> Añadir "username"
+                username,
                 uid: auth.currentUser.uid
             });
             console.log('...registro COMPLETADO!');
@@ -89,6 +91,20 @@ const Register = () => {
                             {...register('email', {
                                 required,
                                 pattern: patternEmail
+                            })}
+                        />
+                        <FormError error={errors.email} />
+                        {/* TODO -> Añadir el 'username ya registrado' */}
+                        <FormInput
+                            type="text"
+                            label="Username"
+                            placeholder="Ingrese username"
+                            error={errors.username}
+                            {...register('username', {
+                                required: {
+                                    value: true,
+                                    message: 'Campo obligatorio'
+                                }
                             })}
                         />
                         <FormError error={errors.email} />

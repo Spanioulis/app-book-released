@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import { useBooks } from '../hooks/useBooks';
 import { doc, updateDoc } from 'firebase/firestore/lite';
 import { auth, db } from '../firebase/firebaseConfig';
-import CardsHome from './CardsHome';
+import Cards from './CardsHome';
 import uuid4 from 'uuid4';
 import '../styles/cards.css';
 import '../styles/shelf.css';
 
 const MostRecent = () => {
     const { books, getBooks } = useBooks();
+    // console.log('books', books);
     //* Elimina los NO disponibles (hecho)
     // const sort = books.sort((a, b) => {
     //     if (a.date < b.date) return -1;
@@ -31,8 +32,9 @@ const MostRecent = () => {
     TODO -> En landing saldrán todos los libros (enable === true), a diferencia de ahora, que no se ven los del usuario.
     */
 
+    // * Aquí está la clave para recuperar libros y/o usuarios
     useEffect(() => {
-        // console.log('geBooks Home');
+        // console.log('getBooks Home');
         getBooks();
     }, []);
 
@@ -45,25 +47,23 @@ const MostRecent = () => {
     };
 
     return (
-        <>
-            <div className="container-home mx-auto flex">
-                <div className="my-12">
-                    <p className="-rotate-90 text-base">Últimas novedades</p>
-                </div>
-                {booksCover.map((book) => {
-                    return (
-                        <CardsHome
-                            author={book.author}
-                            district={book.district}
-                            handleUpdate={() => handleUpdate(book.id)}
-                            image={book.image}
-                            key={uuid4()}
-                            title={book.title}
-                        />
-                    );
-                })}
+        <div className="container-home mx-auto flex" key={uuid4()}>
+            <div className="my-12">
+                <p className="-rotate-90 text-base">Últimas novedades</p>
             </div>
-        </>
+            {booksCover.map((book, index) => {
+                return (
+                    <Cards
+                        author={book.author}
+                        district={book.district}
+                        handleUpdate={() => handleUpdate(book.id)}
+                        image={book.image}
+                        index={index}
+                        title={book.title}
+                    />
+                );
+            })}
+        </div>
     );
 };
 

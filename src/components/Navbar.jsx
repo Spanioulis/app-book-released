@@ -1,14 +1,18 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
+import { useUsers } from '../hooks/useUsers';
 import useDarkTheme from './useDarkTheme';
 import logo from '../assets/book-tree.png';
 import sun from '../assets/sun-svgrepo-com.svg';
 import moon from '../assets/moon-svgrepo-com.svg';
+import chat from '../assets/chat.svg';
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(UserContext);
-    // console.log('user', user);
+    const [currentUser, setCurrentUser] = useState('');
+    const { users, getUsers } = useUsers();
+    // console.log('users', users);
     const [colorTheme, setTheme] = useDarkTheme();
     const navigate = useNavigate();
 
@@ -21,6 +25,20 @@ const Navbar = () => {
         }
     };
 
+    // if (user !== null) {
+    //     const userAuth = user.uid;
+    //     console.log('userAuth', userAuth);
+    //     const currentUserFind = users.find((user) => user.uid === userAuth);
+    //     console.log('currentUser', currentUser.username);
+    //     setCurrentUser(currentUserFind.username);
+    //     console.log(currentUser);
+    // }
+
+    // Recuperar usuarios
+    useEffect(() => {
+        getUsers();
+    }, []);
+
     return (
         <>
             <nav className="navbar text-metal dark:text-gray-300 px-5 py-0 lg:px-16 dark:bg-stone-900 dark:bg-opacity-30  sticky top-0 z-50 backdrop-blur-sm gap-10">
@@ -31,8 +49,14 @@ const Navbar = () => {
                             Ed Mundo!
                         </span>
                     </Link>
-                    <h3>Links centrales</h3>
-                    <p>Qué es Edmundo?</p>
+                    <Link to="/chat" className="flex items-center">
+                        <img src={chat} className="mr-3 h-11 sm:h-14" alt="Chat icon" width="38" />
+
+                        {/* <span className="self-center sm:text-2xl font-semibold whitespace-nowrap text-main ">
+                        </span> */}
+                    </Link>
+                    <h3 className="text-sm">Links centrales</h3>
+                    <p className="text-sm">Qué es Edmundo?</p>
                 </div>
                 <div className="flex-none my-3 gap-2">
                     <div>
@@ -91,6 +115,7 @@ const Navbar = () => {
                             {user ? (
                                 <>
                                     <li className="text-sm text-center dark:text-slate-400 text-stone-700">
+                                        {/* {currentUser.username} */}
                                         {user.email}
                                     </li>
                                     <hr />
