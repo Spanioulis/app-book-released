@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useBooks } from '../hooks/useBooks';
 import { doc, updateDoc } from 'firebase/firestore/lite';
 import { auth, db } from '../firebase/firebaseConfig';
@@ -9,7 +9,6 @@ import '../styles/shelf.css';
 
 const MostRecent = () => {
     const { books, getBooks } = useBooks();
-    // console.log('books', books);
     //* Elimina los NO disponibles (hecho)
     // const sort = books.sort((a, b) => {
     //     if (a.date < b.date) return -1;
@@ -18,7 +17,7 @@ const MostRecent = () => {
     // });
     // console.log(sort);
     const available = books.filter(
-        (book) => book.enable === true && book.uid !== auth.currentUser.uid
+        (book) => book.available === true && book.uid !== auth.currentUser.uid
     );
     // Guardar...
     // const mostRecentBooks = available.sort(() => (Math.random() > 0.5 ? 1 : -1));
@@ -38,6 +37,7 @@ const MostRecent = () => {
         getBooks();
     }, []);
 
+    //TODO -> Convertir este handleUpdate en envío de parámetros al chat
     const handleUpdate = async (id) => {
         const bookRef = doc(db, 'books', id);
         await updateDoc(bookRef, {

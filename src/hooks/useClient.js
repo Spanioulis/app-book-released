@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { StreamChat } from 'stream-chat';
 
-export const useClient = ({ apiKey, userData, tokenOrProvider }) => {
+export const useClient = ({ client, apiKey, userData, tokenOrProvider }) => {
     const [chatClient, setChatClient] = useState(null);
 
     useEffect(() => {
-        const client = StreamChat.getInstance(apiKey);
+        // const client = StreamChat.getInstance(apiKey);
+        // const client = new StreamChat(apiKey);
         let didUserConnectInterrupt = false;
 
         const connectionPromise = client.connectUser(userData, tokenOrProvider).then(() => {

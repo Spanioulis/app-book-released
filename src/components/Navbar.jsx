@@ -49,12 +49,19 @@ const Navbar = () => {
                             Ed Mundo!
                         </span>
                     </Link>
-                    <Link to="/chat" className="flex items-center">
-                        <img src={chat} className="mr-3 h-11 sm:h-14" alt="Chat icon" width="38" />
+                    <div className="tooltip tooltip-bottom" data-tip="Chat">
+                        <Link to="/chat" className="flex items-center">
+                            <img
+                                src={chat}
+                                className="mr-3 h-11 sm:h-14"
+                                alt="Chat icon"
+                                width="38"
+                            />
 
-                        {/* <span className="self-center sm:text-2xl font-semibold whitespace-nowrap text-main ">
+                            {/* <span className="self-center sm:text-2xl font-semibold whitespace-nowrap text-main ">
                         </span> */}
-                    </Link>
+                        </Link>
+                    </div>
                     <h3 className="text-sm">Links centrales</h3>
                     <p className="text-sm">Qué es Edmundo?</p>
                 </div>

@@ -11,6 +11,7 @@ import '../App.css';
 import SearchInput from '../components/SearchInput';
 import CardsSearch from '../components/CardsSearch';
 import '../styles/loading.css';
+import SearchModal from '../components/SearchModal';
 // import uuid4 from 'uuid4';
 // import SearchInput from '../components/SearchInput';
 
@@ -21,18 +22,30 @@ import '../styles/loading.css';
 const Search = () => {
     const { q } = useParams();
     const { books, getBooks } = useBooks();
-    const { user } = useContext(UserContext);
-    // console.log('user', user.uid);
+    // console.log('books', books);
+
+    // const { user } = useContext(UserContext);
+
+    //TODO -> Enviamos la información al apretar el botón, y la guardamos (hacer el handleModal o handleInfo desde el botón de la CardSearch, que a su vez irá a la SearchModal)
+    const [modalBook, setModalBook] = useState([]);
+    // console.log('modalBook', modalBook);
 
     // TODO -> Realizar un 'loading'
-    // Filtro de búsqueda (título || autor/a)
+    // TODO -> Filtro de búsqueda (título || autor/a)
+    //* Este filtro es para mis libros que no sean míos
+    // const searchList = books.filter(
+    //     (book) =>
+    //         (book.title.toLowerCase().includes(q.toLowerCase()) ||
+    //             book.author.toLowerCase().includes(q.toLowerCase())) &&
+    //         book.uid !== user.uid
+    // );
+
+    //* Este filtro es para mis TODOS los libros (check todos los libros activado)
     const searchList = books.filter(
         (book) =>
-            (book.title.toLowerCase().includes(q.toLowerCase()) ||
-                book.author.toLowerCase().includes(q.toLowerCase())) &&
-            book.uid !== user.uid
+            book.title.toLowerCase().includes(q.toLowerCase()) ||
+            book.author.toLowerCase().includes(q.toLowerCase())
     );
-    // console.log('searchList', searchList);
 
     useEffect(() => {
         // console.log('useEffect');
@@ -48,6 +61,31 @@ const Search = () => {
         await getBooks();
     };
 
+    const handleModal = (
+        author,
+        category,
+        date,
+        description,
+        district,
+        image,
+        infoLink,
+        pages,
+        title
+    ) => {
+        setModalBook({
+            ...modalBook,
+            author,
+            category,
+            date,
+            description,
+            district,
+            image,
+            infoLink,
+            pages,
+            title
+        });
+    };
+
     return (
         <div className="text-center">
             <div className="flex justify-between px-10 gap-10 my-10">
@@ -60,7 +98,13 @@ const Search = () => {
                         className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                     >
                         <li>
-                            <a>Mis libros</a>
+                            <a
+                                onClick={() => {
+                                    console.log('Mis libros');
+                                }}
+                            >
+                                Mis libros
+                            </a>
                         </li>
                         <li>
                             <a>Resto de usuarios</a>
@@ -82,14 +126,14 @@ const Search = () => {
             {searchList.length === 0 ? (
                 <>
                     {/* TODO -> Poner todas las búsuqedas cuando cambiemos la ficha a un listado... */}
-                    <div className="spinner"></div>
-                    {/* <img src={img} alt="Not found books" className="illustration mx-auto" />
-                    <p>¡Lo sentimos, no hay coincidencias!</p> */}
+                    {/* <div className="spinner"></div> */}
+                    <img src={img} alt="Not found books" className="illustration mx-auto" />
+                    <p>¡Lo sentimos, no hay coincidencias!</p>
                 </>
             ) : (
                 <>
                     <div className="overflow-x-auto">
-                        <table className="table table-zebra w-full text-sm">
+                        <table className="table table-zebra w-full text-base">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -111,15 +155,10 @@ const Search = () => {
                                         index={index}
                                         pages={book.pages}
                                         title={book.title}
-                                    />
-                                    <Modal
-                                        author={book.author}
-                                        date={book.date}
-                                        district={book.district}
-                                        image={book.image}
-                                        index={index}
-                                        pages={book.pages}
-                                        title={book.title}
+                                        category={book.category}
+                                        description={book.description}
+                                        infoLink={book.infoLink}
+                                        handleModal={handleModal}
                                     />
                                 </>
                             ))}
@@ -202,6 +241,35 @@ const Search = () => {
                     ))} */}
                 </>
             )}
+
+            {/* Put this part before </body> tag */}
+            {/* TODO - pasar toda la info al componente SearchModal */}
+            <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box relative max-w-none w-2/3">
+                    <label
+                        htmlFor="my-modal-3"
+                        className="btn btn-sm btn-circle absolute right-5 top-5 hover:bg-main hover:border-main"
+                    >
+                        ✕
+                    </label>
+                    <div className="flex">
+                        <img src={modalBook.image} alt={modalBook.title} className="rounded-md" />
+                        <div className="flex flex-col justify-center ml-10">
+                            <h3 className=" py-2">{modalBook.title}</h3>
+                            <p className=" py-2">{modalBook.author}</p>
+                            <p className=" py-2">Distrito: {modalBook.district}</p>
+                            <p className="py-2">{modalBook.pages} páginas</p>
+                        </div>
+                    </div>
+                    <p className="  py-2">Fecha de subida: {modalBook.date}</p>
+                    <p className="  py-2">Categoría: {modalBook.category}</p>
+                    <p className=" text-base text-tahiti py-2">{modalBook.description}</p>
+                    <a href={modalBook.infoLink} target="_blank" rel="noopener noreferrer">
+                        Info Link
+                    </a>
+                </div>
+            </div>
         </div>
     );
 };

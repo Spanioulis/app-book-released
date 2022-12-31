@@ -11,115 +11,64 @@ import {
     LoadingIndicator,
     ChannelList
 } from 'stream-chat-react';
-// import { useClient } from '../hooks/useClient';
+import { useClient } from '../hooks/useClient';
+
+import { UserContext } from '../context/UserProvider';
+// import { useUsers } from '../hooks/useUsers';
 
 import 'stream-chat-react/dist/css/v2/index.css';
-import { UserContext } from '../context/UserProvider';
-import { useUsers } from '../hooks/useUsers';
 
 const api_key = import.meta.env.VITE_REACT_APP_STREAM_APIKEY;
-const userToken =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoicCJ9.eX_SnzrSuWUpfwm42ySQrqdQEidQxgvYaMHQtYbdn8';
 
 const ChatStream = () => {
-    // const [currentUser, setCurrentUser] = useState('');
-    const [chatClient, setChatClient] = useState(null);
-    console.log('chatClient', chatClient);
+    // TODO -> Hacer llegar la 'uid' del usuario del libro en cuestión
     const { user } = useContext(UserContext);
-    // const { users, getUsers } = useUsers();
+    const username = user.email.replace(/([^a-z0-9_-]+)/gi, '_');
+    const initialLetter = username.slice(0, 1).toUpperCase();
+    console.log('initialLetter', initialLetter);
+    const client = StreamChat.getInstance(api_key);
+    //* `${user.uid}`
+    const userToken = client.devToken(user.uid);
 
-    useEffect(() => {
-        const initChat = async () => {
-            const client = StreamChat.getInstance(api_key);
-            const token = client.devToken(`spanioulis`);
-            const username = user.email.replace(/([^a-z0-9_-]+)/gi, '_');
-            console.log('username', username);
-            const initialLetter = username.slice(0, 1).toUpperCase();
-            console.log('initialLetter', initialLetter);
+    const currentUser = {
+        id: user.uid,
+        name: username,
+        image: `https://getstream.imgix.net/images/random_svg/${initialLetter}.svg`
+    };
 
-            await client.connectUser(
-                {
-                    id: `spanioulis`
-                    // name: `${username}`,
-                    // image: `https://getstream.imgix.net/images/random_svg/${username}.svg`
-                },
-                token
-            );
-            setChatClient(client);
-            chatClient && console.log(chatClient);
-        };
+    const filters = { type: 'messaging', members: { $in: [user.uid] } };
+    const sort = { last_message_at: -1 };
 
-        try {
-            initChat();
-        } catch (e) {
-            console.log(e);
-        }
+    const chatClient = useClient({
+        client,
+        apiKey: api_key,
+        userData: currentUser,
+        tokenOrProvider: userToken
+    });
 
-        //TODO - create Channel en este mismo useEffect
-        /* 
-        ? Primero se comprueba si el canal está creado o no (https://getstream.io/chat/docs/javascript/query_channels/?language=javascript#query-parameters)
-        * Haremos un condicional: si NO está creado, se crea (channel.create()), pero si está creado se filtra y ya está
-        */
-        // const createChannel = async () => {
-        //     const client = StreamChat.getInstance(api_key);
-        //     //! ¿Necesario el ID del channel?
-        // const channel = client.channel('messaging', {
-        //     image: 'Carátula del libro',
-        //     members: [`spanoulis`, 'tommaso']
+    //TODO - Create o filter channels
+    // const channel = client.channel('messaging', 'uid', {
+    //     members: [`${user.uid}`, `uid del libro en cuestión`]
+    // });
+    // filtro de 2 miembros
 
-        //
-        //         //TODO - Welcome message ¿?
-        //         // message: {
-        //         //     text: 'Mensaje de bienvenida'
-        //         // }
-        //     });
-        //     await channel.watch();
-        //     console.log('Creando channel...');
-    }, []);
-
-    useEffect(() => {
-        return async () => {
-            chatClient && chatClient.disconnectUser();
-            console.log('...DISCONNECT', chatClient);
-        };
-    }, [chatClient]);
-
-    if (!chatClient) return null;
-    // if (!chatClient) {
-    //     return <LoadingIndicator />;
-    // }
-    // if (currentUser === '' && users.length > 0) {
-    //     users.filter((item) => item.uid === user.uid && setCurrentUser(item.username));
-    //     // console.log('¿Cuántas veces?');
-    // }
-
-    //TODO - queryChannels
-    const filter = { type: 'messaging', members: { $in: [`spanioulis`] } };
-    const sort = [{ last_message_at: -1 }];
-    //     const channels = await client.queryChannels(filter, sort, { watch: true }); //! ¿Añadir {state: true}?
-    //     console.log('Filtrando channels...');
-    //     channels.map((channel) => console.log(channel.data.name, channel.cid));
-    // };
-    // createChannel();
+    if (!chatClient) {
+        return <LoadingIndicator />;
+    }
 
     return (
         <>
-            <h1>{user.uid}</h1>
-            {/* TODO -> Change light or dark theme */}
-            <div className="flex my-10">
-                <Chat client={chatClient} theme="str-chat__theme-dark">
-                    <ChannelList filter={filter} sort={sort} />
-                    {/* <ChannelList /> */}
-                    <Channel>
-                        <Window>
-                            <ChannelHeader />
-                            <MessageList />
-                            <MessageInput />
-                        </Window>
-                        <Thread />
-                    </Channel>
-                </Chat>
-            </div>
+            <Chat client={chatClient} theme="str-chat__theme-light">
+                <ChannelList filters={filters} sort={sort} />
+                <Channel>
+                    <Window>
+                        <ChannelHeader />
+                        <MessageList />
+                        <MessageInput />
+                    </Window>
+                    <Thread />
+                </Channel>
+            </Chat>
         </>
     );
 };
