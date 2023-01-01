@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Cards = ({ image, title, author, district, handleUpdate, index }) => {
+    // TODO -> Añadir el enlace del chat
     return (
         <div
             // className="card card-home card-side w-72 h-52 rounded-xl shadow-[0_35px_60px_-10px_rgba(0,0,0,0.4)] bg-gray-200 dark:bg-stone-800 hover:scale-105"

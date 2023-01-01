@@ -20,7 +20,7 @@ const CardsSearch = ({
     return (
         <>
             <tbody>
-                <tr className={impar && 'active'}>
+                <tr className={impar ? 'active' : undefined}>
                     <th>{index + 1}</th>
                     <td>{title}</td>
                     <td>{author}</td>
