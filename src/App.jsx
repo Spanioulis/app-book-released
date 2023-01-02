@@ -20,7 +20,7 @@ import './App.css';
 
 function App() {
     const { user } = useContext(UserContext);
-    console.log('user', user);
+    // console.log('user', user);
     //* Enviar esta información a cada componente donde se vaya a usar...
 
     if (user === false) {

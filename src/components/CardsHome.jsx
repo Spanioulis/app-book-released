@@ -1,7 +1,14 @@
 import React from 'react';
+import { Link, Navigate } from 'react-router-dom';
 
-const Cards = ({ image, title, author, district, handleUpdate, index }) => {
-    // TODO -> Añadir el enlace del chat
+const Cards = ({ image, title, author, district, handleUpdate, index, uidBook, currentUser }) => {
+    // const navigate  = Navigate();
+    //TODO -> Convertir este handleUpdate en envío de parámetros al chat
+    // const handleChat = () => {
+    //     console.log(uid);
+    //     navigate('/chat');
+    // };
+
     return (
         <div
             // className="card card-home card-side w-72 h-52 rounded-xl shadow-[0_35px_60px_-10px_rgba(0,0,0,0.4)] bg-gray-200 dark:bg-stone-800 hover:scale-105"
@@ -18,13 +25,16 @@ const Cards = ({ image, title, author, district, handleUpdate, index }) => {
                     <p className="text-sm">Distrito: {district}</p>
                 </div>
                 {/* TODO - Cambiar por el logo del chat */}
-                {/* <label
-          htmlFor="my-modal-6"
-          className="btn btn-outline btn-sm text-sm rounded-3xl hover:bg-tahiti hover:border-none text-tahiti dark:hover:text-gray-200"
-          onClick={handleUpdate}
-        >
-          Reservar
-        </label> */}
+                {currentUser !== uidBook && (
+                    <Link
+                        to="/chat"
+                        state={{ uidBook, title }}
+                        // onClick={() => handleChat(uid)}
+                        className="btn btn-outline btn-sm text-sm rounded-3xl hover:bg-main hover:border-none text-main dark:hover:text-gray-200"
+                    >
+                        Chat
+                    </Link>
+                )}
             </div>
         </div>
     );

@@ -9,6 +9,7 @@ import '../styles/shelf.css';
 
 const ShowBooks = ({ children, info }) => {
     const [showList, setShowList] = useState([]);
+    // console.log('showList', showList);
     const { books, getBooks } = useBooks();
 
     //* Elimina los NO disponibles (hecho)
@@ -66,14 +67,14 @@ const ShowBooks = ({ children, info }) => {
         }
     }, [books]);
 
-    //TODO -> Convertir este handleUpdate en envío de parámetros al chat
-    const handleUpdate = async (id) => {
-        const bookRef = doc(db, 'books', id);
-        await updateDoc(bookRef, {
-            enable: false
-        });
-        await getBooks();
-    };
+    //! Actualmente no se está usando (llevarlo a la parte del chat, cuando se haga la confirmación de reserva)
+    // const handleSubmit = async (id) => {
+    //     const bookRef = doc(db, 'books', id);
+    //     await updateDoc(bookRef, {
+    //         enable: false
+    //     });
+    //     await getBooks();
+    // };
 
     return (
         <div className="container-home mx-auto flex" key={uuid4()}>
@@ -85,10 +86,12 @@ const ShowBooks = ({ children, info }) => {
                     <Cards
                         author={book.author}
                         district={book.district}
-                        handleUpdate={() => handleUpdate(book.id)}
+                        // handleSubmit={() => handleSubmit(book.id)}
                         image={book.image}
                         index={index}
                         title={book.title}
+                        uidBook={book.uid}
+                        currentUser={auth.currentUser.uid}
                     />
                 );
             })}

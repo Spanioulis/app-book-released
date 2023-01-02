@@ -78,11 +78,13 @@ body::-webkit-scrollbar-thumb:active {
 .str-chat__channel-list {
   width: 30%;
   min-height: 100vh;
+  margin-bottom: 2rem;
 }
 
 .str-chat__channel {
   width: 100%;
-  margin-bottom: 2.5rem;
+  min-height: 100vh;
+  /* margin-bottom: 2.5rem; */
 }
 
 .str-chat__thread {
