@@ -37,6 +37,7 @@ function App() {
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/uppload" element={<UploadBook />} />
                         <Route path="/search/:q" element={<Search />} />
+                        <Route path="/search" element={<Search />} />
                         <Route path="/chat" element={<Chat />} />
                     </Route>
 

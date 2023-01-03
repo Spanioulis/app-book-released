@@ -38,7 +38,7 @@ const Home = () => {
                         <SearchInput
                             text="search"
                             placeholder="Busca un libro..."
-                            classInput="input input-bordered w-full text-gray-700 dark:text-gray-700 placeholder-tahiti dark:placeholder-gray-400 dark:bg-zinc-700 focus:border-tahiti focus:ring-tahiti dark:focus:ring-zinc-500"
+                            classInput="input input-bordered w-full text-gray-700 dark:text-gray-700 placeholder-tahiti dark:placeholder-gray-400 dark:bg-zinc-700 focus:border-tahiti focus:ring-tahiti dark:focus:ring-zinc-500 w-2/3"
                             classButton="btn btn-square bg-tahiti border-tahiti dark:bg-zinc-800 dark:border-zinc-700 dark:hover:border-zinc-600"
                         />
                     </div>

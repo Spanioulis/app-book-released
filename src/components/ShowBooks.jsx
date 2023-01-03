@@ -9,7 +9,6 @@ import '../styles/shelf.css';
 
 const ShowBooks = ({ children, info }) => {
     const [showList, setShowList] = useState([]);
-    // console.log('showList', showList);
     const { books, getBooks } = useBooks();
 
     //* Elimina los NO disponibles (hecho)
