@@ -20,9 +20,9 @@ const Cards = ({ image, title, author, district, handleUpdate, index, uidBook, c
             </figure>
             <div className="card-body w-2/3 px-5 overflow-hidden align-baseline">
                 <div>
-                    <h6 className="card-title text-base overflow-hidden">{title}</h6>
+                    <p className="card-title text-base overflow-hidden">{title}</p>
                     <p className="text-sm ">{author}</p>
-                    <p className="text-sm">Distrito: {district}</p>
+                    <p className="text-sm italic">{district}</p>
                 </div>
                 {/* TODO - Cambiar por el logo del chat */}
                 {currentUser !== uidBook && (

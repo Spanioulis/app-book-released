@@ -10,40 +10,31 @@ import SearchModal from '../components/SearchModal';
 // import uuid4 from 'uuid4';
 // import SearchInput from '../components/SearchInput';
 import img from '../assets/undraw_Not_found.png';
-import sort from '../assets/sort.svg';
 import '../App.css';
 import '../styles/loading.css';
+import Table from '../components/Table';
 
 const Search = () => {
     const { q } = useParams();
-
     const { books, getBooks } = useBooks();
+
     const [booksList, setBookList] = useState([]);
-    // console.log('booksList', booksList);
     const [modalBook, setModalBook] = useState([]);
     const [showAllBooks, setShowAllBooks] = useState(true);
-    // console.log('showAllBooks', showAllBooks);
+    const [ascendSort, setAscendSort] = useState(true);
     const [filter, setFilter] = useState('');
 
     // TODO -> Realizar un 'loading'
-    // TODO -> Filtro de búsqueda (título || autor/a)
     //* Este filtro es para mis libros que no sean míos
-    // const searchList = books.filter(
-    //     (book) =>
-    //         (book.title.toLowerCase().includes(q.toLowerCase()) ||
-    //             book.author.toLowerCase().includes(q.toLowerCase())) &&
-    //         book.uid !== user.uid
-    // );
 
     useEffect(() => {
-        // console.log('useEffect');
         getBooks();
     }, []);
 
     useEffect(() => {
         if (showAllBooks) {
             if (q !== undefined) {
-                //* Este filtro es para mis TODOS los libros (check todos los libros activado)
+                // Este filtro es para mis TODOS los libros (check todos los libros activado)
                 const searchList = books.filter(
                     (book) =>
                         (book.title.toLowerCase().includes(q.toLowerCase()) ||
@@ -82,13 +73,20 @@ const Search = () => {
     // };
 
     const handleClick = (e) => {
-        // console.log(e.target.value);
         e.target.value === 'my-books' ? setShowAllBooks(false) : setShowAllBooks(true);
     };
 
     const handleSort = (e) => {
-        console.log('handleSort');
-        console.log(e.target.value);
+        const item = e.target.value;
+        setAscendSort(!ascendSort);
+
+        if (ascendSort) {
+            const searchList = [...booksList].sort((a, b) => (a[item] < b[item] ? 1 : -1));
+            setBookList(searchList);
+        } else {
+            const searchList = [...booksList].sort((a, b) => (a[item] > b[item] ? 1 : -1));
+            setBookList(searchList);
+        }
     };
 
     const handleModal = (
@@ -119,6 +117,7 @@ const Search = () => {
     return (
         <div className="flex flex-col">
             <div className="flex justify-between my-10">
+                {/* TODO -> Pasarlo a un componente cuando pongamos los filtros (SearchBar, por ejemplo) */}
                 <div className="dropdown dropdown-right text-sm">
                     <label tabIndex={0} className="btn m-1">
                         Mostrar
@@ -168,58 +167,13 @@ const Search = () => {
                         {/* TODO -> Poner todas las búsuqedas cuando cambiemos la ficha a un listado... */}
                         {/* <div className="spinner"></div> */}
                         <img src={img} alt="Not found books" className="illustration mx-auto" />
-                        <p className="text-center">¡Lo sentimos, no hay coincidencias!</p>
+                        {/* <p className="text-center">¡Lo sentimos, no hay coincidencias!</p> */}
                     </>
                 ) : (
                     <>
                         <div className="overflow-x-auto">
                             <table className="table table-zebra w-full text-base">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>
-                                            <div className="flex gap-1">
-                                                <p className="pt-1">Título</p>
-                                                <button
-                                                    value="title"
-                                                    className="cursor-pointer"
-                                                    onClick={handleSort}
-                                                >
-                                                    <img src={sort} alt="sort-icon" />
-                                                </button>
-                                            </div>
-                                        </th>
-                                        <th>
-                                            <div className="flex gap-1">
-                                                <p className="pt-1">Autor</p>
-                                                <img src={sort} alt="sort-icon" className="" />
-                                            </div>
-                                        </th>
-                                        <th>
-                                            <div className="flex gap-1">
-                                                <p className="pt-1">Páginas</p>
-                                                <img src={sort} alt="sort-icon" className="" />
-                                            </div>
-                                        </th>
-                                        <th>
-                                            <div className="flex gap-1">
-                                                <p className="pt-1">Fecha</p>
-                                                <img src={sort} alt="sort-icon" className="" />
-                                            </div>
-                                        </th>
-                                        <th>
-                                            <div className="flex gap-1">
-                                                <p className="pt-1">Distrito</p>
-                                                <img src={sort} alt="sort-icon" className="" />
-                                            </div>
-                                        </th>
-                                        <th>
-                                            <div className="flex gap-1">
-                                                <p className="pt-1">Información</p>
-                                            </div>
-                                        </th>
-                                    </tr>
-                                </thead>
+                                <Table handleSort={handleSort} />
                                 {booksList.map((book, index) => (
                                     <>
                                         <CardsSearch
