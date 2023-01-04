@@ -18,23 +18,25 @@ const Cards = ({ image, title, author, district, handleUpdate, index, uidBook, c
             <figure className="ml-4 w-1/3">
                 <img src={image} alt={title} className="rounded-md w-full" />
             </figure>
-            <div className="card-body w-2/3 px-5 overflow-hidden align-baseline">
+            <div className="card-body w-2/3 px-5 overflow-hidden">
                 <div>
                     <p className="card-title text-base overflow-hidden">{title}</p>
                     <p className="text-sm ">{author}</p>
                     <p className="text-sm italic">{district}</p>
                 </div>
-                {/* TODO - Cambiar por el logo del chat */}
-                {currentUser !== uidBook && (
-                    <Link
-                        to="/chat"
-                        state={{ uidBook, title }}
-                        // onClick={() => handleChat(uid)}
-                        className="btn btn-outline btn-sm text-sm rounded-3xl hover:bg-main hover:border-none text-main dark:hover:text-gray-200"
-                    >
-                        Chat
-                    </Link>
-                )}
+                <div>
+                    {/* TODO - Cambiar por el logo del chat */}
+                    {currentUser !== uidBook && (
+                        <Link
+                            to="/chat"
+                            state={{ uidBook, title }}
+                            // onClick={() => handleChat(uid)}
+                            className="btn btn-ghost btn-sm text-xs rounded-3xl text-main dark:text-tahiti hover:bg-main hover:text-gray-200   dark:hover:bg-tahiti hover:border-none dark:hover:border-none  dark:hover:text-gray-200"
+                        >
+                            Contacta
+                        </Link>
+                    )}
+                </div>
             </div>
         </div>
     );

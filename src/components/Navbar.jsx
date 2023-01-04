@@ -41,8 +41,8 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar text-metal dark:text-gray-300 px-5 py-0 lg:px-16 dark:bg-stone-900 dark:bg-opacity-30  sticky top-0 z-50 backdrop-blur-sm gap-10">
-                <div className="flex-1 my-3 gap-10">
+            <nav className="navbar text-metal dark:text-gray-300 px-5 py-5 lg:px-16 dark:bg-stone-900 dark:bg-opacity-30 sticky top-0 z-50 backdrop-blur-sm gap-10">
+                <div className="flex-1 ml-10 gap-10">
                     <Link to="/" className="flex items-center">
                         <img src={logo} className="mr-3 h-11 sm:h-14" alt="Logo Ed Mundo!" />
                         <span className="self-center text-base sm:text-2xl font-semibold whitespace-nowrap dark:text-gray-200 ">
@@ -62,10 +62,12 @@ const Navbar = () => {
                         </span> */}
                         </Link>
                     </div>
-                    <h3 className="text-sm">Links centrales</h3>
-                    <p className="text-sm">Qué es Edmundo?</p>
                 </div>
-                <div className="flex-none my-3 gap-2">
+                <div className="flex-1 justify-center gap-10">
+                    <h3 className="text-base">Links centrales</h3>
+                    <p className="text-base">Qué es Edmundo?</p>
+                </div>
+                <div className="flex-1 mr-10 justify-end gap-2">
                     <div>
                         <Link to="/uppload" title="Liberar libro">
                             <svg
