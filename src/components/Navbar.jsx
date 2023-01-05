@@ -1,20 +1,19 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
-import { useUsers } from '../hooks/useUsers';
+
 import useDarkTheme from './useDarkTheme';
-import logo from '../assets/book-tree.png';
 import sun from '../assets/sun-svgrepo-com.svg';
 import moon from '../assets/moon-svgrepo-com.svg';
-import chat from '../assets/chat.svg';
 import SearchInput from './SearchInput';
+import IconSVG from './IconsSVG';
 
 const Navbar = () => {
    const { user, signOutUser } = useContext(UserContext);
+
    const [currentUser, setCurrentUser] = useState('');
-   const { users, getUsers } = useUsers();
-   // console.log('users', users);
    const [colorTheme, setTheme] = useDarkTheme();
+
    const navigate = useNavigate();
 
    const handleLogout = async () => {
@@ -26,19 +25,14 @@ const Navbar = () => {
       }
    };
 
-   // if (user !== null) {
-   //     const userAuth = user.uid;
-   //     console.log('userAuth', userAuth);
-   //     const currentUserFind = users.find((user) => user.uid === userAuth);
-   //     console.log('currentUser', currentUser.username);
-   //     setCurrentUser(currentUserFind.username);
-   //     console.log(currentUser);
-   // }
-
-   // Recuperar usuarios
    useEffect(() => {
-      getUsers();
-   }, []);
+      if (user) {
+         let index = user.email.indexOf('@');
+         const username = user.email.substring(0, index);
+         const usernameUppercase = username.charAt(0).toUpperCase() + username.slice(1);
+         setCurrentUser(usernameUppercase);
+      }
+   }, [user]);
 
    return (
       <>
@@ -51,14 +45,6 @@ const Navbar = () => {
                      Ed Mundo!
                   </span>
                </Link>
-               <div className="tooltip tooltip-bottom" data-tip="Chat">
-                  <Link to="/chat" className="flex items-center">
-                     <img src={chat} className="mr-3 h-11 sm:h-14" alt="Chat icon" width="38" />
-
-                     {/* <span className="self-center sm:text-2xl font-semibold whitespace-nowrap text-main ">
-                        </span> */}
-                  </Link>
-               </div>
             </div>
             <div className="flex-1 justify-center gap-10">
                <p className="text-base">¿Qué es Edmundo?</p>
@@ -73,28 +59,18 @@ const Navbar = () => {
                      classButton="btn btn-square bg-gray-300 dark:bg-gray-300 border-gray-300 dark:border-gray-300 dark:hover:border-gray-600 "
                   />
                </div>
-               <div>
-                  <Link to="/uppload" title="Liberar libro">
-                     <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6 ml-3 hover:w-7 hover:h-7 hover:ml-2 hover:text-amber-600 text-zinc-800 dark:text-gray-400"
-                     >
-                        <path
-                           strokeLinecap="round"
-                           strokeLinejoin="round"
-                           d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-                        />
-                     </svg>
+               <div className="tooltip tooltip-bottom" data-tip="Upload">
+                  <Link to="/uppload">
+                     <IconSVG
+                        className="w-7 h-7 mx-1 lg:mx-2"
+                        d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15"
+                     />
                   </Link>
                </div>
 
                <span
                   onClick={() => setTheme(colorTheme)}
-                  className="text-metal dark:text-gray-400 mx-2 lg:mx-5 dark:bg- w-9 h-9 cursor-pointer flex items-center justify-center"
+                  className="text-metal dark:text-gray-400 mx-2 lg:mx-5 w-9 h-9 cursor-pointer flex items-center justify-center"
                >
                   {colorTheme === 'light' ? (
                      <div className="flex flex-col">
@@ -125,24 +101,45 @@ const Navbar = () => {
                   >
                      {user ? (
                         <>
-                           <li className="text-sm text-center dark:text-slate-400 text-stone-700">
+                           <li className="text-xl text-center">{currentUser}</li>
+                           <li className="text-xs text-center dark:text-slate-400 text-stone-700">
                               {/* {currentUser.username} */}
                               {user.email}
                            </li>
                            <hr />
                            <li>
-                              <NavLink
+                              <Link
                                  to="/profile"
-                                 className="font-semibold text-metal dark:text-tahiti bg-transparent hover:text-white dark:hover:text-white hover:bg-tahiti hover:font-bold ease-in duration-500"
+                                 className="text-base font-semibold text-metal dark:text-tahiti bg-transparent hover:text-white dark:hover:text-white hover:bg-tahiti hover:font-bold ease-in duration-500"
                               >
+                                 <IconSVG
+                                    className="w-6 h-6"
+                                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                                 />
                                  Perfil
-                              </NavLink>
+                              </Link>
+                           </li>
+                           <li>
+                              <Link
+                                 to="/chat"
+                                 className="text-base font-semibold text-metal dark:text-tahiti bg-transparent hover:text-white dark:hover:text-white hover:bg-tahiti hover:font-bold ease-in duration-500"
+                              >
+                                 <IconSVG
+                                    className="w-6 h-6"
+                                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                                 />
+                                 Chat
+                              </Link>
                            </li>
                            <li>
                               <button
                                  onClick={handleLogout}
-                                 className="text-red-700 font-bold hover:bg-red-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm text-center  dark:hover:bg-red-700 dark:focus:ring-red-800 hover:font-bold ease-in duration-500"
+                                 className="text-base text-main font-bold hover:bg-main hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-center  dark:hover:bg-main dark:focus:ring-main hover:font-bold ease-in duration-500"
                               >
+                                 <IconSVG
+                                    className="w-6 h-6"
+                                    d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+                                 />
                                  Logout
                               </button>
                            </li>
@@ -154,10 +151,14 @@ const Navbar = () => {
                                  to="/login"
                                  className={({ isActive }) =>
                                     isActive
-                                       ? 'font-semibold text-lime-600/100 hover:font-bold ease-in duration-500 hover:scale-110'
+                                       ? 'text-base font-semibold text-lime-600/100 hover:font-bold ease-in duration-500 hover:scale-110'
                                        : 'hover:font-bold ease-in duration-500 hover:scale-110'
                                  }
                               >
+                                 <IconSVG
+                                    className="w-6 h-6"
+                                    d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+                                 />
                                  Login
                               </NavLink>
                            </li>
@@ -166,10 +167,14 @@ const Navbar = () => {
                                  to="/register"
                                  className={({ isActive }) =>
                                     isActive
-                                       ? 'font-semibold text-blue-600/100 ease-in duration-500 hover:scale-110'
+                                       ? 'text-base font-semibold text-blue-600/100 ease-in duration-500 hover:scale-110'
                                        : 'hover:font-bold hover:scale-110 ease-in duration-500'
                                  }
                               >
+                                 <IconSVG
+                                    className="w-6 h-6"
+                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                                 />
                                  Register
                               </NavLink>
                            </li>
