@@ -5,6 +5,7 @@ import { UserContext } from '../context/UserProvider';
 import useDarkTheme from './useDarkTheme';
 import sun from '../assets/sun-svgrepo-com.svg';
 import moon from '../assets/moon-svgrepo-com.svg';
+import logo from '../assets/keyhole-logo.png';
 import SearchInput from './SearchInput';
 import IconSVG from './IconsSVG';
 
@@ -40,7 +41,7 @@ const Navbar = () => {
             <div className="flex-1 ml-10 gap-10">
                <Link to="/" className="flex items-center">
                   {/* TODO - CAMBIAR LOGO */}
-                  {/* <img src={logo} className="mr-3 h-11 sm:h-14" alt="Logo Ed Mundo!" /> */}
+                  <img src={logo} className="mr-3 h-11 sm:h-14" alt="Logo Ed Mundo!" />
                   <span className="self-center text-base sm:text-2xl font-semibold whitespace-nowrap dark:text-gray-200 ">
                      Ed Mundo!
                   </span>
