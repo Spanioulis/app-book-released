@@ -80,6 +80,7 @@ const Search = () => {
 
    const handleSort = (e) => {
       const item = e.target.value;
+      console.log('item', item);
       setAscendSort(!ascendSort);
 
       if (ascendSort) {
@@ -97,7 +98,7 @@ const Search = () => {
       setBookList(searchList);
    };
 
-   const handleModal = (author, category, date, description, district, image, infoLink, pages, title) => {
+   const handleModal = (author, category, date, description, district, image, infoLink, pages, title, uid) => {
       setModalBook({
          ...modalBook,
          author,
@@ -108,13 +109,14 @@ const Search = () => {
          image,
          infoLink,
          pages,
-         title
+         title,
+         uid
       });
    };
 
    return (
       <>
-         <div className="flex flex-col justify-center">
+         <div className="flex flex-col justify-center dark:text-gray-200 ">
             {/* <div className="flex-1 justify-between my-10"> */}
             <div className="flex my-10">
                {/* TODO -> Pasarlo a un componente cuando pongamos los filtros (SearchBar, por ejemplo) */}
@@ -122,7 +124,10 @@ const Search = () => {
                   <label tabIndex={0} className="btn m-1">
                      Mostrar ...
                   </label>
-                  <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 ">
+                  <ul
+                     tabIndex={0}
+                     className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 dark:text-metal"
+                  >
                      <li>
                         <button value="my-books" onClick={handleAllBooks} className="active:text-main focus:text-main">
                            Mis libros
@@ -139,7 +144,10 @@ const Search = () => {
                   <label tabIndex={0} className="btn m-1">
                      Distritos
                   </label>
-                  <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 ">
+                  <ul
+                     tabIndex={0}
+                     className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 dark:text-metal"
+                  >
                      <Filters handleClick={handleDistrict} value="Ciutat Vella">
                         Ciutat Vella
                      </Filters>
@@ -193,7 +201,7 @@ const Search = () => {
             {/* Pasar todo esto a un componente filter o similar */}
 
             {/*  */}
-            <div className="flex-1">
+            <div className="flex-1 ">
                {booksList.length === 0 ? (
                   <>
                      {/* TODO -> Poner todas las búsuqedas cuando cambiemos la ficha a un listado... */}
@@ -203,8 +211,11 @@ const Search = () => {
                   </>
                ) : (
                   <>
-                     <div className="overflow-x-auto">
-                        <table className="table table-zebra w-full text-base">
+                     <div className="overflow-x-auto ">
+                        <table
+                           className="table table-zebra w-full text-base
+                        "
+                        >
                            <Table handleSort={handleSort} />
                            {booksList.map((book, index) => (
                               <>
@@ -221,18 +232,19 @@ const Search = () => {
                                     infoLink={book.infoLink}
                                     handleModal={handleModal}
                                     showAllBooks={showAllBooks}
+                                    uid={book.uid}
                                  />
                               </>
                            ))}
                            <tfoot>
                               <tr>
-                                 <th></th>
-                                 <th>Título</th>
-                                 <th>Autor</th>
-                                 <th>Páginas</th>
-                                 <th>Fecha</th>
-                                 <th>Distrito</th>
-                                 <th>Información</th>
+                                 <th className="dark:bg-gray-600"></th>
+                                 <th className="dark:bg-gray-600">Título</th>
+                                 <th className="dark:bg-gray-600">Autor</th>
+                                 <th className="dark:bg-gray-600">Páginas</th>
+                                 <th className="dark:bg-gray-600">Fecha</th>
+                                 <th className="dark:bg-gray-600">Distrito</th>
+                                 <th className="dark:bg-gray-600">Información</th>
                               </tr>
                            </tfoot>
                         </table>
@@ -251,6 +263,7 @@ const Search = () => {
             category={modalBook.category}
             description={modalBook.description}
             infoLink={modalBook.infoLink}
+            uidBook={modalBook.uid}
          />
       </>
    );

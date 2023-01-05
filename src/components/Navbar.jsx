@@ -45,7 +45,8 @@ const Navbar = () => {
          <nav className="navbar text-metal dark:text-gray-300 px-5 py-5 lg:px-16 dark:bg-stone-900 dark:bg-opacity-30 sticky top-0 z-50 backdrop-blur-sm gap-10">
             <div className="flex-1 ml-10 gap-10">
                <Link to="/" className="flex items-center">
-                  <img src={logo} className="mr-3 h-11 sm:h-14" alt="Logo Ed Mundo!" />
+                  {/* TODO - CAMBIAR LOGO */}
+                  {/* <img src={logo} className="mr-3 h-11 sm:h-14" alt="Logo Ed Mundo!" /> */}
                   <span className="self-center text-base sm:text-2xl font-semibold whitespace-nowrap dark:text-gray-200 ">
                      Ed Mundo!
                   </span>
@@ -60,8 +61,8 @@ const Navbar = () => {
                </div>
             </div>
             <div className="flex-1 justify-center gap-10">
-               <h3 className="text-base">Links centrales</h3>
-               <p className="text-base">Qué es Edmundo?</p>
+               <p className="text-base">¿Qué es Edmundo?</p>
+               {/* https://stackoverflow.com/questions/43441856/how-to-scroll-to-an-element */}
             </div>
             <div className="flex-1 mr-10 justify-end gap-2">
                <div className="align-middle">
