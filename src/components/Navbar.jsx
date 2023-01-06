@@ -41,7 +41,7 @@ const Navbar = () => {
             <div className="flex-1 ml-10 gap-10">
                <Link to="/" className="flex items-center">
                   {/* TODO - CAMBIAR LOGO */}
-                  <img src={logo} className="mr-3 h-11 sm:h-14" alt="Logo Ed Mundo!" />
+                  <img src={logo} className="twist-logo mr-3 h-11 sm:h-14" alt="Logo Ed Mundo!" />
                   <span className="self-center text-base sm:text-2xl font-semibold whitespace-nowrap dark:text-gray-200 ">
                      Ed Mundo!
                   </span>
@@ -60,7 +60,8 @@ const Navbar = () => {
                      classButton="btn btn-square bg-gray-300 dark:bg-gray-300 border-gray-300 dark:border-gray-300 dark:hover:border-gray-600 "
                   />
                </div>
-               <div className="tooltip tooltip-bottom" data-tip="Upload">
+               <div className="tooltip tooltip-right upload" data-tip="Upload">
+                  {/* <div className="tooltip tooltip-bottom sombra-movil"> */}
                   <Link to="/uppload">
                      <IconSVG
                         className="w-7 h-7 mx-1 lg:mx-2"

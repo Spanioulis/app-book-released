@@ -103,6 +103,67 @@ body::-webkit-scrollbar-thumb:active {
   animation: sk-scaleout 1.0s infinite ease-in-out;
 }
 
+/* Animación Logo */
+.twist-logo {
+  animation: giro 3s ease-out 2;
+}
+
+@keyframes giro {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-180deg);
+
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Animación Icono UploadBook */
+
+.upload:hover {
+  transform: translateY(-6px);
+  transition-duration: 0.3s;
+  animation: 1.5s mover-caja infinite;
+}
+
+.upload:before {
+  content: '';
+  background: radial-gradient(ellipse,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0) 80%);
+  width: 90%;
+  height: 20px;
+  top: 100%;
+  left: 5%;
+  position: absolute;
+  opacity: 0;
+}
+
+.upload:hover:before {
+  opacity: 1;
+  transform: translateY(6px);
+  transition-duration: 0.3s;
+  animation: 1.5s mover-sombra infinite;
+}
+
+@keyframes mover-caja {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes mover-sombra {
+  50% {
+    opacity: 1;
+    transform: translateY(10px) scale(0.9)
+  }
+}
+
 @-webkit-keyframes sk-scaleout {
   0% {
     -webkit-transform: scale(0)

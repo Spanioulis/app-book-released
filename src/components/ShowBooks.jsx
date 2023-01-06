@@ -5,7 +5,6 @@ import { auth, db } from '../firebase/firebaseConfig';
 import Cards from './CardsHome';
 import uuid4 from 'uuid4';
 import '../styles/cards.css';
-import '../styles/shelf.css';
 
 const ShowBooks = ({ children, info }) => {
    const [showList, setShowList] = useState([]);
