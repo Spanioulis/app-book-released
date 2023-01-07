@@ -123,11 +123,11 @@ body::-webkit-scrollbar-thumb:active {
   }
 }
 
-/* Animación Icono UploadBook */
+/* Animación Icono UploadBook/Search */
 
 .upload:hover {
   transform: translateY(-6px);
-  transition-duration: 0.3s;
+  transition-duration: 0.8s;
   animation: 1.5s mover-caja infinite;
 }
 
