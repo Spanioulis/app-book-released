@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import info from '../assets/info.svg';
-import SearchModal from './SearchModal';
 
 const CardsSearch = ({
    author,
@@ -9,6 +7,7 @@ const CardsSearch = ({
    date,
    description,
    district,
+   email,
    handleModal,
    image,
    index,
@@ -18,7 +17,21 @@ const CardsSearch = ({
    showAllBooks,
    uid
 }) => {
-   const impar = index % 2 !== 0;
+   const [username, setUsername] = useState('');
+   console.log('email', email);
+   // const impar = index % 2 !== 0;
+
+   useEffect(() => {
+      if (email) {
+         let index = email.indexOf('@');
+         const username = email.substring(0, index);
+         // const usernameUppercase = username.charAt(0).toUpperCase() + username.slice(1);
+         setUsername(username);
+      } else {
+         setUsername('n/u');
+      }
+   }, [email]);
+
    return (
       <>
          <tbody>
@@ -30,6 +43,7 @@ const CardsSearch = ({
                <td className="dark:bg-gray-500">{pages}</td>
                <td className="dark:bg-gray-500">{date}</td>
                <td className="dark:bg-gray-500">{showAllBooks && district}</td>
+               <td className="dark:bg-gray-500">{username}</td>
                <td className=" dark:bg-gray-500">
                   <span
                      onClick={() =>

@@ -73,8 +73,8 @@ const ShowBooks = ({ children, info }) => {
    return (
       <div className="container-home mx-auto" key={uuid4()}>
          {/* <div className="my-auto w-10"> */}
-         <div className="sm:mx-auto lg:mx-none w-full lg:w-10 lg:flex lg:justify-center">
-            <p className="lg:-rotate-90 text-base text-center">{children}</p>
+         <div className="sm:mx-auto md:mx-none w-full md:w-10 md:flex md:justify-center">
+            <p className="md:-rotate-90 text-base text-center">{children}</p>
          </div>
          {showList.map((book, index) => {
             return (

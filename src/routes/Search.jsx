@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useBooks } from '../hooks/useBooks';
-import { doc, updateDoc } from 'firebase/firestore/lite';
+// import { doc, updateDoc } from 'firebase/firestore/lite';
 import { auth, db } from '../firebase/firebaseConfig';
 
 import SearchInput from '../components/SearchInput';
@@ -21,6 +21,7 @@ const Search = () => {
    const { books, getBooks } = useBooks();
 
    const [booksList, setBookList] = useState([]);
+   console.log('booksList', booksList);
    const [modalBook, setModalBook] = useState([]);
    const [showAllBooks, setShowAllBooks] = useState(true);
    const [ascendSort, setAscendSort] = useState(true);
@@ -115,7 +116,7 @@ const Search = () => {
    };
 
    return (
-      <>
+      <div>
          <div className="flex flex-col justify-center dark:text-gray-200 ">
             {/* <div className="flex-1 justify-between my-10"> */}
             <div className="flex my-10">
@@ -212,26 +213,24 @@ const Search = () => {
                ) : (
                   <>
                      <div className="overflow-x-auto ">
-                        <table
-                           className="table table-zebra w-full text-base
-                        "
-                        >
+                        <table className="table w-full text-base">
                            <Table handleSort={handleSort} />
                            {booksList.map((book, index) => (
                               <>
                                  <CardsSearch
                                     author={book.author}
+                                    category={book.category}
                                     date={book.date}
+                                    description={book.description}
                                     district={book.district}
+                                    email={book.email}
+                                    handleModal={handleModal}
                                     image={book.image}
                                     index={index}
-                                    pages={book.pages}
-                                    title={book.title}
-                                    category={book.category}
-                                    description={book.description}
                                     infoLink={book.infoLink}
-                                    handleModal={handleModal}
+                                    pages={book.pages}
                                     showAllBooks={showAllBooks}
+                                    title={book.title}
                                     uid={book.uid}
                                  />
                               </>
@@ -244,6 +243,7 @@ const Search = () => {
                                  <th className="dark:bg-gray-600">Páginas</th>
                                  <th className="dark:bg-gray-600">Fecha</th>
                                  <th className="dark:bg-gray-600">Distrito</th>
+                                 <th className="dark:bg-gray-600">Usuario</th>
                                  <th className="dark:bg-gray-600">Información</th>
                               </tr>
                            </tfoot>
@@ -265,7 +265,7 @@ const Search = () => {
             infoLink={modalBook.infoLink}
             uidBook={modalBook.uid}
          />
-      </>
+      </div>
    );
 };
 

@@ -67,6 +67,7 @@ const UploadBook = () => {
          setLoading(true);
          await addDoc(usersCollectionRef, {
             ...book,
+            email: currentUser[0].email,
             district: currentUser[0].district,
             uid: currentUser[0].uid,
             date: date.toLocaleDateString('en-US', options)
