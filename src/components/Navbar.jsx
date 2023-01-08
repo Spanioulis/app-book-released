@@ -53,13 +53,13 @@ const Navbar = () => {
             <div className="flex-1 mr-3 lg:mr-10 justify-end ">
                <Link to="/search">
                   <IconSVG
-                     className="w-6 lg:w-7 h-6 lg:h-7 mx-1 lg:mx-3"
+                     className="w-6 lg:w-7 h-6 lg:h-7 mx-1 lg:mx-2 hover:text-main hover:dark:text-tahiti"
                      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                   />
                </Link>
                <Link to="/uppload">
                   <IconSVG
-                     className="w-6 lg:w-7 h-6 mx-1 lg:mx-3"
+                     className="w-6 lg:w-7 h-6 lg:h-7 mx-1 lg:mx-3 hover:text-main hover:dark:text-tahiti"
                      d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
                   />
                </Link>
