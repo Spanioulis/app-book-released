@@ -8,6 +8,7 @@ import SearchInput from '../components/SearchInput';
 import CardsSearch from '../components/CardsSearch';
 import SearchModal from '../components/SearchModal';
 import Table from '../components/Table';
+import FilterBar from '../components/FilterBar';
 import Filters from '../components/Filters';
 
 // import uuid4 from 'uuid4';
@@ -21,7 +22,6 @@ const Search = () => {
    const { books, getBooks } = useBooks();
 
    const [booksList, setBookList] = useState([]);
-   console.log('booksList', booksList);
    const [modalBook, setModalBook] = useState([]);
    const [showAllBooks, setShowAllBooks] = useState(true);
    const [ascendSort, setAscendSort] = useState(true);
@@ -81,7 +81,6 @@ const Search = () => {
 
    const handleSort = (e) => {
       const item = e.target.value;
-      console.log('item', item);
       setAscendSort(!ascendSort);
 
       if (ascendSort) {
@@ -118,70 +117,11 @@ const Search = () => {
    return (
       <div>
          <div className="flex flex-col justify-center dark:text-gray-200 ">
-            {/* <div className="flex-1 justify-between my-10"> */}
             <div className="flex my-10">
+               <div className="flex-1 mr-5">
+                  <FilterBar handleDistrict={handleDistrict} handleAllBooks={handleAllBooks} />
+               </div>
                {/* TODO -> Pasarlo a un componente cuando pongamos los filtros (SearchBar, por ejemplo) */}
-               <div className="flex-1 dropdown dropdown-down text-sm">
-                  <label tabIndex={0} className="btn m-1">
-                     Mostrar ...
-                  </label>
-                  <ul
-                     tabIndex={0}
-                     className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 dark:text-metal"
-                  >
-                     <li>
-                        <button value="my-books" onClick={handleAllBooks} className="active:text-main focus:text-main">
-                           Mis libros
-                        </button>
-                     </li>
-                     <li>
-                        <button value="all-books" onClick={handleAllBooks} className="active:text-main focus:text-main">
-                           Todos
-                        </button>
-                     </li>
-                  </ul>
-               </div>
-               <div className="flex-1 dropdown dropdown-down text-sm">
-                  <label tabIndex={0} className="btn m-1">
-                     Distritos
-                  </label>
-                  <ul
-                     tabIndex={0}
-                     className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 dark:text-metal"
-                  >
-                     <Filters handleClick={handleDistrict} value="Ciutat Vella">
-                        Ciutat Vella
-                     </Filters>
-                     <Filters handleClick={handleDistrict} value="Sant Martí">
-                        Sant Martí
-                     </Filters>
-                     <Filters handleClick={handleDistrict} value="Eixample">
-                        Eixample
-                     </Filters>
-                     <Filters handleClick={handleDistrict} value="Sants-Montjuïc">
-                        Sants-Montjuïc
-                     </Filters>
-                     <Filters handleClick={handleDistrict} value="Les Corts">
-                        Les Corts
-                     </Filters>
-                     <Filters handleClick={handleDistrict} value="Sarrià-Sant Gervasi">
-                        {' '}
-                        Sarrià-Sant Gervasi
-                     </Filters>
-                     <Filters handleClick={handleDistrict} value="Gràcia">
-                        Gràcia
-                     </Filters>
-                     <Filters handleClick={handleDistrict} value="Horta-Guinardó">
-                        Horta-Guinardó
-                     </Filters>
-                     <Filters handleClick={handleDistrict} value="Nou Barris">
-                        Nou Barris
-                     </Filters>
-                     <Filters handleClick={handleDistrict} value="Sant Andreu">
-                        Sant Andreu
-                     </Filters>
-                  </ul>
-               </div>
                <div className="flex-3">
                   <SearchInput
                      text="search"
@@ -189,7 +129,7 @@ const Search = () => {
                      classInput="input input-bordered text-base w-96 h-14 text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 w-2/3 mb-3"
                      classButton="btn btn-square dark:bg-zinc-800 hover:bg-zinc-900 h-14"
                   />
-                  <div className="flex gap-10 text-base justify-center">
+                  <div className="flex gap-10 text-base justify-start">
                      {/* TODO - poner etiqueta redonda */}
                      <span className="text-main dark:text-tahiti italic">{q}</span>
                      <p>
@@ -199,8 +139,6 @@ const Search = () => {
                </div>
                {/* Búsqueda actual:{' '} */}
             </div>
-            {/* Pasar todo esto a un componente filter o similar */}
-
             {/*  */}
             <div className="flex-1 ">
                {booksList.length === 0 ? (
