@@ -50,7 +50,9 @@ const Home = () => {
                </div>
             </div>
          </section>
-         <section className="mt-20 text-center">Sección para subir un libro</section>
+         <section className="mt-20 text-center" id="catalogo">
+            Sección para subir un libro
+         </section>
          <section className="mt-20 flex flex-col">
             {/* <section className="bg-white mt-10 rounded-full"> */}
             {/* TODO -> poner aquí un margin top al primer ShowBook */}
