@@ -3,7 +3,7 @@ import Filters from '../components/Filters';
 
 const FilterBar = ({ handleDistrict, handleAllBooks }) => {
    return (
-      <div className="text-base font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+      <div className="text-sm lg:text-base font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
          <ul className="flex flex-wrap -mb-px">
             <li className="mr-2">
                <button

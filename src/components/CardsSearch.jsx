@@ -18,7 +18,6 @@ const CardsSearch = ({
    uid
 }) => {
    const [username, setUsername] = useState('');
-   console.log('email', email);
    // const impar = index % 2 !== 0;
 
    useEffect(() => {
@@ -28,7 +27,7 @@ const CardsSearch = ({
          // const usernameUppercase = username.charAt(0).toUpperCase() + username.slice(1);
          setUsername(username);
       } else {
-         setUsername('n/u');
+         setUsername('');
       }
    }, [email]);
 

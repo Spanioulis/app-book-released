@@ -6,7 +6,7 @@ import { auth } from '../firebase/firebaseConfig';
 const Modal = ({ title, author, district, date, pages, image, category, description, infoLink, uidBook }) => {
    const [currentUser, setCurrentUser] = useState(false);
    //    console.log(uidBook, auth.currentUser.uid);
-   console.log('se renderiza searchModal');
+   // console.log('se renderiza searchModal');
    //   console.log('currentUser', authcurrentUser);
 
    //    if (uidBook === auth.currentUser.uid) {
@@ -18,50 +18,48 @@ const Modal = ({ title, author, district, date, pages, image, category, descript
       <>
          <input type="checkbox" id="my-modal-3" className="modal-toggle" />
          <div className="modal">
-            <div className="modal-box relative max-w-none w-2/3 dark:text-gray-300 dark:bg-metal">
+            <div className="modal-box relative max-w-none w-full lg:w-3/4 mx-5 lg:mx-none dark:text-gray-300 dark:bg-metal">
                <label
                   htmlFor="my-modal-3"
-                  className="btn btn-sm btn-circle absolute right-5 top-5 hover:bg-main hover:border-main"
+                  className="btn btn-sm btn-circle absolute right-2 sm:right-5 top-4 sm:top-5 hover:bg-main hover:border-main"
                >
                   ✕
                </label>
                <div className="flex flex-col">
-                  <div className="flex ml-10 mt-5 mb-7">
-                     <div className="flex-none">
+                  <div className="flex ml-none md:ml-10 md:mt-5 mb-7">
+                     <div className="flex-none w-24 md:w-48">
                         <img src={image} alt={title} className="rounded-md" />
                      </div>
-                     <div className="flex-1 ml-10">
-                        <div
-                           className="flex
-                    flex-col"
-                        >
-                           <p className="mb-2 text-xl">{title}</p>
-                           <p className="mb-2">{author}</p>
-                           <p className="mb-2">
-                              <i>{pages}</i> pág.
-                           </p>
-                           <p className="text-base mb-1">
-                              <i>Distrito:</i> {district}
-                           </p>
-                           <p className="text-base mb-1">
-                              <i>Fecha:</i> {date}
-                           </p>
-                           <p className="text-base">
-                              <i>Categoría:</i> {category}
-                           </p>
-                        </div>
+                     <div
+                        className="flex
+                    flex-col ml-3"
+                     >
+                        <p className="mb-1 md:mb-2 text-xl md:text-2xl">{title}</p>
+                        <p className="mb-1 md:mb-2 text-base md:text-xl">{author}</p>
+                        <p className="mb-1 md:mb-2 text-sm md:text-base">
+                           <i>{pages}</i> pág.
+                        </p>
+                        <p className="mb-0.5 md:mb-1 text-xs md:text-sm">
+                           <i>Distrito:</i> {district}
+                        </p>
+                        <p className="mb-0.5 md:mb-1 text-xs md:text-sm">
+                           <i>Fecha:</i> {date}
+                        </p>
+                        <p className="text-xs md:text-sm">
+                           <i>Categoría:</i> {category}
+                        </p>
                      </div>
-                     <div className="flex-1 ml-10">
+                     <div className="flex-1 ml-5 md:ml-10">
                         <div
                            className="flex
                     flex-col"
                         >
-                           <div className="flex">
+                           <div className="flex text-sm md:text-xl md:justify-center">
                               <a
                                  href={infoLink}
                                  target="_blank"
                                  rel="noopener noreferrer"
-                                 className="flex mt-5 link link-hover my-auto"
+                                 className="flex link link-hover my-auto"
                               >
                                  <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -80,13 +78,13 @@ const Modal = ({ title, author, district, date, pages, image, category, descript
                                  Info Link
                               </a>
                            </div>
-                           <div className="flex">
+                           <div className="flex text-sm md:text-xl  md:justify-center">
                               {uidBook !== auth.currentUser.uid && (
                                  <>
                                     <Link
                                        to="/chat"
                                        state={{ uidBook, title }}
-                                       className="flex mt-5 text-main dark:text-tahiti transition ease-in  hover:scale-110 duration-300"
+                                       className="flex mt-3 md:mt-5 text-main dark:text-tahiti transition ease-in  hover:scale-110 duration-300"
                                     >
                                        <svg
                                           xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +109,7 @@ const Modal = ({ title, author, district, date, pages, image, category, descript
                      </div>
                   </div>
                   <div>
-                     <p className="text-base text-justify px-10">{description}</p>
+                     <p className="text-base text-justify px-5 md:px-10">{description}</p>
                   </div>
                </div>
             </div>

@@ -122,11 +122,11 @@ const Search = () => {
                   <FilterBar handleDistrict={handleDistrict} handleAllBooks={handleAllBooks} />
                </div>
                {/* TODO -> Pasarlo a un componente cuando pongamos los filtros (SearchBar, por ejemplo) */}
-               <div className="flex-3">
+               <div className="flex-3 mr-5 sm:mr-0">
                   <SearchInput
                      text="search"
                      placeholder="Busca un libro..."
-                     classInput="input input-bordered text-base w-96 h-14 text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 w-2/3 mb-3"
+                     classInput="input input-bordered text-base w-48 md:w-96 h-14 text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 w-2/3 mb-3"
                      classButton="btn btn-square dark:bg-zinc-800 hover:bg-zinc-900 h-14"
                   />
                   <div className="flex gap-10 text-base justify-start">
@@ -140,7 +140,7 @@ const Search = () => {
                {/* Búsqueda actual:{' '} */}
             </div>
             {/*  */}
-            <div className="flex-1 ">
+            <div className="flex-1">
                {booksList.length === 0 ? (
                   <>
                      {/* TODO -> Poner todas las búsuqedas cuando cambiemos la ficha a un listado... */}
@@ -150,8 +150,8 @@ const Search = () => {
                   </>
                ) : (
                   <>
-                     <div className="overflow-x-auto ">
-                        <table className="table w-full text-base">
+                     <div className="overflow-x-auto mx-4 sm:mx-0">
+                        <table className="table w-full text-sm md:text-base">
                            <Table handleSort={handleSort} />
                            {booksList.map((book, index) => (
                               <>
