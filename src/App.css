@@ -29,8 +29,13 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #262626;
+  background: #52525b;
   border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.8);
 }
 
 body::-webkit-scrollbar-thumb:hover {
@@ -42,13 +47,38 @@ body::-webkit-scrollbar-thumb:active {
   background-color: #999999;
 }
 
+/* scrollbar - modal */
+.modal-box::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+  background: #222831;
+}
 
+.modal-box::-webkit-scrollbar-thumb {
+  background: #52525b;
+  border-radius: 4px;
+}
+
+.modal-box::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.8);
+}
+
+.modal-box::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.8);
+}
+
+.modal-box::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
 .body:app::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 4px;
 }
 
-/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
 .body:app::-webkit-scrollbar-thumb:hover {
   background: #b3b3b3;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);

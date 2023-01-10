@@ -16,6 +16,7 @@ import Filters from '../components/Filters';
 import img from '../assets/undraw_Not_found.png';
 import '../App.css';
 import '../styles/loading.css';
+import uuid4 from 'uuid4';
 
 const Search = () => {
    const { q } = useParams();
@@ -154,35 +155,33 @@ const Search = () => {
                         <table className="table w-full text-sm md:text-base">
                            <Table handleSort={handleSort} />
                            {booksList.map((book, index) => (
-                              <>
-                                 <CardsSearch
-                                    author={book.author}
-                                    category={book.category}
-                                    date={book.date}
-                                    description={book.description}
-                                    district={book.district}
-                                    email={book.email}
-                                    handleModal={handleModal}
-                                    image={book.image}
-                                    index={index}
-                                    infoLink={book.infoLink}
-                                    pages={book.pages}
-                                    showAllBooks={showAllBooks}
-                                    title={book.title}
-                                    uid={book.uid}
-                                 />
-                              </>
+                              <CardsSearch
+                                 author={book.author}
+                                 category={book.category}
+                                 date={book.date}
+                                 description={book.description}
+                                 district={book.district}
+                                 email={book.email}
+                                 handleModal={handleModal}
+                                 image={book.image}
+                                 index={index}
+                                 infoLink={book.infoLink}
+                                 pages={book.pages}
+                                 showAllBooks={showAllBooks}
+                                 title={book.title}
+                                 uid={book.uid}
+                              />
                            ))}
                            <tfoot>
                               <tr>
-                                 <th className="dark:bg-gray-600"></th>
-                                 <th className="dark:bg-gray-600">Título</th>
-                                 <th className="dark:bg-gray-600">Autor</th>
-                                 <th className="dark:bg-gray-600">Páginas</th>
-                                 <th className="dark:bg-gray-600">Fecha</th>
-                                 <th className="dark:bg-gray-600">Distrito</th>
-                                 <th className="dark:bg-gray-600">Usuario</th>
-                                 <th className="dark:bg-gray-600">Información</th>
+                                 <th className="dark:bg-gray-700"></th>
+                                 <th className="dark:bg-gray-700">Título</th>
+                                 <th className="dark:bg-gray-700">Autor</th>
+                                 <th className="dark:bg-gray-700">Páginas</th>
+                                 <th className="dark:bg-gray-700">Fecha</th>
+                                 <th className="dark:bg-gray-700">Distrito</th>
+                                 <th className="dark:bg-gray-700">Usuario</th>
+                                 <th className="dark:bg-gray-700">Información</th>
                               </tr>
                            </tfoot>
                         </table>
