@@ -16,6 +16,8 @@ import Chat from './routes/Chat';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 
+import ScrollToTop from './utils/ScrollToTop';
+
 import './App.css';
 // import './styles/loading.css';
 
@@ -32,6 +34,7 @@ function App() {
       <>
          <div className="container-app bg-silver dark:bg-dark min-h-screen text-metal dark:text-tahiti">
             <Navbar />
+            <ScrollToTop />
             <Routes>
                <Route path="/" element={<ProtectedRoute />}>
                   <Route index element={<Home />} />

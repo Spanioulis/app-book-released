@@ -73,21 +73,23 @@ const ShowBooks = ({ children, info }) => {
    return (
       <div className="mx-auto md:mx-2 lg:mx-auto mt-5 flex flex-col md:flex-row" key={uuid4()}>
          {/* <div className="my-auto w-10"> */}
-         <div className="sm:mx-auto md:mx-none md:mt-5 w-full md:w-10 md:flex md:justify-center">
+         <div className="sm:mx-auto md:mx-none md:mt-5 w-full md:w-10 md:flex md:justify-center" key={children}>
             <p className="md:-rotate-90 text-sm lg:text-base text-center mb-2 md:pt-14">{children}</p>
          </div>
          {showList.map((book, index) => {
             return (
-               <Cards
-                  author={book.author}
-                  district={book.district}
-                  // handleSubmit={() => handleSubmit(book.id)}
-                  image={book.image}
-                  index={index}
-                  title={book.title}
-                  uidBook={book.uid}
-                  currentUser={auth.currentUser.uid}
-               />
+               <div key={uuid4()}>
+                  <Cards
+                     author={book.author}
+                     district={book.district}
+                     // handleSubmit={() => handleSubmit(book.id)}
+                     image={book.image}
+                     index={index}
+                     title={book.title}
+                     uidBook={book.uid}
+                     currentUser={auth.currentUser.uid}
+                  />
+               </div>
             );
          })}
       </div>
