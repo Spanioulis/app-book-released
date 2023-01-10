@@ -150,15 +150,15 @@ const UploadBook = () => {
    // ****** BREAKPOINT!!!!
 
    return (
-      <div className="flex flex-col md:flex-row lg:flex-row justify-center gap-5 w-4/5 lg:w-1/2 mx-auto my-2">
-         <div className="card mx-auto flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-stone-800 dark:border-stone-700 dark:bg-metal ">
+      <div className=" flex flex-col md:flex-row lg:flex-row justify-center gap-5 w-4/5 lg:w-1/2 mx-auto my-2">
+         <div className="card mx-auto flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:border-gray-800 dark:bg-metal ">
             <p className="text-center text-base mt-3 mx-7 text-red-500">{message}</p>
-            <form onSubmit={handleSubmit} className="flex flex-col px-5 py-3 gap-1 mb-1">
+            <form onSubmit={handleSubmit} className="flex flex-col ml-8 py-3 gap-1 mb-1">
                <input
                   type="text"
                   placeholder="Busca por título..."
                   onChange={handleSearch}
-                  className="input input-bordered w-full h-10 max-w-xs dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered dark:font-light w-full h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   name="title"
                />
 
@@ -166,13 +166,13 @@ const UploadBook = () => {
                   type="text"
                   placeholder="Busca por autor..."
                   onChange={handleSearch}
-                  className="input input-bordered w-full mt-2 max-w-xs h-10 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered dark:font-light w-full mt-2 max-w-xs h-10 bg-gray-100 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   name="author"
                />
 
                <select
                   onClick={handleSelect}
-                  className="select max-w-xs mt-2 h-10 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="select max-w-xs mt-2 h-10 dark:font-light dark:text-gray-100 bg-gray-100 dark:bg-dark placeholder:text-gray-400"
                >
                   <option key=" " value=" " name="option">
                      Encuentra tu libro...
@@ -191,7 +191,7 @@ const UploadBook = () => {
                   placeholder="Título"
                   value={book.title}
                   name="title"
-                  className="input input-bordered w-full max-w-xs mt-2 h-10 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered w-full dark:font-light max-w-xs mt-2 h-10 bg-gray-100 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   onChange={handleInput}
                   required
                />
@@ -200,7 +200,7 @@ const UploadBook = () => {
                   placeholder="Autor"
                   value={book.author}
                   name="author"
-                  className="input input-bordered w-full max-w-xs mt-2 h-10 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered w-full dark:font-light max-w-xs mt-2 h-10 dark:text-gray-100 bg-gray-100 dark:bg-dark placeholder:text-gray-400"
                   onChange={handleInput}
                   required
                />
@@ -209,7 +209,7 @@ const UploadBook = () => {
                   placeholder="Páginas"
                   value={book.pages}
                   name="pages"
-                  className="input input-bordered w-full max-w-xs mt-2 h-10 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered w-full dark:font-light max-w-xs mt-2 h-10 bg-gray-100 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   onChange={handleInput}
                   required
                />
@@ -218,7 +218,7 @@ const UploadBook = () => {
                   placeholder="Editorial"
                   value={book.publisher}
                   name="publisher"
-                  className="input input-bordered w-full max-w-xs mt-2 h-10 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered w-full dark:font-light max-w-xs mt-2 h-10 bg-gray-100 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   onChange={handleInput}
                   required
                />
@@ -227,14 +227,14 @@ const UploadBook = () => {
                   placeholder="Categoría"
                   value={book.category}
                   name="category"
-                  className="input input-bordered w-full max-w-xs mt-2 h-10 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered w-full dark:font-light max-w-xs mt-2 h-10 bg-gray-100 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   onChange={handleInput}
                   required
                   disabled
                />
                <div className="form-control w-full max-w-xs">
                   {loading ? (
-                     <button className="btn text-white bg-gradient-to-r from-main via-main to-main hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-orange-800 shadow-lg shadow-main dark:shadow-lg dark:shadow-orange/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-min loading" />
+                     <button className="btn text-white bg-gradient-to-r from-main via-main to-main hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-orange-800 shadow-md shadow-main dark:shadow-lg dark:shadow-orange/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-min loading" />
                   ) : (
                      <FormButton
                         text="Subir"
