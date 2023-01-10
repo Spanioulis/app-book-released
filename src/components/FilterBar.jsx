@@ -32,9 +32,8 @@ const FilterBar = ({ handleDistrict, handleAllBooks }) => {
                </label>
                <ul
                   tabIndex={0}
-                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 dark:text-gray-400 dark:bg-dark"
+                  className="dropdown-content menu p-2 shadow-[0_35px_60px_-10px_rgba(0,0,0,0.4)] dark:shadow-[0_35px_60px_-5px_rgba(0,0,0,0.7)] bg-base-100 rounded-box w-52 dark:text-gray-400 dark:bg-dark"
                >
-                  <Filters />
                   <Filters handleClick={handleDistrict} value="Ciutat Vella">
                      Ciutat Vella
                   </Filters>

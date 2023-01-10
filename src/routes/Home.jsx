@@ -8,10 +8,13 @@ import Modal from '../components/ReserveModal';
 import Footer from '../components/Footer';
 import SearchInput from '../components/SearchInput';
 import ShowBooks from '../components/ShowBooks';
+import { useRef } from 'react';
+import HeroUpload from '../components/HeroUpload';
 
 const Home = () => {
    const { user } = useContext(UserContext);
-   // TODO -> useState con los libros en local (obtener info de local, npo del get)
+   useRef;
+   // TODO -> useState con los libros en local (obtener info de local, no del get)
    /*     Si ya tenemos el error en Home, podríams hacer esto:
     const {data, error: dataError, loading} = useBooks(); */
    // TODO -> Aquí descartaremos los propios libros del usuario logeado (!== userBooks) - Eso lo diferenciará del "home"
@@ -24,22 +27,25 @@ const Home = () => {
 
    return (
       <>
-         <section key="section">
-            <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+         <section>
+            <div className="grid max-w-screen-xl px-4 mx-auto lg:gap-8 xl:gap-0 md:py-20 lg:grid-cols-12 justify-center">
                <div className="mr-auto place-self-center lg:col-span-7">
-                  <h1 className="max-w-2xl mb-4 text-base font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-main dark:text-gray-300">
+                  <h1 className="max-w-2xl mb-4 text-xl font-extrabold tracking-tight leading-none md:text-4xl xl:text-5xl text-metal dark:text-gray-300 text-center lg:text-left">
                      Busca tu libro de proximidad
                   </h1>
-                  <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                     ¿Tienes libros en casa que leíste hace tiempo (o nunca) y están cogiendo polvo en la estantería?
-                     Intercámbialos mano a mano en tu barrio, cerca de casa.
+                  <p className="max-w-xl mb-5 text-base font-light text-gray-500 lg:mb-6 md:text-lg lg:text-xl dark:text-gray-400 text-justify">
+                     Busca aquellos libros "liberados" por otros usuarios. Intercámbialos mano a mano en tu barrio,
+                     cerca de casa o de tu trabajo, filtrando por el tu distrito. Contacta con los otros lectores
+                     mediante el chat...hablad, quedad y a leer...
                   </p>
-                  <SearchInput
-                     text="search"
-                     placeholder="Busca un libro..."
-                     classInput="input input-bordered w-full text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 w-2/3"
-                     classButton="btn btn-square bg-main dark:bg-tahiti border-main dark:border-tahiti dark:hover:border-zinc-600"
-                  />
+                  <div className="justify-center md:justify-start">
+                     <SearchInput
+                        text="search"
+                        placeholder="Busca un libro..."
+                        classInput="input input-bordered w-full text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 min-w-2/3"
+                        classButton="btn btn-square bg-main dark:bg-tahiti border-main dark:border-tahiti dark:hover:border-zinc-600"
+                     />
+                  </div>
                </div>
                <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
                   <img
@@ -50,17 +56,17 @@ const Home = () => {
                </div>
             </div>
          </section>
-         <section className="mt-20 text-center" id="catalogo">
-            Sección para subir un libro
+         <section className="text-center">
+            <HeroUpload />
          </section>
-         <section className="mt-20 flex flex-col">
+         <section className="mb-5 pt-20 flex flex-col" id="catalogo">
             {/* <section className="bg-white mt-10 rounded-full"> */}
             {/* TODO -> poner aquí un margin top al primer ShowBook */}
             <ShowBooks info="mostReleased" className="mt-10">
                Últimas novedades
             </ShowBooks>
             <ShowBooks info="author">Por autor</ShowBooks>
-            <ShowBooks info="district">Distritos</ShowBooks>
+            <ShowBooks info="district">Por distrito</ShowBooks>
          </section>
          <Modal />
          <Footer />

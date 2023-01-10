@@ -75,16 +75,32 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 /* stream-chat */
+.str-chat {
+  font-family: 'Roboto';
+  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+}
+
 .str-chat__channel-list {
   width: 30%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   margin-bottom: 2rem;
+}
+
+@media (max-width: 640px) {
+  .str-chat__channel-list {
+    min-height: 0vh;
+    margin-bottom: 0rem;
+  }
 }
 
 .str-chat__channel {
   width: 100%;
   min-height: 100vh;
   /* margin-bottom: 2.5rem; */
+}
+
+.str-chat__channel-preview {
+  background-color: #28A745;
 }
 
 .str-chat__thread {

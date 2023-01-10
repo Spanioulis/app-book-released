@@ -19,40 +19,40 @@ import './App.css';
 // import './styles/loading.css';
 
 function App() {
-    const { user } = useContext(UserContext);
-    // console.log('user', user);
-    //* Enviar esta información a cada componente donde se vaya a usar...
+   const { user } = useContext(UserContext);
+   // console.log('user', user);
+   //* Enviar esta información a cada componente donde se vaya a usar...
 
-    if (user === false) {
-        return <div className="spinner"></div>;
-    }
+   if (user === false) {
+      return <div className="spinner"></div>;
+   }
 
-    return (
-        <>
-            <div className="container-app bg-silver dark:bg-dark min-h-screen text-metal dark:text-tahiti">
-                <Navbar />
-                <Routes>
-                    <Route path="/" element={<ProtectedRoute />}>
-                        <Route index element={<Home />} />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/uppload" element={<UploadBook />} />
-                        <Route path="/search/:q" element={<Search />} />
-                        <Route path="/search" element={<Search />} />
-                        <Route path="/chat" element={<Chat />} />
-                    </Route>
+   return (
+      <>
+         <div className="container-app bg-silver dark:bg-dark min-h-screen text-metal dark:text-tahiti">
+            <Navbar />
+            <Routes>
+               <Route path="/" element={<ProtectedRoute />}>
+                  <Route index element={<Home />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/upload" element={<UploadBook />} />
+                  <Route path="/search/:q" element={<Search />} />
+                  <Route path="/search" element={<Search />} />
+                  <Route path="/chat" element={<Chat />} />
+               </Route>
 
-                    <Route>
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                        {/* Hacer un Landing (public) */}
-                        <Route path="/landing" element={<Landing />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Route>
-                    {/* Crea componente 404notFound */}
-                </Routes>
-            </div>
-        </>
-    );
+               <Route>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  {/* Hacer un Landing (public) */}
+                  <Route path="/landing" element={<Landing />} />
+                  <Route path="*" element={<NotFound />} />
+               </Route>
+               {/* Crea componente 404notFound */}
+            </Routes>
+         </div>
+      </>
+   );
 }
 
 export default App;

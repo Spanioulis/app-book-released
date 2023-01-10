@@ -37,9 +37,9 @@ const Navbar = () => {
    }, [user]);
 
    return (
-      <nav className="navbar text-metal dark:text-gray-300 py-5 dark:bg-stone-900 dark:bg-opacity-30 sticky top-0 z-50 backdrop-blur-sm">
+      <nav className="navbar text-metal dark:text-gray-300 py-5 px-0 dark:bg-stone-900 dark:bg-opacity-30 sticky top-0 z-50 backdrop-blur-sm">
          {/* START */}
-         <div className="navbar-start flex-1 ml-3 lg:ml-10 order-1 sm:order-2 justify-center gap-2 md:gap-4 text-base">
+         <div className="navbar-start flex-1 order-1 sm:order-2 justify-center gap-2 md:gap-4 text-base ml-3 lg:ml-10">
             <div className="dropdown">
                <label tabIndex={0} className="btn btn-ghost md:hidden">
                   <svg
@@ -62,7 +62,7 @@ const Navbar = () => {
                      </a>
                   </li>
                   <li>
-                     <a className="text-sm lg:text-base dark:hover:text-white">¿Qué es Edmundo?</a>
+                     <a className="text-sm lg:text-base dark:hover:text-white">¿Ed Mundo?</a>
                   </li>
                   <li>
                      <a
@@ -70,15 +70,17 @@ const Navbar = () => {
                         rel="noopener noreferrer"
                         className="text-sm lg:text-base dark:hover:text-white"
                      >
-                        Catálogo
+                        Catálogos
                      </a>
                   </li>
                </ul>
             </div>
-            <div className="flex-1 ml-3 lg:ml-10 order-2 sm:order-1">
+            <div className="flex-1 order-2 sm:order-1">
                <Link to="/" className="flex items-center">
                   <img src={logo} className="twist-logo mr-2 md:mr-3 h-9 lg:h-12" alt="Logo Ed Mundo!" />
-                  <span className="lg:text-2xl font-semibold whitespace-nowrap dark:text-gray-200 ">Ed Mundo!</span>
+                  <span className="lg:text-2xl hidden sm:block font-semibold whitespace-nowrap dark:text-gray-200 ">
+                     Ed Mundo!
+                  </span>
                </Link>
             </div>
          </div>
@@ -91,11 +93,11 @@ const Navbar = () => {
                   </a>
                </li>
                <li>
-                  <a className="text-xs lg:text-sm">¿Qué es Edmundo?</a>
+                  <a className="text-xs lg:text-sm">¿Ed Mundo?</a>
                </li>
                <li>
                   <a href="#catalogo" rel="noopener noreferrer" className="text-xs lg:text-sm">
-                     Catálogo
+                     Catálogos
                   </a>
                </li>
             </ul>
@@ -111,7 +113,7 @@ const Navbar = () => {
                </Link>
             </div>
             <div className="tooltip tooltip-bottom" data-tip="Upload">
-               <Link to="/uppload">
+               <Link to="/upload">
                   <IconSVG
                      className="w-6 lg:w-7 h-6 lg:h-7 mx-1 lg:mx-3 hover:text-main hover:dark:text-tahiti"
                      d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"

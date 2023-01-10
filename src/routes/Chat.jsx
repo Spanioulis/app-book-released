@@ -13,10 +13,9 @@ import {
 } from 'stream-chat-react';
 import { useClient } from '../hooks/useClient';
 import { UserContext } from '../context/UserProvider';
+import { useLocation } from 'react-router-dom';
 
 import 'stream-chat-react/dist/css/v2/index.css';
-import { useLocation } from 'react-router-dom';
-import useDarkTheme from '../components/useDarkTheme';
 
 const api_key = import.meta.env.VITE_REACT_APP_STREAM_APIKEY;
 
@@ -94,8 +93,9 @@ const ChatStream = () => {
 
    return (
       <>
-         <div className="flex">
+         <div className="flex flex-col sm:flex-row">
             <Chat client={chatClient} theme={theme === 'dark' ? 'str-chat__theme-dark' : 'str-chat__theme-ligth'}>
+               {/* <Chat client={chatClient} theme="messaging light"> */}
                <ChannelList filters={filter} sort={sort} />
                <Channel>
                   <Window>
