@@ -1,9 +1,13 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
    return (
       <footer className="footer footer-center p-10 text-base-content dark:text-gray-400 rounded">
          <div className="grid grid-flow-col gap-4">
             {/* Ir a ruta de Edmundo */}
-            <a className="link link-hover">¿Por qué Ed Mundo?</a>
+            <Link to="/edmundo" className="link link-hover">
+               ¿Por qué Ed Mundo?
+            </Link>
             <a href="mailto:pani77sps@gmail.com" className="link link-hover">
                Contacto
             </a>

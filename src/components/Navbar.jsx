@@ -62,7 +62,9 @@ const Navbar = () => {
                      </a>
                   </li>
                   <li>
-                     <a className="text-sm lg:text-base dark:hover:text-white">¿Ed Mundo?</a>
+                     <Link to="/edmundo" className="text-sm lg:text-base dark:hover:text-white">
+                        ¿Ed Mundo?
+                     </Link>
                   </li>
                   <li>
                      <a
@@ -93,7 +95,9 @@ const Navbar = () => {
                   </a>
                </li>
                <li>
-                  <a className="text-xs lg:text-sm">¿Ed Mundo?</a>
+                  <Link to="/edmundo" className="text-xs lg:text-sm">
+                     ¿Ed Mundo?
+                  </Link>
                </li>
                <li>
                   <a href="#catalogo" rel="noopener noreferrer" className="text-xs lg:text-sm">

@@ -32,13 +32,6 @@ const Profile = () => {
 
    return (
       <div className="text-center pb-10">
-         <h1 className="text-3xl text-stone-800 dark:text-amber-700 font-bold my-5"># Mi biblioteca #</h1>
-         {/* <div>
-                <ul>
-                    <li>Favoritos</li>
-                    <li>Otra información de relevancia...</li>
-                </ul>
-            </div> */}
          {userBooks.length === 0 ? (
             <>
                <img src={img} alt="Not found books" className="illustration mx-auto" />

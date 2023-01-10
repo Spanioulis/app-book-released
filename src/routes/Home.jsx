@@ -30,13 +30,13 @@ const Home = () => {
          <section>
             <div className="grid max-w-screen-xl px-4 mx-auto lg:gap-8 xl:gap-0 md:py-20 lg:grid-cols-12 justify-center">
                <div className="mr-auto place-self-center lg:col-span-7">
-                  <h1 className="max-w-2xl mb-4 text-xl font-extrabold tracking-tight leading-none md:text-4xl xl:text-5xl text-metal dark:text-gray-300 text-center lg:text-left">
-                     Busca tu libro de proximidad
+                  <h1 className="max-w-2xl mb-4 text-2xl md:text-4xl  font-bold tracking-tight leading-none  text-metal dark:text-gray-300 text-center lg:text-left">
+                     Busca tus libros de proximidad
                   </h1>
                   <p className="max-w-xl mb-5 text-base font-light text-gray-500 lg:mb-6 md:text-lg lg:text-xl dark:text-gray-400 text-justify">
                      Busca aquellos libros "liberados" por otros usuarios. Intercámbialos mano a mano en tu barrio,
-                     cerca de casa o de tu trabajo, filtrando por el tu distrito. Contacta con los otros lectores
-                     mediante el chat...hablad, quedad y a leer...
+                     cerca de casa o de tu trabajo, filtrando por tu distrito. Contacta con los otros lectores mediante
+                     el chat: hablad, quedad y a leer...
                   </p>
                   <div className="justify-center md:justify-start">
                      <SearchInput

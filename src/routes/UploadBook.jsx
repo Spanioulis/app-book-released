@@ -43,7 +43,6 @@ const UploadBook = () => {
 
    //* Buscar coincidencias de la búsqueda con la lista de libros
    const handleSearch = (e) => {
-      console.log(e.target.name);
       if (e.target.name === 'title') {
          setSearchTitle(e.target.value);
       }

@@ -8,12 +8,13 @@ import Login from './routes/Login';
 import Register from './routes/Register';
 import Profile from './routes/Profile';
 import NotFound from './routes/NotFound';
-
-import Navbar from './components/Navbar';
-import ProtectedRoute from './components/ProtectedRoute';
+import Edmundo from './routes/Edmundo';
 import UploadBook from './routes/UploadBook';
 import Search from './routes/Search';
 import Chat from './routes/Chat';
+
+import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import './App.css';
 // import './styles/loading.css';
@@ -42,10 +43,11 @@ function App() {
                </Route>
 
                <Route>
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
                   {/* Hacer un Landing (public) */}
                   <Route path="/landing" element={<Landing />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/edmundo" element={<Edmundo />} />
                   <Route path="*" element={<NotFound />} />
                </Route>
                {/* Crea componente 404notFound */}
