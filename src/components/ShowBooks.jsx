@@ -4,7 +4,7 @@ import { doc, updateDoc } from 'firebase/firestore/lite';
 import { auth, db } from '../firebase/firebaseConfig';
 import Cards from './CardsHome';
 import uuid4 from 'uuid4';
-import '../styles/cards.css';
+// import '../styles/cards.css';
 
 const ShowBooks = ({ children, info }) => {
    const [showList, setShowList] = useState([]);
@@ -43,20 +43,18 @@ const ShowBooks = ({ children, info }) => {
       } else if (info === 'author') {
          // TODO -> hacer un random de autores (hacer un array random de autores)
          //! Copiar el código de la parte inferior, añadiendo más autores al listado
-         const listAuthors = ['Stephen King', 'Noah Gordon'];
-         const author = books.filter((book) => book.available === true && book.author === 'Stephen King');
-         setShowList(author);
+         const listAuthors = ['Stephen King', 'Patrick Rothfuss', 'Terry Pratchett', 'Paul Auster', 'Eduardo Mendoza'];
+         const randomIndex = Math.floor(Math.random() * listAuthors.length);
+         const author = books.filter((book) => book.available === true && book.author === listAuthors[randomIndex]);
+         const booksCover = author.splice(0, 3);
+
+         setShowList(booksCover);
       } else if (info === 'district') {
          // TODO -> hacer un random de autores (hacer un array random de autores)
-         const districts = ['Ciutat Vella', 'Eixample', 'Gràcia'];
+         const districts = ['Ciutat Vella', 'Eixample'];
          const randomIndex = Math.floor(Math.random() * districts.length);
-         const district = districts[randomIndex];
-         // console.log('district', district);
-         const author = books.filter(
-            // (book) => book.available === true && book.district === district
-            (book) => book.available === true && book.district === 'Ciutat Vella'
-         );
-         const booksCover = author.splice(0, 3);
+         const district = books.filter((book) => book.available === true && book.district === districts[randomIndex]);
+         const booksCover = district.splice(0, 3);
          setShowList(booksCover);
       }
    }, [books]);

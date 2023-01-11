@@ -37,7 +37,8 @@ function App() {
             <ScrollToTop />
             <Routes>
                <Route path="/" element={<ProtectedRoute />}>
-                  <Route index element={<Home />} />
+                  {/* <Route index element={<Home />} /> */}
+                  <Route path="/home" element={<Home />} />
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/upload" element={<UploadBook />} />
                   <Route path="/search/:q" element={<Search />} />
@@ -46,8 +47,9 @@ function App() {
                </Route>
 
                <Route>
+                  <Route index element={<Landing />} />
                   {/* Hacer un Landing (public) */}
-                  <Route path="/landing" element={<Landing />} />
+                  <Route path="/" element={<Landing />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/edmundo" element={<Edmundo />} />

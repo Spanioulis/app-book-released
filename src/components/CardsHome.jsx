@@ -3,16 +3,8 @@ import { Link, Navigate } from 'react-router-dom';
 import IconSVG from './IconsSVG';
 
 const Cards = ({ image, title, author, district, handleUpdate, index, uidBook, currentUser }) => {
-   // const navigate  = Navigate();
-   //TODO -> Convertir este handleUpdate en envío de parámetros al chat
-   // const handleChat = () => {
-   //     console.log(uid);
-   //     navigate('/chat');
-   // };
-
    return (
       <div
-         // className="card card-home card-side w-72 h-52 rounded-xl shadow-[0_35px_60px_-10px_rgba(0,0,0,0.4)] bg-gray-200 dark:bg-stone-800 hover:scale-105"
          className="group card card-home card-side w-64 lg:w-72 h-52 bg-silver dark:bg-dark dark:text-gray-300 hover:scale-110"
          key={index}
       >
@@ -26,7 +18,6 @@ const Cards = ({ image, title, author, district, handleUpdate, index, uidBook, c
                <p className="text-xs italic">{district}</p>
             </div>
             <div className="flex ml-3">
-               {/* TODO - Cambiar por el logo del chat */}
                {currentUser !== uidBook && (
                   <Link
                      to="/chat"

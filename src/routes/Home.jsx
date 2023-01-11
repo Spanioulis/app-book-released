@@ -8,12 +8,10 @@ import Modal from '../components/ReserveModal';
 import Footer from '../components/Footer';
 import SearchInput from '../components/SearchInput';
 import ShowBooks from '../components/ShowBooks';
-import { useRef } from 'react';
 import HeroUpload from '../components/HeroUpload';
 
 const Home = () => {
    const { user } = useContext(UserContext);
-   useRef;
    // TODO -> useState con los libros en local (obtener info de local, no del get)
    /*     Si ya tenemos el error en Home, podríams hacer esto:
     const {data, error: dataError, loading} = useBooks(); */
@@ -60,8 +58,6 @@ const Home = () => {
             <HeroUpload />
          </section>
          <section className="mb-5 pt-20 flex flex-col" id="catalogo">
-            {/* <section className="bg-white mt-10 rounded-full"> */}
-            {/* TODO -> poner aquí un margin top al primer ShowBook */}
             <ShowBooks info="mostReleased" className="mt-10">
                Últimas novedades
             </ShowBooks>

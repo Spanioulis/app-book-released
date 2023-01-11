@@ -60,7 +60,7 @@ const Register = () => {
          });
          console.log('...registro COMPLETADO!');
          console.log(auth.currentUser.uid);
-         navigate('/');
+         navigate('/home');
       } catch (error) {
          console.log('code...añadir a firebaseErrors los que vayan saliendo...', error.code);
          const { code, message } = firebaseErrors(error.code);

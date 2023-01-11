@@ -1,13 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
-import 'flowbite';
 
 import useDarkTheme from './useDarkTheme';
+
 import logo from '../assets/keyhole-logo.png';
-// import sun from '../assets/sun-svgrepo-com.svg';
-// import moon from '../assets/moon-svgrepo-com.svg';
-// import SearchInput from './SearchInput';
 import IconSVG from './IconsSVG';
 
 const Navbar = () => {
@@ -21,7 +18,7 @@ const Navbar = () => {
    const handleLogout = async () => {
       try {
          await signOutUser();
-         navigate('/landing');
+         navigate('/');
       } catch ({ code }) {
          console.log(code);
       }
@@ -78,12 +75,21 @@ const Navbar = () => {
                </ul>
             </div>
             <div className="flex-1 order-2 sm:order-1">
-               <Link to="/" className="flex items-center">
-                  <img src={logo} className="twist-logo mr-2 md:mr-3 h-9 lg:h-12" alt="Logo Ed Mundo!" />
-                  <span className="lg:text-2xl hidden sm:block font-semibold whitespace-nowrap dark:text-gray-200 ">
-                     Ed Mundo!
-                  </span>
-               </Link>
+               {user ? (
+                  <Link to="/home" className="flex items-center">
+                     <img src={logo} className="twist-logo mr-2 md:mr-3 h-9 lg:h-12" alt="Logo Ed Mundo!" />
+                     <span className="lg:text-2xl hidden sm:block font-semibold whitespace-nowrap dark:text-gray-200 ">
+                        Ed Mundo!
+                     </span>
+                  </Link>
+               ) : (
+                  <Link to="/" className="flex items-center">
+                     <img src={logo} className="twist-logo mr-2 md:mr-3 h-9 lg:h-12" alt="Logo Ed Mundo!" />
+                     <span className="lg:text-2xl hidden sm:block font-semibold whitespace-nowrap dark:text-gray-200 ">
+                        Ed Mundo!
+                     </span>
+                  </Link>
+               )}
             </div>
          </div>
          {/* CENTER */}
@@ -143,8 +149,15 @@ const Navbar = () => {
             <div className="dropdown dropdown-end mt-1 ml-1 lg:ml-3">
                <label tabIndex={0} className="btn btn-ghost btn-circle avatar hover:border-slate-700">
                   <div className="w-8 lg:w-10 rounded-full">
+                     {user ? (
+                        <img src={'https://placeimg.com/80/80/people'} />
+                     ) : (
+                        <IconSVG
+                           className="w-7 lg:w-8 h-7 lg:h-8 mx-auto lg:mt-1"
+                           d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                     )}
                      {/* Poner foto de perfil de cada usuario...(photoURL del registro...) */}
-                     <img src={'https://placeimg.com/80/80/people'} />
                   </div>
                </label>
                {/* {user.email !== null && (

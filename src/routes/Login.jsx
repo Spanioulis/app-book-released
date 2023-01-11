@@ -28,7 +28,7 @@ const Login = () => {
       try {
          setLoading(true);
          await loginUser(email, password);
-         navigate('/');
+         navigate('/home');
       } catch (error) {
          console.log('code...añadir a firebaseErrors los que vayan saliendo...', error.code);
          const { code, message } = firebaseErrors(error.code);
