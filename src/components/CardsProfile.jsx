@@ -1,37 +1,31 @@
-const CardsProfile = () => {
+const CardsProfile = ({ author, district, handleDelete, image, pages, title }) => {
    return (
-      <div className="card-content">
-         <div class="card">
-            <div class="imgBx">
-               <img src="https://i.pinimg.com/564x/29/a2/07/29a20770155957f6b3196fee2968bdea.jpg" />
+      <div className="card-profile-content  text-metal dark:text-gray-300 mx-2.5">
+         <div className="card-profile">
+            <div className="imgBx">
+               <img src={image} />
             </div>
-            <div class="content">
-               <div class="details">
+            <div className="content">
+               <div className="details">
                   <h2>
-                     Raja Junaid
+                     {title}
                      <br />
-                     <span>HTML & CSS Developer</span>
+                     <span>{author}</span>
                   </h2>
-                  <div class="data">
+                  <div className="data text-metal dark:text-gray-300">
                      <h3>
-                        58
+                        {pages}
                         <br />
-                        <span>Posts</span>
+                        <span>Pág</span>
                      </h3>
                      <h3>
-                        2,859
+                        {district}
                         <br />
-                        <span>Followers</span>
-                     </h3>
-                     <h3>
-                        40
-                        <br />
-                        <span>Following</span>
+                        <span>Distrito</span>
                      </h3>
                   </div>
                   <div class="actionBtn">
-                     <button>Follow</button>
-                     <button>Message</button>
+                     <button onClick={handleDelete}>Eliminar</button>
                   </div>
                </div>
             </div>

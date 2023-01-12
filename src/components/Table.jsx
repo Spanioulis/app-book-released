@@ -45,7 +45,7 @@ const Table = ({ handleSort }) => {
             <th className="dark:bg-gray-700">
                <div className="flex gap-1">
                   <p className="pt-1">Usuario</p>
-                  <input name="Date" type="image" value="date" src={sort} alt="Sort Icon" onClick={handleSort} />
+                  <input name="Date" type="image" value="email" src={sort} alt="Sort Icon" onClick={handleSort} />
                </div>
             </th>
             <th className="dark:bg-gray-700">

@@ -48,7 +48,7 @@ const Modal = ({ title, author, district, date, pages, image, category, descript
                            className="flex
                     flex-col"
                         >
-                           <div className="flex text-sm md:text-xl md:justify-center">
+                           <div className="flex text-sm md:text-xl md:justify-center mr-5">
                               <a
                                  href={infoLink}
                                  target="_blank"

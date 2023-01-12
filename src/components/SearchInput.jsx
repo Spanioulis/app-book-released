@@ -12,7 +12,8 @@ const SearchInput = ({ text, placeholder, classInput, classButton }) => {
    };
 
    const handleSearch = (e) => {
-      if (e.key === 'Enter' && e.target.value !== '') {
+      // if (e.key === 'Enter' && e.target.value !== '') {
+      if (e.key === 'Enter') {
          // navigate('/search', { state: search, replace: true });
          navigate(`/search/${search}`);
          // setParams({ q: search });
