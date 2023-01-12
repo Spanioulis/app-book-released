@@ -56,7 +56,7 @@ const Profile = () => {
                </p>
             </>
          ) : (
-            <div className="flex">
+            <div className="flex justify-center">
                <button onClick={() => scroll(-740)}>
                   <IconSVG
                      className="w-6 lg:w-7 h-6 lg:h-7 mx-1 lg:mx-2 hover:text-main  dark:text-gray-300 dark:hover:text-tahiti"
