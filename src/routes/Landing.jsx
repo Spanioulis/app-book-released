@@ -13,7 +13,6 @@ import '../styles/loading.css';
 
 const Landing = () => {
    const [books, setBooks] = useState([]);
-   console.log('booksLanding', books);
 
    useEffect(() => {
       async function getData() {
@@ -64,7 +63,6 @@ const Landing = () => {
             <HeroUpload />
          </section>
          <section className="mb-5 pt-20 flex flex-col" id="catalogo">
-            {/* TODO -> poner aquí un margin top al primer ShowBook */}
             {/* ShowBooksLanding Card nueva */}
             <CarouselGroup books={books} />
          </section>

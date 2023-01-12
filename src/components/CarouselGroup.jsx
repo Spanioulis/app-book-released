@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 import CardsLanding from './CardsLanding';
 import IconSVG from './IconsSVG';
+import uuid4 from 'uuid4';
 
 const CarouselGroup = ({ books }) => {
-   console.log('booksCarousel', books);
    const scrollElement = useRef(0);
    // const [showList, setShowList] = useState([]);
 
@@ -13,16 +13,18 @@ const CarouselGroup = ({ books }) => {
    };
 
    return (
-      <>
-         <div className="carousel rounded-box mx-28" ref={scrollElement}>
+      <div>
+         <div className="carousel rounded-box mx-auto lg:mx-28" ref={scrollElement}>
             {books.map((book, index) => (
-               <CardsLanding
-                  author={book.author}
-                  district={book.district}
-                  image={book.image}
-                  index={index}
-                  title={book.title}
-               />
+               <div key={uuid4()}>
+                  <CardsLanding
+                     author={book.author}
+                     district={book.district}
+                     image={book.image}
+                     index={index}
+                     title={book.title}
+                  />
+               </div>
             ))}
          </div>
          <div className="flex justify-center mt-3 gap-10">
@@ -40,7 +42,7 @@ const CarouselGroup = ({ books }) => {
                />
             </button>
          </div>
-      </>
+      </div>
    );
 };
 

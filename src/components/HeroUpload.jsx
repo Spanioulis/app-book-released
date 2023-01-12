@@ -13,7 +13,7 @@ const HeroUpload = () => {
                   ¿Tienes libros en casa que leíste hace tiempo (o nunca) y están cogiendo polvo en la estantería?
                   Súbelos a tu biblioteca para que otros lectores puedan verlos, y de esa manera poder hacer un trueque.
                </p>
-               <Link to="/upload" className="text-main dark:text-tahiti link-hover">
+               <Link to="/upload" className="text-2xl text-main dark:text-tahiti link-hover">
                   Free Edmundo!
                </Link>
             </div>

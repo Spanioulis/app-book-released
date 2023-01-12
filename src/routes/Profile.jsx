@@ -14,11 +14,9 @@ import '../styles/loading.css';
 // https://codepen.io/Snowing/pen/JZRxOK
 
 const Profile = () => {
-   const { error, getBooks, loading, userBooks } = useBooks();
-   // console.log('userBooks', userBooks);
+   const { error, getBooks, loading, userBooks, books } = useBooks();
 
    useEffect(() => {
-      // console.log('getBooks & getUsers -> Profile');
       getBooks();
    }, []);
 

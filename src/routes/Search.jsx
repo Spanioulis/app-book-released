@@ -9,16 +9,16 @@ import CardsSearch from '../components/CardsSearch';
 import SearchModal from '../components/SearchModal';
 import Table from '../components/Table';
 import FilterBar from '../components/FilterBar';
-import Filters from '../components/Filters';
+// import Filters from '../components/Filters';
 
-// import uuid4 from 'uuid4';
-// import SearchInput from '../components/SearchInput';
 import img from '../assets/undraw_Not_found.png';
 import '../App.css';
 import '../styles/loading.css';
-import uuid4 from 'uuid4';
+import { UserContext } from '../context/UserProvider';
+import { collection, getDocs } from 'firebase/firestore/lite';
 
 const Search = () => {
+   const { user } = useContext(UserContext);
    const { q } = useParams();
    const { books, getBooks } = useBooks();
 
@@ -30,10 +30,6 @@ const Search = () => {
 
    // TODO -> Realizar un 'loading'
    //* Este filtro es para mis libros que no sean míos
-
-   useEffect(() => {
-      getBooks();
-   }, []);
 
    useEffect(() => {
       if (showAllBooks) {
@@ -66,6 +62,25 @@ const Search = () => {
          }
       }
    }, [q, books, showAllBooks]);
+
+   useEffect(() => {
+      getBooks();
+   }, []);
+
+   useEffect(() => {
+      if (user === null) {
+         async function getData() {
+            const booksRefCollection = collection(db, 'books');
+            const querySnapshot = await getDocs(booksRefCollection);
+            const dataDB = querySnapshot.docs.map((doc) => ({
+               id: doc.id,
+               ...doc.data()
+            }));
+            setBookList(dataDB);
+         }
+         getData();
+      }
+   }, []);
 
    // Reservar Libro -> Activar de nuevo en el Modal, solo cuando no esté en Mis libros
    // const handleUpdate = async (id) => {
@@ -127,14 +142,14 @@ const Search = () => {
                   <SearchInput
                      text="search"
                      placeholder="Busca un libro..."
-                     classInput="input input-bordered text-base w-48 md:w-96 h-14 text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 w-2/3 mb-3"
+                     classInput="input input-bordered text-sm md:text-base w-48 md:w-96 h-14 text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 w-2/3 mb-3"
                      classButton="btn btn-square dark:bg-zinc-800 hover:bg-zinc-900 h-14"
                   />
                   <div className="flex gap-10 text-base justify-start">
                      {/* TODO - poner etiqueta redonda */}
                      <span className="text-main dark:text-tahiti italic">{q}</span>
-                     <p>
-                        Encontrado/s <span className="font-bold">{booksList.length}</span> libro/s
+                     <p className="text-sm md:text-base">
+                        Encontrado/s <span className=" font-bold">{booksList.length}</span> libro/s
                      </p>
                   </div>
                </div>
@@ -144,15 +159,12 @@ const Search = () => {
             <div className="flex-1">
                {booksList.length === 0 ? (
                   <>
-                     {/* TODO -> Poner todas las búsuqedas cuando cambiemos la ficha a un listado... */}
-                     {/* <div className="spinner"></div> */}
                      <img src={img} alt="Not found books" className="illustration mx-auto" />
-                     {/* <p className="text-center">¡Lo sentimos, no hay coincidencias!</p> */}
                   </>
                ) : (
                   <>
                      <div className="overflow-x-auto mx-4 sm:mx-0">
-                        <table className="table w-full text-sm md:text-base">
+                        <table className="table w-full text-sm lg:text-base">
                            <Table handleSort={handleSort} />
                            {booksList.map((book, index) => (
                               <CardsSearch
@@ -166,6 +178,7 @@ const Search = () => {
                                  image={book.image}
                                  index={index}
                                  infoLink={book.infoLink}
+                                 key={book.id}
                                  pages={book.pages}
                                  showAllBooks={showAllBooks}
                                  title={book.title}

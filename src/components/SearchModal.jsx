@@ -1,18 +1,12 @@
-import { useEffect } from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../context/UserProvider';
 import { auth } from '../firebase/firebaseConfig';
 
 const Modal = ({ title, author, district, date, pages, image, category, description, infoLink, uidBook }) => {
-   const [currentUser, setCurrentUser] = useState(false);
-   //    console.log(uidBook, auth.currentUser.uid);
-   // console.log('se renderiza searchModal');
-   //   console.log('currentUser', authcurrentUser);
-
-   //    if (uidBook === auth.currentUser.uid) {
-   //       console.log('si...');
-   //       setCurrentUser(!currentUser);
-   //    }
+   const { user } = useContext(UserContext);
+   // const [currentUser, setCurrentUser] = useState(false);
 
    return (
       <>
@@ -79,7 +73,7 @@ const Modal = ({ title, author, district, date, pages, image, category, descript
                               </a>
                            </div>
                            <div className="flex text-sm md:text-xl  md:justify-center">
-                              {uidBook !== auth.currentUser.uid && (
+                              {user && uidBook !== user.uid && (
                                  <>
                                     <Link
                                        to="/chat"

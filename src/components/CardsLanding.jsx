@@ -4,11 +4,8 @@ import IconSVG from './IconsSVG';
 
 const CardsLanding = ({ index, image, title, author, district }) => {
    return (
-      <div className="carousel-item ">
-         <div
-            className="group card card-home card-side w-64 lg:w-72 h-52 bg-silver dark:bg-dark dark:text-gray-300 hover:scale-110"
-            key={index}
-         >
+      <div className="carousel-item " key={index}>
+         <div className="group card card-home card-side w-60 lg:w-64 h-52 bg-silver dark:bg-dark dark:text-gray-300 hover:scale-110 mr-1">
             <figure className="ml-4">
                <img src={image} alt={title} className="rounded-md w-full" />
             </figure>

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { UserContext } from './context/UserProvider';
 import { Routes, Route } from 'react-router-dom';
 
@@ -14,17 +14,15 @@ import Search from './routes/Search';
 import Chat from './routes/Chat';
 
 import Navbar from './components/Navbar';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './components/layouts/ProtectedRoute';
+import LayoutContainer from './components/layouts/LayoutContainer';
 
 import ScrollToTop from './utils/ScrollToTop';
 
 import './App.css';
-// import './styles/loading.css';
 
 function App() {
    const { user } = useContext(UserContext);
-   // console.log('user', user);
-   //* Enviar esta información a cada componente donde se vaya a usar...
 
    if (user === false) {
       return <div className="spinner"></div>;
@@ -36,26 +34,24 @@ function App() {
             <Navbar />
             <ScrollToTop />
             <Routes>
-               <Route path="/" element={<ProtectedRoute />}>
+               <Route element={<ProtectedRoute />}>
                   {/* <Route index element={<Home />} /> */}
                   <Route path="/home" element={<Home />} />
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/upload" element={<UploadBook />} />
                   <Route path="/search/:q" element={<Search />} />
-                  <Route path="/search" element={<Search />} />
                   <Route path="/chat" element={<Chat />} />
                </Route>
 
-               <Route>
+               <Route element={<LayoutContainer />}>
+                  {/* <Route path="/" element={<Landing />} /> */}
                   <Route index element={<Landing />} />
-                  {/* Hacer un Landing (public) */}
-                  <Route path="/" element={<Landing />} />
+                  <Route path="/search" element={<Search />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/edmundo" element={<Edmundo />} />
                   <Route path="*" element={<NotFound />} />
                </Route>
-               {/* Crea componente 404notFound */}
             </Routes>
          </div>
       </>

@@ -8,7 +8,7 @@ const Edmundo = () => {
                <div className="max-w-lg">
                   <h1 className="text-2xl font-bold">¿Por qué Ed Mundo?</h1>
                   <p className="py-6 font-light">
-                     La idea de "liberar" un libro es una metáfora sobre Edmundo Dantés - Dumas, A. (1846).{' '}
+                     La idea de "liberar" un libro es en homenaje a Edmundo Dantés - Dumas, A. (1846).{' '}
                      <i>El Conde de Montecristo</i> -, que estuvo encarcelado 14 años en el castillo de If por causas
                      (traición) que no vienen al caso.
                   </p>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import uuid4 from 'uuid4';
 import info from '../assets/info.svg';
 
 const CardsSearch = ({
@@ -34,7 +35,6 @@ const CardsSearch = ({
    return (
       <tbody>
          <tr>
-            {/* <tr className={impar ? 'active' : undefined}> */}
             <th className="dark:bg-gray-600 dark:font-light">{index + 1}</th>
             <td className="dark:bg-gray-600 max-w-xs dark:font-light overflow-hidden">{title}</td>
             <td className="dark:bg-gray-600 dark:font-light w-48">{author}</td>
@@ -58,8 +58,6 @@ const CardsSearch = ({
                      />
                   </label>
                </span>
-
-               {/* <SearchModal info={modalBook} /> */}
             </td>
          </tr>
       </tbody>
