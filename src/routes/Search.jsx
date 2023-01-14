@@ -9,6 +9,7 @@ import { CardsSearch, FilterBar, SearchInput, SearchModal, Table } from '../comp
 import img from '../assets/undraw_Not_found.png';
 import '../App.css';
 import '../styles/loading.css';
+import { comment } from 'postcss';
 
 export const Search = () => {
    const { user } = useContext(UserContext);
@@ -19,6 +20,7 @@ export const Search = () => {
    const [modalBook, setModalBook] = useState([]);
    const [showAllBooks, setShowAllBooks] = useState(true);
    const [ascendSort, setAscendSort] = useState(true);
+   const [loading, setLoading] = useState(true);
 
    useEffect(() => {
       if (showAllBooks) {
@@ -108,6 +110,18 @@ export const Search = () => {
       });
    };
 
+   let component = null;
+
+   if (!booksList.length && loading) {
+      component = <div className="spinner"></div>;
+      setTimeout(() => {
+         console.log('Entra, y setLoading (false)');
+         setLoading(false);
+      }, 3500);
+   } else {
+      component = component = <img src={img} alt="Not found books" className="illustration mx-auto" />;
+   }
+
    return (
       <div>
          <div className="flex flex-col justify-center dark:text-gray-200 ">
@@ -132,48 +146,44 @@ export const Search = () => {
             </div>
             <div className="flex-1">
                {booksList.length === 0 ? (
-                  <>
-                     <img src={img} alt="Not found books" className="illustration mx-auto" />
-                  </>
+                  component
                ) : (
-                  <>
-                     <div className="overflow-x-auto mx-4 sm:mx-0">
-                        <table className="table w-full text-sm lg:text-base">
-                           <Table handleSort={handleSort} />
-                           {booksList.map((book, index) => (
-                              <CardsSearch
-                                 author={book.author}
-                                 category={book.category}
-                                 date={book.date}
-                                 description={book.description}
-                                 district={book.district}
-                                 email={book.email}
-                                 handleModal={handleModal}
-                                 image={book.image}
-                                 index={index}
-                                 infoLink={book.infoLink}
-                                 key={book.id}
-                                 pages={book.pages}
-                                 showAllBooks={showAllBooks}
-                                 title={book.title}
-                                 uid={book.uid}
-                              />
-                           ))}
-                           <tfoot>
-                              <tr>
-                                 <th className="dark:bg-gray-700"></th>
-                                 <th className="dark:bg-gray-700">Título</th>
-                                 <th className="dark:bg-gray-700">Autor</th>
-                                 <th className="dark:bg-gray-700">Páginas</th>
-                                 <th className="dark:bg-gray-700">Fecha</th>
-                                 <th className="dark:bg-gray-700">Distrito</th>
-                                 <th className="dark:bg-gray-700">Usuario</th>
-                                 <th className="dark:bg-gray-700">Información</th>
-                              </tr>
-                           </tfoot>
-                        </table>
-                     </div>
-                  </>
+                  <div className="overflow-x-auto mx-4 sm:mx-0">
+                     <table className="table w-full text-sm lg:text-base">
+                        <Table handleSort={handleSort} />
+                        {booksList.map((book, index) => (
+                           <CardsSearch
+                              author={book.author}
+                              category={book.category}
+                              date={book.date}
+                              description={book.description}
+                              district={book.district}
+                              email={book.email}
+                              handleModal={handleModal}
+                              image={book.image}
+                              index={index}
+                              infoLink={book.infoLink}
+                              key={book.id}
+                              pages={book.pages}
+                              showAllBooks={showAllBooks}
+                              title={book.title}
+                              uid={book.uid}
+                           />
+                        ))}
+                        <tfoot>
+                           <tr>
+                              <th className="dark:bg-gray-700"></th>
+                              <th className="dark:bg-gray-700">Título</th>
+                              <th className="dark:bg-gray-700">Autor</th>
+                              <th className="dark:bg-gray-700">Páginas</th>
+                              <th className="dark:bg-gray-700">Fecha</th>
+                              <th className="dark:bg-gray-700">Distrito</th>
+                              <th className="dark:bg-gray-700">Usuario</th>
+                              <th className="dark:bg-gray-700">Información</th>
+                           </tr>
+                        </tfoot>
+                     </table>
+                  </div>
                )}
             </div>
          </div>

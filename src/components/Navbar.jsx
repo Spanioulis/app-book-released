@@ -63,13 +63,23 @@ export const Navbar = () => {
                      </Link>
                   </li>
                   <li>
-                     <a
-                        href="#catalogo"
-                        rel="noopener noreferrer"
-                        className="text-sm lg:text-base dark:hover:text-white"
-                     >
-                        Catálogos
-                     </a>
+                     {user ? (
+                        <a
+                           href="#catalogo"
+                           rel="noopener noreferrer"
+                           className="text-sm lg:text-base dark:hover:text-white"
+                        >
+                           Catálogos
+                        </a>
+                     ) : (
+                        <a
+                           href="#catalogo"
+                           rel="noopener noreferrer"
+                           className="text-sm lg:text-base dark:hover:text-white"
+                        >
+                           Catálogo
+                        </a>
+                     )}
                   </li>
                </ul>
             </div>
@@ -105,9 +115,15 @@ export const Navbar = () => {
                   </Link>
                </li>
                <li>
-                  <a href="#catalogo" rel="noopener noreferrer" className="text-xs lg:text-sm">
-                     Catálogos
-                  </a>
+                  {user ? (
+                     <a href="#catalogo" rel="noopener noreferrer" className="text-xs lg:text-sm">
+                        Catálogos
+                     </a>
+                  ) : (
+                     <a href="#catalogo" rel="noopener noreferrer" className="text-xs lg:text-sm">
+                        Catálogo
+                     </a>
+                  )}
                </li>
             </ul>
          </div>
