@@ -1,6 +1,6 @@
 import sort from '../assets/sort.svg';
 
-const Table = ({ handleSort }) => {
+export const Table = ({ handleSort }) => {
    return (
       <thead>
          <tr>
@@ -57,5 +57,3 @@ const Table = ({ handleSort }) => {
       </thead>
    );
 };
-
-export default Table;

@@ -1,17 +1,12 @@
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore/lite';
 import { db } from '../firebase/firebaseConfig';
-
-import Modal from '../components/ReserveModal';
-import Footer from '../components/Footer';
-import SearchInput from '../components/SearchInput';
-import HeroUpload from '../components/HeroUpload';
-import CarouselGroup from '../components/CarouselGroup';
+import { CarouselGroup, Footer, HeroUpload, SearchInput, ReserveModal } from '../components';
 
 import image from '../assets/book-transparent.png';
 import '../styles/loading.css';
 
-const Landing = () => {
+export const Landing = () => {
    const [books, setBooks] = useState([]);
 
    useEffect(() => {
@@ -51,11 +46,7 @@ const Landing = () => {
                   </div>
                </div>
                <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                  <img
-                     // src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
-                     src={image}
-                     alt="mockup"
-                  />
+                  <img src={image} alt="mockup" />
                </div>
             </div>
          </section>
@@ -63,13 +54,10 @@ const Landing = () => {
             <HeroUpload />
          </section>
          <section className="mb-5 pt-20 flex flex-col" id="catalogo">
-            {/* ShowBooksLanding Card nueva */}
             <CarouselGroup books={books} />
          </section>
-         <Modal />
+         {/* <ReserveModal /> */}
          <Footer />
       </>
    );
 };
-
-export default Landing;

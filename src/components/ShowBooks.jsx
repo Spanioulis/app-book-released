@@ -1,38 +1,21 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useBooks } from '../hooks/useBooks';
-import { doc, updateDoc } from 'firebase/firestore/lite';
-import { auth, db } from '../firebase/firebaseConfig';
-import Cards from './CardsHome';
+import { auth } from '../firebase/firebaseConfig';
+import { CardsHome } from './CardsHome';
 import uuid4 from 'uuid4';
-// import '../styles/cards.css';
 
-const ShowBooks = ({ children, info }) => {
+export const ShowBooks = ({ children, info }) => {
    const [showList, setShowList] = useState([]);
    const { books, getBooks } = useBooks();
 
-   //* Elimina los NO disponibles (hecho)
-   // const sort = books.sort((a, b) => {
-   //     if (a.date < b.date) return -1;
-   //     else if (a.date > b.date) return 1;
-   //     return 0;
-   // });
-
-   // Guardar...
-   // const mostRecentBooks = available.sort(() => (Math.random() > 0.5 ? 1 : -1));
-   /* 
-    TODO -> En landing saldrán todos los libros (enable === true), a diferencia de ahora, que no se ven los del usuario.
-    */
-
-   // * Aquí está la clave para recuperar libros y/o usuarios
    useEffect(() => {
       getBooks();
    }, []);
 
    useEffect(() => {
-      // Llevar todo esto a utils, a un archivo .js (enviando la info y books)
+      //TODO -> Llevar todo esto a utils, a un archivo .js (enviando la info y books)
       if (info === 'mostReleased') {
          const available = books.filter((book) => book.available === true && book.uid !== auth.currentUser.uid);
-         // console.log('available', available);
          const mostRecentBooks = available.sort((a, b) => {
             if (a.date < b.date) return 1;
             else if (a.date > b.date) return -1;
@@ -41,8 +24,6 @@ const ShowBooks = ({ children, info }) => {
          const booksCover = mostRecentBooks.splice(0, 3);
          setShowList(booksCover);
       } else if (info === 'author') {
-         // TODO -> hacer un random de autores (hacer un array random de autores)
-         //! Copiar el código de la parte inferior, añadiendo más autores al listado
          const listAuthors = ['Stephen King', 'Patrick Rothfuss', 'Terry Pratchett', 'Paul Auster', 'Eduardo Mendoza'];
          const randomIndex = Math.floor(Math.random() * listAuthors.length);
          const author = books.filter((book) => book.available === true && book.author === listAuthors[randomIndex]);
@@ -50,7 +31,6 @@ const ShowBooks = ({ children, info }) => {
 
          setShowList(booksCover);
       } else if (info === 'district') {
-         // TODO -> hacer un random de autores (hacer un array random de autores)
          const districts = ['Ciutat Vella', 'Eixample'];
          const randomIndex = Math.floor(Math.random() * districts.length);
          const district = books.filter((book) => book.available === true && book.district === districts[randomIndex]);
@@ -58,15 +38,6 @@ const ShowBooks = ({ children, info }) => {
          setShowList(booksCover);
       }
    }, [books]);
-
-   //! Actualmente no se está usando (llevarlo a la parte del chat, cuando se haga la confirmación de reserva)
-   // const handleSubmit = async (id) => {
-   //     const bookRef = doc(db, 'books', id);
-   //     await updateDoc(bookRef, {
-   //         enable: false
-   //     });
-   //     await getBooks();
-   // };
 
    return (
       <div className="mx-auto md:mx-2 lg:mx-auto mt-5 flex flex-col md:flex-row" key={uuid4()}>
@@ -77,10 +48,9 @@ const ShowBooks = ({ children, info }) => {
          {showList.map((book, index) => {
             return (
                <div key={uuid4()}>
-                  <Cards
+                  <CardsHome
                      author={book.author}
                      district={book.district}
-                     // handleSubmit={() => handleSubmit(book.id)}
                      image={book.image}
                      index={index}
                      title={book.title}
@@ -93,5 +63,3 @@ const ShowBooks = ({ children, info }) => {
       </div>
    );
 };
-
-export default ShowBooks;

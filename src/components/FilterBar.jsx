@@ -1,7 +1,7 @@
 import React from 'react';
-import Filters from '../components/Filters';
+import { Filters } from './Filters';
 
-const FilterBar = ({ handleDistrict, handleAllBooks }) => {
+export const FilterBar = ({ handleDistrict, handleAllBooks }) => {
    return (
       <div className="text-sm lg:text-base font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
          <ul className="flex flex-wrap -mb-px">
@@ -71,5 +71,3 @@ const FilterBar = ({ handleDistrict, handleAllBooks }) => {
       </div>
    );
 };
-
-export default FilterBar;

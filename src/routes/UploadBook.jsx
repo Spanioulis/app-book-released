@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import FormButton from '../components/FormButton';
-import uuid4 from 'uuid4';
 import { db } from '../firebase/firebaseConfig';
 import { addDoc, collection } from 'firebase/firestore/lite';
 import { useUsers } from '../hooks/useUsers';
 import { useNavigate } from 'react-router-dom';
+import { FormButton } from '../components';
+
+import axios from 'axios';
+import uuid4 from 'uuid4';
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS;
 
@@ -18,17 +19,15 @@ const options = {
    second: '2-digit'
 };
 const date = new Date();
-// console.log(date.toLocaleDateString('en-US', options));
 
-const UploadBook = () => {
+export const UploadBook = () => {
+   const { currentUser, getUsers } = useUsers();
    const [loading, setLoading] = useState(false);
    const [message, setMessage] = useState('');
    const [searchAuthor, setSearchAuthor] = useState('');
    const [searchTitle, setSearchTitle] = useState('');
    const [booksAPI, setBooksAPI] = useState([]);
    const [bookSelected, setBookSelected] = useState(null);
-   // TODO-> añadir el uid y el district del usuario (sacarlo del auth...)
-   const { currentUser, getUsers } = useUsers();
    const API_TITLE = `https://www.googleapis.com/books/v1/volumes?q=intitle:${searchTitle}&${API_KEY}`;
    const API_AUTHOR = `https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchAuthor}&${API_KEY}`;
    const [book, setBook] = useState({
@@ -41,7 +40,6 @@ const UploadBook = () => {
    });
    const navigate = useNavigate();
 
-   //* Buscar coincidencias de la búsqueda con la lista de libros
    const handleSearch = (e) => {
       if (e.target.name === 'title') {
          setSearchTitle(e.target.value);
@@ -50,7 +48,6 @@ const UploadBook = () => {
       setSearchAuthor(e.target.value);
    };
 
-   //* Seleccionamos libro para pintarlo posteriormente en la 'card', el cual pasa por el filtro de abajo
    const handleSelect = (e) => {
       e.preventDefault();
       if (e.target.value !== ' ') {
@@ -116,7 +113,6 @@ const UploadBook = () => {
       }
    }, [searchAuthor, searchTitle]);
 
-   // Pintamos la información cuando se selecciona un libro, y por lo tanto 'exist'
    useEffect(() => {
       const exists = booksAPI.filter((book) => book.volumeInfo.title === bookSelected);
       if (bookSelected) {
@@ -147,8 +143,6 @@ const UploadBook = () => {
       getUsers();
    }, []);
 
-   // ****** BREAKPOINT!!!!
-
    return (
       <div className=" flex flex-col md:flex-row lg:flex-row justify-center gap-5 w-4/5 lg:w-1/2 mx-auto my-2">
          <div className="card mx-auto flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:border-gray-800 dark:bg-metal ">
@@ -161,7 +155,6 @@ const UploadBook = () => {
                   className="input input-bordered dark:font-light w-full h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   name="title"
                />
-
                <input
                   type="text"
                   placeholder="Busca por autor..."
@@ -169,7 +162,6 @@ const UploadBook = () => {
                   className="input input-bordered dark:font-light w-full mt-2 max-w-xs h-10 bg-gray-100 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   name="author"
                />
-
                <select
                   onClick={handleSelect}
                   className="select max-w-xs mt-2 h-10 dark:font-light dark:text-gray-100 bg-gray-100 dark:bg-dark placeholder:text-gray-400"
@@ -177,7 +169,6 @@ const UploadBook = () => {
                   <option key=" " value=" " name="option">
                      Encuentra tu libro...
                   </option>
-
                   {booksAPI.map((book) => {
                      return (
                         <option key={uuid4()} value={book.volumeInfo.title} name="option">
@@ -252,5 +243,3 @@ const UploadBook = () => {
       </div>
    );
 };
-
-export default UploadBook;

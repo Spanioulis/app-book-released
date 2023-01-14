@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HeroUpload = () => {
+export const HeroUpload = () => {
    return (
       <div className="hero min-h-96 pt-16 pb-0 md:pb-8  text-metal dark:text-gray-300">
          <div className="hero-content text-center">
@@ -21,5 +21,3 @@ const HeroUpload = () => {
       </div>
    );
 };
-
-export default HeroUpload;

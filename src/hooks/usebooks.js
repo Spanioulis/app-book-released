@@ -1,18 +1,13 @@
-import { useContext, useState } from 'react';
-import { UserContext } from '../context/UserProvider';
-import { addDoc, collection, doc, getDocs, query, setDoc, where } from 'firebase/firestore/lite';
+import { useState } from 'react';
+import { collection, getDocs, query, where } from 'firebase/firestore/lite';
 import { db, auth } from '../firebase/firebaseConfig';
 
 export const useBooks = () => {
-   const { user } = useContext(UserContext);
    const [userBooks, setUserBooks] = useState([]);
    const [books, setBooks] = useState([]);
    const [error, setError] = useState();
    const [loading, setLoading] = useState(false);
 
-   // Queremos leer la base de datos
-   // ! Este archivo solo será para los Books
-   // TODO -> Cambiar a getBooks
    const getBooks = async () => {
       try {
          setLoading(true);

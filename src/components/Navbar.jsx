@@ -1,13 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
-
-import useDarkTheme from './useDarkTheme';
+import { IconSVG } from './IconsSVG';
+import { useDarkTheme } from './useDarkTheme';
 
 import logo from '../assets/keyhole-logo.png';
-import IconSVG from './IconsSVG';
 
-const Navbar = () => {
+export const Navbar = () => {
    const { user, signOutUser } = useContext(UserContext);
 
    const [currentUser, setCurrentUser] = useState('');
@@ -145,7 +144,6 @@ const Navbar = () => {
                   />
                )}
             </span>
-
             {/* TODO Cambiar todo el tamaño de letra */}
             <div className="dropdown dropdown-end mt-1 ml-1 lg:ml-3">
                <label tabIndex={0} className="btn btn-ghost btn-circle avatar hover:border-slate-700">
@@ -161,12 +159,9 @@ const Navbar = () => {
                      {/* Poner foto de perfil de cada usuario...(photoURL del registro...) */}
                   </div>
                </label>
-               {/* {user.email !== null && (
-                            <p className="text-gray-400 text-sm">{user.email}</p>
-                        )} */}
                <ul
                   tabIndex={0}
-                  className="gap-2 mt-3 px-5 py-3 shadow menu menu-compact dropdown-content rounded-box w-44 bg-gray-100 dark:bg-metal "
+                  className="gap-2 mt-3 px-5 py-3 shadow menu menu-compact dropdown-content rounded-box w-44 bg-gray-100 dark:bg-metal min-w-fit"
                >
                   {user ? (
                      <>
@@ -252,9 +247,6 @@ const Navbar = () => {
                </ul>
             </div>
          </div>
-         {/* </div> */}
       </nav>
    );
 };
-
-export default Navbar;

@@ -1,4 +1,4 @@
-const CardsProfile = ({ author, district, handleDelete, image, pages, title }) => {
+export const CardsProfile = ({ author, district, handleDelete, image, pages, title }) => {
    return (
       <div className="card-profile-content  text-metal dark:text-gray-300 mx-2.5">
          <div className="card-profile">
@@ -24,7 +24,7 @@ const CardsProfile = ({ author, district, handleDelete, image, pages, title }) =
                         <span>Distrito</span>
                      </h3>
                   </div>
-                  <div class="actionBtn">
+                  <div className="actionBtn">
                      <button onClick={handleDelete}>Eliminar</button>
                   </div>
                </div>
@@ -33,5 +33,3 @@ const CardsProfile = ({ author, district, handleDelete, image, pages, title }) =
       </div>
    );
 };
-
-export default CardsProfile;

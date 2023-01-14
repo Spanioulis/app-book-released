@@ -1,31 +1,22 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '../firebase/firebaseConfig';
-import { collection, deleteDoc, doc } from 'firebase/firestore/lite';
+import { deleteDoc, doc } from 'firebase/firestore/lite';
 import { useBooks } from '../hooks/useBooks';
-
-import IconSVG from '../components/IconsSVG';
-
-import CardsProfile from '../components/CardsProfile';
+import { CardsProfile, IconSVG } from '../components';
 
 import img from '../assets/undraw_Books.png';
 
 import '../App.css';
 import '../styles/cardsProfile.css';
-// import '../styles/loading.css';
 
-// TODO -> Idea para la biblioteca o para la búsqueda:
-// https://codepen.io/Snowing/pen/JZRxOK
-
-const Profile = () => {
+export const Profile = () => {
    const { error, getBooks, loading, userBooks } = useBooks();
 
    const scrollElement = useRef(0);
-   // const [showList, setShowList] = useState([]);
 
    const scroll = (scrollOffset) => {
       scrollElement.current.scrollLeft += scrollOffset;
-      // scrollElement.current.scrollLeft = -20;
    };
 
    useEffect(() => {
@@ -66,6 +57,7 @@ const Profile = () => {
                <div className="carousel rounded-box mx-auto lg:mx-10" ref={scrollElement}>
                   {userBooks.map((book) => (
                      <CardsProfile
+                        key={book.id}
                         author={book.author}
                         district={book.district}
                         image={book.image}
@@ -81,11 +73,8 @@ const Profile = () => {
                      d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
                   />
                </button>
-               {/* <div className="flex justify-center mt-3 gap-10"></div> */}
             </div>
          )}
       </div>
    );
 };
-
-export default Profile;

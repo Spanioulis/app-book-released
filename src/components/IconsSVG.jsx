@@ -1,4 +1,4 @@
-const IconSVG = ({ className, d }) => {
+export const IconSVG = ({ className, d }) => {
    return (
       <svg
          xmlns="http://www.w3.org/2000/svg"
@@ -12,5 +12,3 @@ const IconSVG = ({ className, d }) => {
       </svg>
    );
 };
-
-export default IconSVG;

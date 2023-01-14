@@ -19,7 +19,7 @@ import 'stream-chat-react/dist/css/v2/index.css';
 
 const api_key = import.meta.env.VITE_REACT_APP_STREAM_APIKEY;
 
-const ChatStream = () => {
+export const ChatAPI = () => {
    const [userBook, setUserBook] = useState('');
 
    const { state } = useLocation();
@@ -27,11 +27,9 @@ const ChatStream = () => {
 
    const theme = localStorage.getItem('theme');
 
-   //* Recuperando información usuario del libro
    useEffect(() => {
       if (state !== null) {
          setUserBook(state.uidBook);
-         console.log('Ahora sí se carga el state -> ', state);
       } else {
          console.log('no se carga el state.uid');
       }
@@ -58,29 +56,17 @@ const ChatStream = () => {
       tokenOrProvider: userToken
    });
 
-   //TODO - Create o filter channels
-   //* El canal se debe crear cuando ya esté cargado el 'uid' (userBook con información), para poder ponerlo como miembro
-
    async function initChannel() {
-      // Creando channel...
       if (userBook !== '') {
-         // console.log('state ->', state);
-         // console.log('userBook con información ->', userBook);
          const channel = client.channel('messaging', {
             members: [user.uid, userBook]
-            // name: state.title
          });
          await channel.create();
       }
-
-      // Si hay conexión confirmada...
       if (chatClient !== null) {
          const channels = await chatClient.queryChannels(filter, sort, {
             watch: true, // this is the default
             state: true
-         });
-         channels.map((channel) => {
-            // console.log('Channel Info -> ', channel, channel.cid);
          });
       }
    }
@@ -95,7 +81,6 @@ const ChatStream = () => {
       <>
          <div className="flex flex-col sm:flex-row">
             <Chat client={chatClient} theme={theme === 'dark' ? 'str-chat__theme-dark' : 'str-chat__theme-ligth'}>
-               {/* <Chat client={chatClient} theme="messaging light"> */}
                <ChannelList filters={filter} sort={sort} />
                <Channel>
                   <Window>
@@ -110,5 +95,3 @@ const ChatStream = () => {
       </>
    );
 };
-
-export default ChatStream;

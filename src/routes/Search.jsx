@@ -4,21 +4,13 @@ import { useBooks } from '../hooks/useBooks';
 import { auth, db } from '../firebase/firebaseConfig';
 import { UserContext } from '../context/UserProvider';
 import { collection, getDocs } from 'firebase/firestore/lite';
-// import { doc, updateDoc } from 'firebase/firestore/lite';
-
-import SearchInput from '../components/SearchInput';
-import CardsSearch from '../components/CardsSearch';
-import SearchModal from '../components/SearchModal';
-import Table from '../components/Table';
-import FilterBar from '../components/FilterBar';
-// import Filters from '../components/Filters';
+import { CardsSearch, FilterBar, SearchInput, SearchModal, Table } from '../components';
 
 import img from '../assets/undraw_Not_found.png';
-
 import '../App.css';
 import '../styles/loading.css';
 
-const Search = () => {
+export const Search = () => {
    const { user } = useContext(UserContext);
    const { q } = useParams();
    const { books, getBooks } = useBooks();
@@ -28,13 +20,10 @@ const Search = () => {
    const [showAllBooks, setShowAllBooks] = useState(true);
    const [ascendSort, setAscendSort] = useState(true);
 
-   // TODO -> Realizar un 'loading'
-   //* Este filtro es para mis libros que no sean míos
-
    useEffect(() => {
       if (showAllBooks) {
          if (q !== undefined) {
-            // Este filtro es para mis TODOS los libros (check todos los libros activado)
+            //* Este filtro es para mis TODOS los libros (check todos los libros activado)
             const searchList = books.filter(
                (book) =>
                   (book.title.toLowerCase().includes(q.toLowerCase()) ||
@@ -63,10 +52,6 @@ const Search = () => {
       }
    }, [q, books, showAllBooks]);
 
-   // useEffect(() => {
-   //    getBooks();
-   // }, []);
-
    useEffect(() => {
       getBooks();
 
@@ -83,36 +68,6 @@ const Search = () => {
          getData();
       }
    }, []);
-
-   //* Lo dejamos en stand-by
-   // useEffect(() => {
-   //    if (user === null) {
-   //       console.log('q', q);
-   //       if (q !== undefined) {
-   //          const searchList = [...booksList].filter(
-   //             (book) =>
-   //                book.title.toLowerCase().includes(q.toLowerCase()) ||
-   //                book.author.toLowerCase().includes(q.toLowerCase())
-   //          );
-   //          console.log('booksList', booksList);
-   //          setBooksList(searchList);
-   //       } else {
-   //          // const searchList = booksList.filter((book) => book.author.toLowerCase().includes(q.toLowerCase()));
-   //          // console.log('booksList', booksList);
-   //          setBooksList(booksList);
-   //          setShowAllBooks(true);
-   //       }
-   //    }
-   // }, [q]);
-
-   // Reservar Libro -> Activar de nuevo en el Modal, solo cuando no esté en Mis libros
-   // const handleUpdate = async (id) => {
-   //     const bookRef = doc(db, 'books', id);
-   //     await updateDoc(bookRef, {
-   //         enable: false
-   //     });
-   //     await getBooks();
-   // };
 
    const handleAllBooks = (e) => {
       e.target.value === 'my-books' ? setShowAllBooks(false) : setShowAllBooks(true);
@@ -168,16 +123,13 @@ const Search = () => {
                      classButton="btn btn-square dark:bg-zinc-800 hover:bg-zinc-900 h-12"
                   />
                   <div className="flex gap-10 text-base justify-start">
-                     {/* TODO - poner etiqueta redonda */}
                      <span className="text-main dark:text-tahiti italic">{q}</span>
                      <p className="text-sm md:text-base">
                         Encontrado/s <span className=" font-bold">{booksList.length}</span> libro/s
                      </p>
                   </div>
                </div>
-               {/* Búsqueda actual:{' '} */}
             </div>
-            {/*  */}
             <div className="flex-1">
                {booksList.length === 0 ? (
                   <>
@@ -240,5 +192,3 @@ const Search = () => {
       </div>
    );
 };
-
-export default Search;

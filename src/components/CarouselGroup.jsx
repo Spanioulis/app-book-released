@@ -1,15 +1,14 @@
 import { useRef } from 'react';
-import CardsLanding from './CardsLanding';
-import IconSVG from './IconsSVG';
+import { CardsLanding } from './CardsLanding';
+import { IconSVG } from './IconsSVG';
+
 import uuid4 from 'uuid4';
 
-const CarouselGroup = ({ books }) => {
+export const CarouselGroup = ({ books }) => {
    const scrollElement = useRef(0);
-   // const [showList, setShowList] = useState([]);
 
    const scroll = (scrollOffset) => {
       scrollElement.current.scrollLeft += scrollOffset;
-      // scrollElement.current.scrollLeft = -20;
    };
 
    return (
@@ -45,5 +44,3 @@ const CarouselGroup = ({ books }) => {
       </div>
    );
 };
-
-export default CarouselGroup;

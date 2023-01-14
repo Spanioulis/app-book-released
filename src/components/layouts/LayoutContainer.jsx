@@ -1,11 +1,9 @@
 import { Outlet } from 'react-router-dom';
 
-const LayoutContainer = () => {
+export const LayoutContainer = () => {
    return (
       <div className="container mx-auto">
          <Outlet />
       </div>
    );
 };
-
-export default LayoutContainer;

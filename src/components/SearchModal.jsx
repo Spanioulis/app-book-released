@@ -1,12 +1,20 @@
 import { useContext } from 'react';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
-import { auth } from '../firebase/firebaseConfig';
 
-const Modal = ({ title, author, district, date, pages, image, category, description, infoLink, uidBook }) => {
+export const SearchModal = ({
+   title,
+   author,
+   district,
+   date,
+   pages,
+   image,
+   category,
+   description,
+   infoLink,
+   uidBook
+}) => {
    const { user } = useContext(UserContext);
-   // const [currentUser, setCurrentUser] = useState(false);
 
    return (
       <>
@@ -111,5 +119,3 @@ const Modal = ({ title, author, district, date, pages, image, category, descript
       </>
    );
 };
-
-export default Modal;

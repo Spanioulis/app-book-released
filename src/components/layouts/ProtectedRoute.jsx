@@ -1,8 +1,8 @@
-import { UserContext } from '../../context/UserProvider';
 import { useContext } from 'react';
+import { UserContext } from '../../context/UserProvider';
 import { Navigate, Outlet } from 'react-router-dom';
 
-const ProtectedRoute = () => {
+export const ProtectedRoute = () => {
    const { user } = useContext(UserContext);
 
    if (!user) {
@@ -14,5 +14,3 @@ const ProtectedRoute = () => {
       </div>
    );
 };
-
-export default ProtectedRoute;

@@ -1,18 +1,17 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
+import { firebaseErrors, formValidate } from '../utils';
+import { FormButton, FormError, FormInput } from '../components';
+
 import '../styles/loading.css';
 
-import { formValidate } from '../utils/formValidate';
-import { firebaseErrors } from '../utils/firebaseErrors';
-import FormError from '../components/FormError';
-import FormInput from '../components/FormInput';
-import FormButton from '../components/FormButton';
+export const Login = () => {
+   const { loginUser } = useContext(UserContext);
 
-const Login = () => {
    const [loading, setLoading] = useState(false);
-   const { loginUser, loginWithGoogle } = useContext(UserContext);
+
    const navigate = useNavigate();
    const {
       register,
@@ -40,10 +39,6 @@ const Login = () => {
       }
    };
 
-   // const handleGoogleLogin = async () => {
-   //     await loginWithGoogle();
-   // };
-
    return loading ? (
       <div className="spinner"></div>
    ) : (
@@ -69,7 +64,7 @@ const Login = () => {
                      label="Password"
                      placeholder="Ingrese password"
                      error={errors.password}
-                     // button "ver contraseña"
+                     // TODO -> button "ver contraseña"
                      {...register('password', {
                         minLength,
                         validate: validateTrim
@@ -81,13 +76,9 @@ const Login = () => {
                      text="Login"
                      type="submit"
                   />
-                  {/* ¿No tienes cuenta? Regístrate - Mirar su correcto funcionamiento */}
-                  {/* <button onClick={login}>Regístrate...</button> */}
                </div>
             </form>
          </div>
       </>
    );
 };
-
-export default Login;

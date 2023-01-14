@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 
-const Footer = () => {
+export const Footer = () => {
    return (
       <footer className="footer footer-center p-10 text-base-content dark:text-gray-400 rounded">
          <div className="grid grid-flow-col gap-4">
-            {/* Ir a ruta de Edmundo */}
             <Link to="/edmundo" className="link link-hover">
                ¿Por qué Ed Mundo?
             </Link>
@@ -57,5 +56,3 @@ const Footer = () => {
       </footer>
    );
 };
-
-export default Footer;

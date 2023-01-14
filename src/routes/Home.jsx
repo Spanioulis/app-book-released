@@ -1,24 +1,12 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { UserContext } from '../context/UserProvider';
 import { useBooks } from '../hooks/useBooks';
-import '../styles/loading.css';
+import { Footer, HeroUpload, ReserveModal, SearchInput, ShowBooks } from '../components';
+
 import image from '../assets/book-transparent.png';
-import Modal from '../components/ReserveModal';
-import Footer from '../components/Footer';
-import SearchInput from '../components/SearchInput';
-import ShowBooks from '../components/ShowBooks';
-import HeroUpload from '../components/HeroUpload';
+import '../styles/loading.css';
 
-const Home = () => {
-   const { user } = useContext(UserContext);
+export const Home = () => {
    // TODO -> useState con los libros en local (obtener info de local, no del get)
-   /*     Si ya tenemos el error en Home, podríams hacer esto:
-    const {data, error: dataError, loading} = useBooks(); */
-   // TODO -> Aquí descartaremos los propios libros del usuario logeado (!== userBooks) - Eso lo diferenciará del "home"
    const { error, loading } = useBooks();
-
-   // Solo queremos que se ejecute una vez, por eso no ponemos dependencia. Obtenemos la información del data
 
    if (loading) return <div className="spinner"></div>;
    if (error) return <p>{error}</p>;
@@ -46,11 +34,7 @@ const Home = () => {
                   </div>
                </div>
                <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                  <img
-                     // src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
-                     src={image}
-                     alt="mockup"
-                  />
+                  <img src={image} alt="mockup" />
                </div>
             </div>
          </section>
@@ -64,10 +48,8 @@ const Home = () => {
             <ShowBooks info="author">Por autor</ShowBooks>
             <ShowBooks info="district">Por distrito</ShowBooks>
          </section>
-         <Modal />
+         <ReserveModal />
          <Footer />
       </>
    );
 };
-
-export default Home;

@@ -1,8 +1,7 @@
-import React from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import IconSVG from './IconsSVG';
+import { Link } from 'react-router-dom';
+import { IconSVG } from './IconsSVG';
 
-const Cards = ({ image, title, author, district, handleUpdate, index, uidBook, currentUser }) => {
+export const CardsHome = ({ image, title, author, district, index, uidBook, currentUser }) => {
    return (
       <div
          className="group card card-home card-side w-64 lg:w-72 h-52 bg-silver dark:bg-dark dark:text-gray-300 hover:scale-110"
@@ -36,5 +35,3 @@ const Cards = ({ image, title, author, district, handleUpdate, index, uidBook, c
       </div>
    );
 };
-
-export default Cards;

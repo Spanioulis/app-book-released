@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import uuid4 from 'uuid4';
+
 import info from '../assets/info.svg';
 
-const CardsSearch = ({
+export const CardsSearch = ({
    author,
    category,
    date,
@@ -19,13 +19,11 @@ const CardsSearch = ({
    uid
 }) => {
    const [username, setUsername] = useState('');
-   // const impar = index % 2 !== 0;
 
    useEffect(() => {
       if (email) {
          let index = email.indexOf('@');
          const username = email.substring(0, index);
-         // const usernameUppercase = username.charAt(0).toUpperCase() + username.slice(1);
          setUsername(username);
       } else {
          setUsername('');
@@ -63,5 +61,3 @@ const CardsSearch = ({
       </tbody>
    );
 };
-
-export default CardsSearch;

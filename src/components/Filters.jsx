@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DistrictsFilter = ({ children, handleClick, value }) => {
+export const Filters = ({ children, handleClick, value }) => {
    return (
       <li>
          <button onClick={handleClick} className="active:text-main focus:text-main" value={value}>
@@ -9,5 +7,3 @@ const DistrictsFilter = ({ children, handleClick, value }) => {
       </li>
    );
 };
-
-export default DistrictsFilter;

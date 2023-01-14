@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const SearchInput = ({ text, placeholder, classInput, classButton }) => {
+export const SearchInput = ({ text, placeholder, classInput, classButton }) => {
    const [search, setSearch] = useState('');
    const navigate = useNavigate();
-   // const [params, setParams] = useSearchParams();
 
    const handleInputSearch = (e) => {
       e.preventDefault();
@@ -12,18 +11,13 @@ const SearchInput = ({ text, placeholder, classInput, classButton }) => {
    };
 
    const handleSearch = (e) => {
-      // if (e.key === 'Enter' && e.target.value !== '') {
       if (e.key === 'Enter') {
-         // navigate('/search', { state: search, replace: true });
          navigate(`/search/${search}`);
-         // setParams({ q: search });
-         // setSearch('');
       }
    };
 
    const handleClick = () => {
       navigate(`/search/${search}`);
-      // setSearch('');
    };
 
    return (
@@ -59,5 +53,3 @@ const SearchInput = ({ text, placeholder, classInput, classButton }) => {
       </>
    );
 };
-
-export default SearchInput;

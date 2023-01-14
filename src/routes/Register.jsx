@@ -1,21 +1,15 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/UserProvider';
-import '../styles/loading.css';
-
-import { firebaseErrors } from '../utils/firebaseErrors';
-import { formValidate } from '../utils/formValidate';
-
-import FormError from '../components/FormError';
-import FormInput from '../components/FormInput';
-// import FormLabel from '../components/FormButton';
-import FormButton from '../components/FormButton';
-import FormSelect from '../components/FormSelect';
 import { addDoc, collection } from 'firebase/firestore/lite';
 import { auth, db } from '../firebase/firebaseConfig';
+import { firebaseErrors, formValidate } from '../utils';
+import { FormButton, FormError, FormInput, FormSelect } from '../components';
 
-const Register = () => {
+import '../styles/loading.css';
+
+export const Register = () => {
    const [loading, setLoading] = useState(false);
    const { registerUser } = useContext(UserContext);
    const navigate = useNavigate();
@@ -28,29 +22,13 @@ const Register = () => {
    } = useForm();
    const { required, patternEmail, minLength, validateTrim, validateEquals } = formValidate();
 
-   // Quitar cuando no nos sirva
-   // const [registerList, setRegisterList] = useState(
-   //     JSON.parse(localStorage.getItem('Register')) || []
-   // );
-
    const onSubmit = async (data) => {
       const { email, password, district, username } = data;
       const usersCollectionRef = collection(db, 'users');
 
-      console.log({ email, password, district });
-      //TODO -> Hay que añadir el auth.currentUser.uid para relacionarlo ;)
-      // await addDoc(usersCollectionRef, {});
-      //* {email: 'a@a.com', password: '123456', district: 'Sant Andreu'}
-
-      // Ver si necesitamos esta información más adelante (parte FRONTEND)
-      // Para registrar y relacionar districto con el usuario, lo que podemos hacer es un array de objetos donde se registrará por la parte del Frontend todos los usuarios con su respectivo distrito
-      //! Quitarlo cuando no nos sirva (contacto con backend)
-      // setRegisterList([{ email, password, district }, ...registerList]);
-
       try {
          setLoading(true);
          await registerUser(email, password, username);
-         // await db.collection('users').doc().set({ email, password, district });
          await addDoc(usersCollectionRef, {
             email,
             district,
@@ -58,8 +36,6 @@ const Register = () => {
             username,
             uid: auth.currentUser.uid
          });
-         console.log('...registro COMPLETADO!');
-         console.log(auth.currentUser.uid);
          navigate('/home');
       } catch (error) {
          console.log('code...añadir a firebaseErrors los que vayan saliendo...', error.code);
@@ -71,11 +47,6 @@ const Register = () => {
          setLoading(false);
       }
    };
-
-   //! ¿NECESARIO? Ya tenemos contacto con el backend
-   // useEffect(() => {
-   //     localStorage.setItem('Register', JSON.stringify(registerList));
-   // }, [registerList]);
 
    return (
       <>
@@ -94,7 +65,6 @@ const Register = () => {
                      })}
                   />
                   <FormError error={errors.email} />
-                  {/* TODO -> Añadir el 'username ya registrado' */}
                   <FormInput
                      type="text"
                      label="Username"
@@ -138,7 +108,6 @@ const Register = () => {
                         }
                      })}
                   />
-
                   <FormError error={errors.district} />
                   {loading ? (
                      <button className="btn text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-md shadow-blue-500/50 dark:shadow-md dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-3 w-min loading mr-5 my-5" />
@@ -155,5 +124,3 @@ const Register = () => {
       </>
    );
 };
-
-export default Register;
