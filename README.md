@@ -71,7 +71,7 @@ This is my first project as a frontend developer. I have captured all the knowle
 - Vite </br>
 - React Hook Form </br>
 
-- Get Stream Chat API]</br>
+- Get Stream Chat API</br>
 - Google Books APIs </br>
 
 - Firebase </br>
