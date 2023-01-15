@@ -65,17 +65,17 @@ This is my first project as a frontend developer. I have captured all the knowle
     <img src="https://skillicons.dev/icons?i=firebase" />
   </a>
 </p>
-<div>
+
 - ReactJS </br>
 - HTML5, CSS3, Tailwind </br>
 - Vite </br>
 - React Hook Form </br>
 
-- [Get Stream io Chat API](https://getstream.io/) </br>
+- Get Stream Chat API]</br>
 - Google Books APIs </br>
 
 - Firebase </br>
-</div>
+
 
 <!-- CONTRIBUTING -->
 <!--## Contributing
@@ -93,10 +93,11 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>-->
 
+
 <!-- CONTACT -->
 ## Contact
 
-Spanioulis (Sergio Paniagua Sánchez) - [Linkedin](https://twitter.com/your_username) - pani77sps@gmail.com
+Spanioulis (Sergio Paniagua Sánchez) - [Linkedin](https://www.linkedin.com/in/sergio-paniagua-sanchez/) - pani77sps@gmail.com
 
 Project Link: [https://github.com/Spanioulis/app-book-released](https://github.com/Spanioulis/app-book-released)
 
