@@ -1,15 +1,14 @@
 <!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <a href="https://ed-mundo.netlify.app/">
-    <img src="src/assets/keyhole-logo.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/keyhole-logo.png" alt="Logo" width="60" height="60">
   </a>
 
   <h2 align="center">Ed Mundo!</h2>
 
-  <h3 align="center">
-    <br />
-    <a href="https://ed-mundo.netlify.app/">View Demo</a>
+<h3 align="left">
+ <br />
+    View Demo <a href="https://ed-mundo.netlify.app/">here</a>
   </p>
 </div>
 
@@ -41,7 +40,7 @@ This is my first project as a frontend developer. I have captured all the knowle
 
 ### Technologies used:
 
-<p align="center">
+<p align="left">
   <a href="https://beta.reactjs.org/">
     <img src="https://skillicons.dev/icons?i=react" />
   </a>
@@ -68,15 +67,17 @@ This is my first project as a frontend developer. I have captured all the knowle
   </a>
 </p>
 <div>
-<p>- ReactJS </p>
-<p>- HTML5, CSS3, Tailwind</p>
-<p>- Vite</p>
-<p>- React Hook Form</p>
-   <a href="https://getstream.io/">
-    Get Stream io Chat API
-  </a>
-<p>- Google Books APIs</p>
-<p>- Firebase</p>
+- ReactJS
+- HTML5, CSS3, Tailwind
+- Vite
+- React Hook Form
+
+- [https://getstream.io/](Get Stream io Chat API)
+- [Get Stream io Chat API](https://getstream.io/)
+  
+- Google Books APIs</p>
+
+- Firebase
 </div>
 
 <!-- CONTRIBUTING -->
@@ -95,19 +96,13 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>-->
 
-
 <!-- CONTACT -->
 ## Contact
 
-  <p align="center">
-Spanioulis (Sergio Paniagua Sánchez)
-</br>
-<a href="mailto:pani77sps@gmail.com">pani77sps@gmail.com</a>
-    ·
-    <a href="https://www.linkedin.com/in/sergio-paniagua-sanchez/">https://www.linkedin.com/in/sergio-paniagua-sanchez/</a>
-  </p>
+Spanioulis (Sergio Paniagua Sánchez) - [Linkedin](https://twitter.com/your_username) - pani77sps@gmail.com
 
 Project Link: [https://github.com/Spanioulis/app-book-released](https://github.com/Spanioulis/app-book-released)
+
 
 <!-- ACKNOWLEDGMENTS -->
 <!--## Acknowledgments
