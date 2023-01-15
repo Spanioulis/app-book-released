@@ -1,8 +1,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+![image](https://github.com/Spanioulis/app-book-released/blob/development/src/assets/keyhole-logo.png)
   <a href="https://ed-mundo.netlify.app/">
-    <img src="assets/keyhole-logo.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/keyhole-logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h2 align="center">Ed Mundo!</h2>
