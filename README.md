@@ -1,15 +1,14 @@
 <!-- PROJECT LOGO -->
 <div align="center">
   <a href="https://ed-mundo.netlify.app/">
-    <img src="src/assets/keyhole-logo.png" alt="Logo" width="60" height="60">
+    <img src="src/assets/keyhole-logo.png" alt="Logo" width="50" height="50">
   </a>
-
   <h2 align="center">Ed Mundo!</h2>
 
-<h3 align="left">
- <br />
+ <h3 align="left">
     View Demo <a href="https://ed-mundo.netlify.app/">here</a>
-  </p>
+ </h3>
+ <br />
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -19,7 +18,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#technologies-used">Technologies used</a></li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -67,17 +66,15 @@ This is my first project as a frontend developer. I have captured all the knowle
   </a>
 </p>
 <div>
-- ReactJS
-- HTML5, CSS3, Tailwind
-- Vite
-- React Hook Form
+- ReactJS </br>
+- HTML5, CSS3, Tailwind </br>
+- Vite </br>
+- React Hook Form </br>
 
-- [https://getstream.io/](Get Stream io Chat API)
-- [Get Stream io Chat API](https://getstream.io/)
-  
-- Google Books APIs</p>
+- [Get Stream io Chat API](https://getstream.io/) </br>
+- Google Books APIs </br>
 
-- Firebase
+- Firebase </br>
 </div>
 
 <!-- CONTRIBUTING -->
