@@ -1,7 +1,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-![image](https://github.com/Spanioulis/app-book-released/blob/development/src/assets/keyhole-logo.png)
   <a href="https://ed-mundo.netlify.app/">
     <img src="src/assets/keyhole-logo.png" alt="Logo" width="80" height="80">
   </a>
@@ -40,8 +39,6 @@ Ed Mundo is a one-on-one book sharing app. You can "release" those books that yo
 
 This is my first project as a frontend developer. I have captured all the knowledge that I have acquired this last year in the IT Academy Barcelona Bootcamp, trying to make a functional, responsive website that is pleasant and functional for the end user.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Technologies used:
 
 <p align="center">
@@ -69,9 +66,6 @@ This is my first project as a frontend developer. I have captured all the knowle
   <a href="https://firebase.google.com/">
     <img src="https://skillicons.dev/icons?i=firebase" />
   </a>
-   <a href="">
-    <img src="https://skillicons.dev/icons?i=" />
-  </a>
 </p>
 <div>
 <p>- ReactJS </p>
@@ -84,8 +78,6 @@ This is my first project as a frontend developer. I have captured all the knowle
 <p>- Google Books APIs</p>
 <p>- Firebase</p>
 </div>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 <!--## Contributing
@@ -116,8 +108,6 @@ Spanioulis (Sergio Paniagua Sánchez)
   </p>
 
 Project Link: [https://github.com/Spanioulis/app-book-released](https://github.com/Spanioulis/app-book-released)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 <!--## Acknowledgments
