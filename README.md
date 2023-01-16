@@ -22,7 +22,6 @@
       </ul>
     </li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -96,20 +95,6 @@ This is my first project as a frontend developer. I have captured all the knowle
 - Google Books APIs
 - Firebase
 
-<!-- ACKNOWLEDGMENTS -->
-<!--## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
 
 <!-- CONTACT -->
 ## Contact
@@ -117,6 +102,5 @@ Use this space to list resources you find helpful and would like to give credit 
 Spanioulis (Sergio Paniagua Sánchez) - [Linkedin](https://www.linkedin.com/in/sergio-paniagua-sanchez/) - pani77sps@gmail.com
 
 Project Link: [https://github.com/Spanioulis/app-book-released](https://github.com/Spanioulis/app-book-released)
-
 
 
