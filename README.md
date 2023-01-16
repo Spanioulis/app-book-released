@@ -18,10 +18,10 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#goals">Goals for this project</a></li>
         <li><a href="#technologies-used">Technologies used</a></li>
       </ul>
     </li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -30,11 +30,35 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![landing](https://user-images.githubusercontent.com/97700906/212698789-5d6067eb-ff87-4387-9801-55ddb7c9856d.gif)
 
 Ed Mundo is a one-on-one book sharing app. You can "release" those books that you have already read, search for all the available books or for the districts that interest you the most (near your home or your work), and contact users through the chat implemented in the app. Check your book carousel on your profile. Proximity books, for a sustainable exchange with the environment.
 
 This is my first project as a frontend developer. I have captured all the knowledge that I have acquired this last year in the IT Academy Barcelona Bootcamp, trying to make a functional, responsive website that is pleasant and functional for the end user.
+
+<div align="center">
+![landing](https://user-images.githubusercontent.com/97700906/212698789-5d6067eb-ff87-4387-9801-55ddb7c9856d.gif)
+  <p align="center">Landing Page</p>
+![search](https://user-images.githubusercontent.com/97700906/212700507-bfa73c70-b27c-46ef-9a76-c3c6c50ec5d4.gif)
+  <p align="center">Search</p>
+![chat](https://user-images.githubusercontent.com/97700906/212702509-802bed68-7627-439f-af6a-583c86c533ae.gif)
+  <p align="center">Chat</p>
+  ![profile](https://user-images.githubusercontent.com/97700906/212706264-ef4c5451-c984-4b1a-98fc-9dbb49eb9b7c.gif)
+  <p align="center">Profile (<i>books carousel</i>)</p>
+  ![upload](https://user-images.githubusercontent.com/97700906/212707271-d8167af8-f77e-4f92-962f-2f34f19ec947.gif)
+  <p align="center">Upload book</p>
+</div>
+
+
+## Goals for this project:
+
+- How to create and use [Firebase Authentication](https://firebase.google.com/) & [Cloud Firestore](https://firebase.google.com/docs/firestore)
+- How to create and use [Context](https://reactjs.org/docs/context.html)
+- How to use [Fowarding Refs](https://reactjs.org/docs/forwarding-refs.html)
+- How to create and use [React Hook Form](https://react-hook-form.com/)
+- How to use [Tailwind CSS](https://reactjs.org/docs/higher-order-components.html) with ReactJS, [DaisyUI](https://daisyui.com/) and [Flowbite](https://flowbite.com/)
+- How to use [Chat Stream API](https://getstream.io/chat/)
+- How to use [Google Books API](https://developers.google.com/books)
+
 
 ### Technologies used:
 
@@ -75,22 +99,6 @@ This is my first project as a frontend developer. I have captured all the knowle
 
 - Firebase </br>
 
-
-<!-- CONTRIBUTING -->
-<!--## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>-->
 
 
 <!-- CONTACT -->
