@@ -38,13 +38,13 @@ This is my first project as a frontend developer. I have captured all the knowle
 <div align="center">
   <img src="https://user-images.githubusercontent.com/97700906/212698789-5d6067eb-ff87-4387-9801-55ddb7c9856d.gif" alt="Logo" width="100%" height="100%">
   <p align="center">Landing Page</p>
-![search](https://user-images.githubusercontent.com/97700906/212700507-bfa73c70-b27c-46ef-9a76-c3c6c50ec5d4.gif)
+  <img src="https://user-images.githubusercontent.com/97700906/212700507-bfa73c70-b27c-46ef-9a76-c3c6c50ec5d4.gif" alt="Logo" width="100%" height="100%">
   <p align="center">Search</p>
-![chat](https://user-images.githubusercontent.com/97700906/212702509-802bed68-7627-439f-af6a-583c86c533ae.gif)
+  <img src="https://user-images.githubusercontent.com/97700906/212702509-802bed68-7627-439f-af6a-583c86c533ae.gif" alt="Logo" width="100%" height="100%">
   <p align="center">Chat</p>
-  ![profile](https://user-images.githubusercontent.com/97700906/212706264-ef4c5451-c984-4b1a-98fc-9dbb49eb9b7c.gif)
+  <img src="https://user-images.githubusercontent.com/97700906/212706264-ef4c5451-c984-4b1a-98fc-9dbb49eb9b7c.gif" alt="Logo" width="100%" height="100%">
   <p align="center">Profile (<i>books carousel</i>)</p>
-  ![upload](https://user-images.githubusercontent.com/97700906/212707271-d8167af8-f77e-4f92-962f-2f34f19ec947.gif)
+  <img src="https://user-images.githubusercontent.com/97700906/212707271-d8167af8-f77e-4f92-962f-2f34f19ec947.gif" alt="Logo" width="100%" height="100%">
   <p align="center">Upload book</p>
 </div>
 
@@ -93,20 +93,9 @@ This is my first project as a frontend developer. I have captured all the knowle
 - HTML5, CSS3, Tailwind
 - Vite
 - React Hook Form
-
 - Get Stream Chat API
 - Google Books APIs
-
 - Firebase
-
-
-<!-- CONTACT -->
-## Contact
-
-Spanioulis (Sergio Paniagua Sánchez) - [Linkedin](https://www.linkedin.com/in/sergio-paniagua-sanchez/) - pani77sps@gmail.com
-
-Project Link: [https://github.com/Spanioulis/app-book-released](https://github.com/Spanioulis/app-book-released)
-
 
 <!-- ACKNOWLEDGMENTS -->
 <!--## Acknowledgments
@@ -122,4 +111,13 @@ Use this space to list resources you find helpful and would like to give credit 
 * [Font Awesome](https://fontawesome.com)
 * [React Icons](https://react-icons.github.io/react-icons/search)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>-->
+
+<!-- CONTACT -->
+## Contact
+
+Spanioulis (Sergio Paniagua Sánchez) - [Linkedin](https://www.linkedin.com/in/sergio-paniagua-sanchez/) - pani77sps@gmail.com
+
+Project Link: [https://github.com/Spanioulis/app-book-released](https://github.com/Spanioulis/app-book-released)
+
+
+
