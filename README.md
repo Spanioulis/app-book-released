@@ -18,7 +18,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#goals">Goals for this project</a></li>
+        <li><a href="#goals-for-this-project">Goals for this project</a></li>
         <li><a href="#technologies-used">Technologies used</a></li>
       </ul>
     </li>
@@ -35,9 +35,8 @@ Ed Mundo is a one-on-one book sharing app. You can "release" those books that yo
 
 This is my first project as a frontend developer. I have captured all the knowledge that I have acquired this last year in the IT Academy Barcelona Bootcamp, trying to make a functional, responsive website that is pleasant and functional for the end user.
 
-![landing](https://user-images.githubusercontent.com/97700906/212698789-5d6067eb-ff87-4387-9801-55ddb7c9856d.gif)
-
 <div align="center">
+  <img src="https://user-images.githubusercontent.com/97700906/212698789-5d6067eb-ff87-4387-9801-55ddb7c9856d.gif" alt="Logo" width="100%" height="100%">
   <p align="center">Landing Page</p>
 ![search](https://user-images.githubusercontent.com/97700906/212700507-bfa73c70-b27c-46ef-9a76-c3c6c50ec5d4.gif)
   <p align="center">Search</p>
