@@ -30,8 +30,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![landing](https://user-images.githubusercontent.com/97700906/212698789-5d6067eb-ff87-4387-9801-55ddb7c9856d.gif)
 
 Ed Mundo is a one-on-one book sharing app. You can "release" those books that you have already read, search for all the available books or for the districts that interest you the most (near your home or your work), and contact users through the chat implemented in the app. Check your book carousel on your profile. Proximity books, for a sustainable exchange with the environment.
 
