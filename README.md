@@ -1,6 +1,6 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-  <a href="https://ed-mundo.netlify.app/">
+  <a href="https://ed-mundo.netlify.app/" target="_blank" rel="noopener noreferrer">
     <img src="src/assets/keyhole-logo.png" alt="Logo" width="50" height="50">
   </a>
   <h1 align="center">Ed Mundo!</h1>
