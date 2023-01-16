@@ -3,12 +3,11 @@
   <a href="https://ed-mundo.netlify.app/">
     <img src="src/assets/keyhole-logo.png" alt="Logo" width="50" height="50">
   </a>
-  <h2 align="center">Ed Mundo!</h2>
+  <h1 align="center">Ed Mundo!</h1>
 
  <h3 align="left">
-    View Demo <a href="https://ed-mundo.netlify.app/">here</a>
+   View Demo <a href="https://ed-mundo.netlify.app/">here</a>
  </h3>
- <br />
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -35,15 +34,15 @@ Ed Mundo is a one-on-one book sharing app. You can "release" those books that yo
 
 This is my first project as a frontend developer. I have captured all the knowledge that I have acquired this last year in the IT Academy Barcelona Bootcamp, trying to make a functional, responsive website that is pleasant and functional for the end user.
 
-<div align="center">
+<div align="center"></br>
   <img src="https://user-images.githubusercontent.com/97700906/212698789-5d6067eb-ff87-4387-9801-55ddb7c9856d.gif" alt="Logo" width="100%" height="100%">
-  <p align="center">Landing Page</p>
+  <p align="center">Landing Page</p></br>
   <img src="https://user-images.githubusercontent.com/97700906/212700507-bfa73c70-b27c-46ef-9a76-c3c6c50ec5d4.gif" alt="Logo" width="100%" height="100%">
-  <p align="center">Search</p>
+  <p align="center">Search</p></br>
   <img src="https://user-images.githubusercontent.com/97700906/212702509-802bed68-7627-439f-af6a-583c86c533ae.gif" alt="Logo" width="100%" height="100%">
-  <p align="center">Chat</p>
+  <p align="center">Chat</p></br>
   <img src="https://user-images.githubusercontent.com/97700906/212706264-ef4c5451-c984-4b1a-98fc-9dbb49eb9b7c.gif" alt="Logo" width="100%" height="100%">
-  <p align="center">Profile (<i>books carousel</i>)</p>
+  <p align="center">Profile (<i>books carousel</i>)</p></br>
   <img src="https://user-images.githubusercontent.com/97700906/212707271-d8167af8-f77e-4f92-962f-2f34f19ec947.gif" alt="Logo" width="100%" height="100%">
   <p align="center">Upload book</p>
 </div>
