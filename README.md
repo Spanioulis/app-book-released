@@ -36,7 +36,7 @@ Ed Mundo is a one-on-one book sharing app. You can "release" those books that yo
 This is my first project as a frontend developer. I have captured all the knowledge that I have acquired this last year in the IT Academy Barcelona Bootcamp, trying to make a functional, responsive website that is pleasant and functional for the end user.
 
 <div align="center">
-![landing](https://user-images.githubusercontent.com/97700906/212698789-5d6067eb-ff87-4387-9801-55ddb7c9856d.gif)
+<p>![landing](https://user-images.githubusercontent.com/97700906/212698789-5d6067eb-ff87-4387-9801-55ddb7c9856d.gif)</p>
   <p align="center">Landing Page</p>
 ![search](https://user-images.githubusercontent.com/97700906/212700507-bfa73c70-b27c-46ef-9a76-c3c6c50ec5d4.gif)
   <p align="center">Search</p>
@@ -89,16 +89,15 @@ This is my first project as a frontend developer. I have captured all the knowle
   </a>
 </p>
 
-- ReactJS </br>
-- HTML5, CSS3, Tailwind </br>
-- Vite </br>
-- React Hook Form </br>
+- ReactJS
+- HTML5, CSS3, Tailwind
+- Vite
+- React Hook Form
 
-- Get Stream Chat API</br>
-- Google Books APIs </br>
+- Get Stream Chat API
+- Google Books APIs
 
-- Firebase </br>
-
+- Firebase
 
 
 <!-- CONTACT -->
