@@ -4,7 +4,7 @@ export const FormSelect = forwardRef(({ onChange, onBlur, name, label }, ref) =>
    <>
       <label>{label}</label>
       <select
-         className="select select-bordered w-full max-w-xs mt-5 dark:text-gray-300 dark:bg-gray-600"
+         className="select select-bordered placeholder:font-light font-bold mx-3 md:mx-0 max-w-xs mt-5 dark:text-gray-300 dark:bg-gray-600"
          name={name}
          ref={ref}
          onChange={onChange}

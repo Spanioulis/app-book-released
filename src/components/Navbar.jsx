@@ -33,9 +33,9 @@ export const Navbar = () => {
    }, [user]);
 
    return (
-      <nav className="navbar text-metal dark:text-gray-300 py-5 px-0 dark:bg-stone-900 dark:bg-opacity-30 sticky top-0 z-50 backdrop-blur-sm">
+      <nav className="navbar max-w-screen-2xl mx-auto text-metal dark:text-gray-300 py-5 px-0 dark:bg-stone-900 dark:bg-opacity-30 sticky top-0 z-50 backdrop-blur-sm">
          {/* START */}
-         <div className="navbar-start flex-1 order-1 sm:order-2 justify-center gap-2 md:gap-4 text-base ml-3 lg:ml-10">
+         <div className="navbar-start order-1 sm:order-2 justify-center gap-0 sm:gap-2 md:gap-4 text-base ml-3 lg:ml-10">
             <div className="dropdown">
                <label tabIndex={0} className="btn btn-ghost md:hidden">
                   <svg
@@ -102,7 +102,7 @@ export const Navbar = () => {
             </div>
          </div>
          {/* CENTER */}
-         <div className="navbar-center hidden md:flex flex-1 ml-3 lg:ml-10 order-1 sm:order-2 justify-center gap-2 md:gap-4 text-base">
+         <div className="navbar-center hidden md:flex ml-3 lg:ml-10 order-1 sm:order-2 justify-center gap-2 md:gap-4 text-base">
             <ul className="menu menu-horizontal px-1">
                <li>
                   <a href="#" rel="noopener noreferrer" className="text-sm">
@@ -128,7 +128,7 @@ export const Navbar = () => {
             </ul>
          </div>
          {/* END */}
-         <div className="navbar-end flex-1 mr-3 lg:mr-10 justify-end order-3">
+         <div className="navbar-end mr-3 lg:mr-10 justify-end order-3">
             <div className="tooltip tooltip-bottom" data-tip="Search">
                <Link to="/search">
                   <IconSVG

@@ -50,8 +50,8 @@ export const Register = () => {
 
    return (
       <>
-         <h1 className="text-2xl mx-auto my-5 text-center font-bold dark:text-gray-300">Register</h1>
-         <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:border-gray-800 dark:bg-metal ">
+         <h1 className="text-2xl mx-auto my-3 sm:my-10 text-center font-bold dark:text-gray-300">Register</h1>
+         <div className="mx-5 sm:mx-auto card flex-shrink-0 max-w-sm shadow-2xl bg-base-100 dark:border-gray-800 dark:bg-metal">
             <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center">
                <div className="form-control w-full max-w-xs">
                   <FormInput
@@ -110,12 +110,12 @@ export const Register = () => {
                   />
                   <FormError error={errors.district} />
                   {loading ? (
-                     <button className="btn text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-md shadow-blue-500/50 dark:shadow-md dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-3 w-min loading mr-5 my-5" />
+                     <button className="btn text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-md shadow-blue-500/50 dark:shadow-md dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-3 w-min loading mx-3 md:mx-0 my-5" />
                   ) : (
                      <FormButton
                         text="Registrar"
                         type="submit"
-                        className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-md shadow-blue-500/50 dark:shadow-md dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 my-5 w-min"
+                        className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-md shadow-blue-500/50 dark:shadow-md dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-3 md:mx-0 my-5 w-min"
                      />
                   )}
                </div>

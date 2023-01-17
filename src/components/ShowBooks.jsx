@@ -40,10 +40,11 @@ export const ShowBooks = ({ children, info }) => {
    }, [books]);
 
    return (
-      <div className="mx-auto md:mx-2 lg:mx-auto mt-5 flex flex-col md:flex-row" key={uuid4()}>
-         {/* <div className="my-auto w-10"> */}
+      <div className="mx-auto md:mx-2 lg:mx-auto mt-10 md:mt-5 flex flex-col md:flex-row" key={uuid4()}>
          <div className="sm:mx-auto md:mx-none md:mt-5 w-full md:w-10 md:flex md:justify-center" key={children}>
-            <p className="md:-rotate-90 text-sm lg:text-base text-center mb-2 md:pt-14">{children}</p>
+            <p className="md:-rotate-90 text-sm lg:text-base text-center mb-2 md:pt-14 font-semibold text-main dark:text-tahiti">
+               {children}
+            </p>
          </div>
          {showList.map((book, index) => {
             return (

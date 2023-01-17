@@ -10,8 +10,8 @@ export const Edmundo = () => {
                   (traición) que no vienen al caso.
                </p>
                <p className="py-6 font-light">
-                  ¿Cuántos libros tenemos en nuestras estanterías que hemos leído únicamente una vez o que jamás
-                  leeremos? ¿Quieres llenar cajas de estos libros el día final (el de la mudanza)?
+                  ¿Cuántos libros "encarcelados" tenemos en nuestras estanterías que hemos leído únicamente una vez o
+                  que jamás leeremos? ¿Quieres llenar cajas de estos libros el día final (el de la mudanza)?
                </p>
                <p className="py-6 font-light">
                   ¿Por qué no cambiarlos con otros usuarios/lectores y que la cultura corra? En el 2021 se imprimieron

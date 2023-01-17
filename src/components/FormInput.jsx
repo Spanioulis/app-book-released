@@ -7,13 +7,13 @@ export const FormInput = forwardRef(({ label, type, placeholder, onChange, onBlu
 
    return (
       <>
-         <label className="label mt-2">
+         <label className="label mt-2 mx-3 md:mx-0">
             <span className="label-text dark:text-white" ref={ref}>
                {label}
             </span>
          </label>
          <input
-            className="input input-bordered dark:font-light w-full h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+            className="input input-bordered mx-3 md:mx-0 placeholder:font-light font-bold dark:font-normal h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
             name={name}
             onBlur={onBlur}
             onChange={onChange}

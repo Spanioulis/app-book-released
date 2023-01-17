@@ -4,7 +4,7 @@ import { IconSVG } from './IconsSVG';
 export const CardsHome = ({ image, title, author, district, index, uidBook, currentUser }) => {
    return (
       <div
-         className="group card card-home card-side w-64 lg:w-72 h-52 bg-silver dark:bg-dark dark:text-gray-300 hover:scale-110"
+         className="group card card-home card-side w-64 lg:w-72 h-44 md:h-52 bg-silver dark:bg-dark dark:text-gray-300 hover:scale-110"
          key={index}
       >
          <figure className="ml-4">

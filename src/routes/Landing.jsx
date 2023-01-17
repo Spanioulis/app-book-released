@@ -40,7 +40,7 @@ export const Landing = () => {
                      <SearchInput
                         text="search"
                         placeholder="Busca un libro..."
-                        classInput="input input-bordered w-full text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 min-w-2/3"
+                        classInput="input input-bordered w-full placeholder:font-light font-bold text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 min-w-2/3"
                         classButton="btn btn-square bg-main dark:bg-tahiti border-main dark:border-tahiti dark:hover:border-zinc-600"
                      />
                   </div>

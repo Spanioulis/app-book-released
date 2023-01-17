@@ -14,8 +14,8 @@ export const Home = () => {
    return (
       <>
          <section>
-            <div className="grid max-w-screen-xl px-4 mx-auto lg:gap-8 xl:gap-0 md:py-20 lg:grid-cols-12 justify-center">
-               <div className="mr-auto place-self-center lg:col-span-7">
+            <div className="grid justify-center max-w-screen-2xl px-4 lg:gap-8 xl:gap-16 md:py-20 lg:grid-cols-12">
+               <div className="mr-auto  place-self-center md:col-span-12 lg:col-span-7">
                   <h1 className="max-w-2xl mb-4 text-2xl md:text-4xl  font-bold tracking-tight leading-none  text-metal dark:text-gray-300 text-center lg:text-left">
                      Busca tus libros de proximidad
                   </h1>
@@ -28,7 +28,7 @@ export const Home = () => {
                      <SearchInput
                         text="search"
                         placeholder="Busca un libro..."
-                        classInput="input input-bordered w-full text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 min-w-2/3"
+                        classInput="input input-bordered w-full font-semiboldtext-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 min-w-2/3"
                         classButton="btn btn-square bg-main dark:bg-tahiti border-main dark:border-tahiti dark:hover:border-zinc-600"
                      />
                   </div>

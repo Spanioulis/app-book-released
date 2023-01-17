@@ -43,8 +43,8 @@ export const Login = () => {
       <div className="spinner"></div>
    ) : (
       <>
-         <h1 className="text-2xl mx-auto my-10 text-center font-bold dark:text-gray-300">Login</h1>
-         <div className="mx-auto card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:border-gray-800 dark:bg-metal ">
+         <h1 className="text-2xl mx-auto my-5 text-center font-bold dark:text-gray-300">Login</h1>
+         <div className="mx-5 md:mx-auto card flex-shrink-0 max-w-sm shadow-2xl bg-base-100 dark:border-gray-800 dark:bg-metal">
             <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center">
                <div className="form-control w-full max-w-xs">
                   {' '}
@@ -72,7 +72,7 @@ export const Login = () => {
                   />
                   <FormError error={errors.password} />
                   <FormButton
-                     className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-md shadow-green-500/50 dark:shadow-md dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 my-5 w-min"
+                     className="text-white mx-3 md:mx-0 bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-md shadow-green-500/50 dark:shadow-md dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center my-5 w-min"
                      text="Login"
                      type="submit"
                   />

@@ -20,7 +20,7 @@ export const SearchModal = ({
       <>
          <input type="checkbox" id="my-modal-3" className="modal-toggle" />
          <div className="modal">
-            <div className="modal-box relative max-w-none w-full lg:w-3/4 mx-5 lg:mx-none dark:text-gray-300 dark:bg-metal">
+            <div className="modal-box relative max-w-none w-full sm:w-5/6 md:w-3/4 sm:mx-5 lg:mx-none dark:text-gray-300 dark:bg-metal">
                <label
                   htmlFor="my-modal-3"
                   className="btn btn-sm btn-circle absolute right-2 sm:right-5 top-4 sm:top-5 hover:bg-main hover:border-main"
@@ -28,13 +28,13 @@ export const SearchModal = ({
                   ✕
                </label>
                <div className="flex flex-col">
-                  <div className="flex ml-none md:ml-10 md:mt-5 mb-7">
-                     <div className="flex-none w-24 md:w-48">
+                  <div className="flex flex-col sm:flex-row ml-none sm:ml-10 sm:mt-5 mb-7">
+                     <div className="flex-none w-24 md:w-42 lg:w-48 mx-auto sm:mx-0 md:mr-5">
                         <img src={image} alt={title} className="rounded-md" />
                      </div>
                      <div
                         className="flex
-                    flex-col ml-3"
+                    flex-col ml-3 mt-3 sm:mt-0"
                      >
                         <p className="mb-1 md:mb-2 text-xl md:text-2xl">{title}</p>
                         <p className="mb-1 md:mb-2 text-base md:text-xl">{author}</p>
@@ -51,12 +51,12 @@ export const SearchModal = ({
                            <i>Categoría:</i> {category}
                         </p>
                      </div>
-                     <div className="flex-1 ml-5 md:ml-10">
+                     <div className="flex-1 ml-2 sm:ml-3 lg:ml-4">
                         <div
                            className="flex
                     flex-col"
                         >
-                           <div className="flex text-sm md:text-xl md:justify-center mr-5">
+                           <div className="flex text-sm md:text-xl justify-center mt-5 sm:mt-0">
                               <a
                                  href={infoLink}
                                  target="_blank"
@@ -80,7 +80,7 @@ export const SearchModal = ({
                                  Info Link
                               </a>
                            </div>
-                           <div className="flex text-sm md:text-xl  md:justify-center">
+                           <div className="flex text-sm md:text-xl justify-center">
                               {user && uidBook !== user.uid && (
                                  <>
                                     <Link
@@ -111,7 +111,7 @@ export const SearchModal = ({
                      </div>
                   </div>
                   <div>
-                     <p className="text-base text-justify px-5 md:px-10">{description}</p>
+                     <p className="text-sm sm:text-base text-justify sm:px-10">{description}</p>
                   </div>
                </div>
             </div>

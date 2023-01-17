@@ -9,7 +9,6 @@ import { CardsSearch, FilterBar, SearchInput, SearchModal, Table } from '../comp
 import img from '../assets/undraw_Not_found.png';
 import '../App.css';
 import '../styles/loading.css';
-import { comment } from 'postcss';
 
 export const Search = () => {
    const { user } = useContext(UserContext);
@@ -115,7 +114,6 @@ export const Search = () => {
    if (!booksList.length && loading) {
       component = <div className="spinner"></div>;
       setTimeout(() => {
-         console.log('Entra, y setLoading (false)');
          setLoading(false);
       }, 3500);
    } else {
@@ -126,20 +124,20 @@ export const Search = () => {
       <div>
          <div className="flex flex-col justify-center dark:text-gray-200 ">
             <div className="flex my-10">
-               <div className="flex-1 mr-5">
+               <div className="flex-1 mr-2 sm:mr-5">
                   {user && <FilterBar handleDistrict={handleDistrict} handleAllBooks={handleAllBooks} />}
                </div>
-               <div className="flex-3 mr-5 sm:mr-0">
+               <div className="flex-3">
                   <SearchInput
                      text="search"
                      placeholder="Busca un libro..."
-                     classInput="input input-bordered text-sm md:text-base w-48 md:w-96 h-12 text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 w-2/3 mb-3"
+                     classInput="input input-bordered text-sm md:text-base font-semibold w-32 sm:w-48 md:w-96 h-12 text-gray-700 dark:text-gray-700 placeholder-gray-400 dark:placeholder-gray-400 dark:bg-gray-100 focus:border-main dark:focus:border-tahiti focus:ring-main dark:focus:ring-tahiti dark:focus:ring-zinc-500 w-2/3 mb-3"
                      classButton="btn btn-square dark:bg-zinc-800 hover:bg-zinc-900 h-12"
                   />
-                  <div className="flex gap-10 text-base justify-start">
+                  <div className="flex gap-2 text-base flex-col sm:flex-row ">
                      <span className="text-main dark:text-tahiti italic">{q}</span>
-                     <p className="text-sm md:text-base">
-                        Encontrado/s <span className=" font-bold">{booksList.length}</span> libro/s
+                     <p className="text-sm md:text-base mr-2">
+                        Encontrado/s <span className="font-bold">{booksList.length}</span> libro/s
                      </p>
                   </div>
                </div>
