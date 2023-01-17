@@ -3,12 +3,6 @@
    justify-content: center;
    align-items: center;
    min-height: 550px;
-   /* box-shadow: 15px 35px 80px rgba(0, 0, 0, 0.9); */
-   /* 
-  background: linear-gradient(109.6deg,
-      rgb(36, 45, 57) 11.2%,
-      rgb(16, 37, 60) 51.2%,
-      rgb(0, 0, 0) 98.6%); */
 }
 
 .card-profile {
@@ -93,7 +87,6 @@
 .card-profile .content .details .data {
    display: flex;
    justify-content: space-evenly;
-   /* gap: 1.8rem; */
    margin: 10px 0;
 }
 
@@ -143,4 +136,42 @@
 .card-profile .content .details .actionBtn button:hover:nth-child(2) {
    color: rgb(255, 255, 255);
    background: #4f4f4f;
+}
+
+@media (max-width: 640px) {
+   .card-profile-content {
+      min-height: 350px;
+      margin-top: 3rem;
+   }
+
+   .card-profile:hover {
+      height: 300px;
+      margin-top: 3rem;
+   }
+
+   .card-profile {
+      width: 240px;
+   }
+
+   .card-profile:hover .imgBx {
+      width: 150px;
+      height: 200px;
+   }
+
+   .card-profile:hover .content .details {
+      padding-bottom: 10px;
+   }
+
+   .card-profile:hover .content .details h2 {
+      font-size: 1em;
+      font-weight: 500;
+   }
+
+   .card-profile:hover .content .details .data h3 {
+      font-size: 0.85em;
+   }
+
+   .card-profile:hover .content .details .data h3 span {
+      font-size: 0.65em;
+   }
 }

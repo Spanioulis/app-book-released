@@ -14,7 +14,7 @@ export const Home = () => {
    return (
       <>
          <section>
-            <div className="grid justify-center max-w-screen-2xl px-4 lg:gap-8 xl:gap-16 md:py-20 lg:grid-cols-12">
+            <div className="grid justify-center max-w-screen-2xl px-4 lg:gap-8 xl:gap-16 md:py-12 lg:py-24 lg:grid-cols-12">
                <div className="mr-auto  place-self-center md:col-span-12 lg:col-span-7">
                   <h1 className="max-w-2xl mb-4 text-2xl md:text-4xl  font-bold tracking-tight leading-none  text-metal dark:text-gray-300 text-center lg:text-left">
                      Busca tus libros de proximidad
