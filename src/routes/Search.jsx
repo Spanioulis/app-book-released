@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useBooks } from '../hooks/useBooks';
 import { auth, db } from '../firebase/firebaseConfig';
 import { UserContext } from '../context/UserProvider';
 import { collection, getDocs } from 'firebase/firestore/lite';
 import { CardsSearch, FilterBar, SearchInput, SearchModal, Table } from '../components';
+import { useBooks, useUsers } from '../hooks';
 
 import img from '../assets/undraw_Not_found.png';
 import '../App.css';
@@ -14,6 +14,7 @@ export const Search = () => {
    const { user } = useContext(UserContext);
    const { q } = useParams();
    const { books, getBooks } = useBooks();
+   const { users, getUsers } = useUsers();
 
    const [booksList, setBooksList] = useState([]);
    const [modalBook, setModalBook] = useState([]);
@@ -55,6 +56,7 @@ export const Search = () => {
 
    useEffect(() => {
       getBooks();
+      getUsers();
 
       if (user === null) {
          async function getData() {
@@ -166,6 +168,8 @@ export const Search = () => {
                               showAllBooks={showAllBooks}
                               title={book.title}
                               uid={book.uid}
+                              user={user}
+                              users={users}
                            />
                         ))}
                         <tfoot>

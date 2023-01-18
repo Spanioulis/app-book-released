@@ -5,14 +5,28 @@ import { IconSVG } from './IconsSVG';
 import { useDarkTheme } from './useDarkTheme';
 
 import logo from '../assets/keyhole-logo.png';
+import { useUsers } from '../hooks';
 
 export const Navbar = () => {
    const { user, signOutUser } = useContext(UserContext);
+   const { users, getUsers } = useUsers();
 
    const [currentUser, setCurrentUser] = useState('');
    const [colorTheme, setTheme] = useDarkTheme();
 
    const navigate = useNavigate();
+
+   useEffect(() => {
+      if (user && users.length > 0) {
+         const userName = users && users.find((item) => item.email === user.email);
+         console.log('userName', userName.username);
+         setCurrentUser(userName.username);
+      }
+   }, [user, users]);
+
+   useEffect(() => {
+      getUsers();
+   }, []);
 
    const handleLogout = async () => {
       try {
@@ -22,15 +36,6 @@ export const Navbar = () => {
          console.log(code);
       }
    };
-
-   useEffect(() => {
-      if (user) {
-         let index = user.email.indexOf('@');
-         const username = user.email.substring(0, index);
-         const usernameUppercase = username.charAt(0).toUpperCase() + username.slice(1);
-         setCurrentUser(usernameUppercase);
-      }
-   }, [user]);
 
    return (
       <nav className="navbar max-w-screen-2xl mx-auto text-metal dark:text-gray-300 py-5 px-0 dark:bg-stone-900 dark:bg-opacity-30 sticky top-0 z-50 backdrop-blur-sm">
@@ -183,7 +188,6 @@ export const Navbar = () => {
                      <>
                         <li className="text-sm lg:text-base text-center">{currentUser}</li>
                         <li className="text-xs lg:text-sm text-center dark:text-slate-400 text-stone-700">
-                           {/* {currentUser.username} */}
                            {user.email}
                         </li>
                         <li>

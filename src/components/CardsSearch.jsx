@@ -16,19 +16,28 @@ export const CardsSearch = ({
    pages,
    title,
    showAllBooks,
-   uid
+   uid,
+   user,
+   users
 }) => {
-   const [username, setUsername] = useState('');
+   const [currentUser, setCurrentUser] = useState('');
 
    useEffect(() => {
-      if (email) {
-         let index = email.indexOf('@');
-         const username = email.substring(0, index);
-         setUsername(username);
-      } else {
-         setUsername('');
+      if (user && users.length > 0) {
+         const userName = users && users.find((item) => item.email === email);
+         setCurrentUser(userName.username);
       }
-   }, [email]);
+   }, [users, user]);
+
+   // useEffect(() => {
+   //    if (email) {
+   //       let index = email.indexOf('@');
+   //       const username = email.substring(0, index);
+   //       setUsername(username);
+   //    } else {
+   //       setUsername('');
+   //    }
+   // }, [email]);
 
    return (
       <tbody>
@@ -39,7 +48,7 @@ export const CardsSearch = ({
             <td className="dark:bg-gray-600 dark:font-light max-w-fit">{pages}</td>
             <td className="dark:bg-gray-600 dark:font-light">{date}</td>
             <td className="dark:bg-gray-600 dark:font-light">{showAllBooks && district}</td>
-            <td className="dark:bg-gray-600 dark:font-light">{username}</td>
+            <td className="dark:bg-gray-600 dark:font-light">{currentUser}</td>
             <td className=" dark:bg-gray-600 dark:font-light">
                <span
                   onClick={() =>
