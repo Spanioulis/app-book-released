@@ -144,27 +144,27 @@ export const UploadBook = () => {
    }, []);
 
    return (
-      <div className=" flex flex-col md:flex-row lg:flex-row justify-center gap-5 w-4/5 lg:w-1/2 mx-auto my-2">
-         <div className="card mx-auto flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:border-gray-800 dark:bg-metal ">
+      <div className="flex flex-col sm:flex-row">
+         <div className="mt-5 mx-3 sm:mx-auto card max-w-sm shadow-2xl bg-base-100 dark:border-gray-800 dark:bg-metal flex justify-center">
             <p className="text-center text-base mt-3 mx-7 text-red-500">{message}</p>
-            <form onSubmit={handleSubmit} className="flex flex-col ml-8 py-3 gap-1 mb-1">
+            <form onSubmit={handleSubmit} className="flex flex-col py-3 gap-1 mb-1  mx-5">
                <input
                   type="text"
                   placeholder="Busca por título..."
                   onChange={handleSearch}
-                  className="input input-bordered dark:font-light w-full h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered mx-3 md:mx-0 mb-3 placeholder:font-light font-bold dark:font-normal h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   name="title"
                />
                <input
                   type="text"
                   placeholder="Busca por autor..."
                   onChange={handleSearch}
-                  className="input input-bordered dark:font-light w-full mt-2 max-w-xs h-10 bg-gray-100 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered mx-3 md:mx-0 mb-3 placeholder:font-light font-bold dark:font-normal h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   name="author"
                />
                <select
                   onClick={handleSelect}
-                  className="select max-w-xs mt-2 h-10 dark:font-light dark:text-gray-100 bg-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="select select-bordered placeholder:font-light font-bold mx-3 md:mx-0 max-w-xs mb-3 dark:text-gray-300 dark:bg-gray-600"
                >
                   <option key=" " value=" " name="option">
                      Encuentra tu libro...
@@ -182,7 +182,7 @@ export const UploadBook = () => {
                   placeholder="Título"
                   value={book.title}
                   name="title"
-                  className="input input-bordered w-full dark:font-light max-w-xs mt-2 h-10 bg-gray-100 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered mx-3 md:mx-0 mb-3 placeholder:font-light font-bold dark:font-normal h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   onChange={handleInput}
                   required
                />
@@ -191,7 +191,7 @@ export const UploadBook = () => {
                   placeholder="Autor"
                   value={book.author}
                   name="author"
-                  className="input input-bordered w-full dark:font-light max-w-xs mt-2 h-10 dark:text-gray-100 bg-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered mx-3 md:mx-0 mb-3 placeholder:font-light font-bold dark:font-normal h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   onChange={handleInput}
                   required
                />
@@ -200,7 +200,7 @@ export const UploadBook = () => {
                   placeholder="Páginas"
                   value={book.pages}
                   name="pages"
-                  className="input input-bordered w-full dark:font-light max-w-xs mt-2 h-10 bg-gray-100 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered mx-3 md:mx-0 mb-3 placeholder:font-light font-bold dark:font-normal h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   onChange={handleInput}
                   required
                />
@@ -209,7 +209,7 @@ export const UploadBook = () => {
                   placeholder="Editorial"
                   value={book.publisher}
                   name="publisher"
-                  className="input input-bordered w-full dark:font-light max-w-xs mt-2 h-10 bg-gray-100 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered mx-3 md:mx-0 mb-3 placeholder:font-light font-bold dark:font-normal h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   onChange={handleInput}
                   required
                />
@@ -218,25 +218,25 @@ export const UploadBook = () => {
                   placeholder="Categoría"
                   value={book.category}
                   name="category"
-                  className="input input-bordered w-full dark:font-light max-w-xs mt-2 h-10 bg-gray-100 dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
+                  className="input input-bordered mx-3 md:mx-0 mb-3 placeholder:font-light font-bold dark:font-normal h-10 max-w-xs bg-gray-100 text-metal dark:text-gray-100 dark:bg-dark placeholder:text-gray-400"
                   onChange={handleInput}
                   required
                   disabled
                />
                <div className="form-control w-full max-w-xs">
                   {loading ? (
-                     <button className="btn text-white bg-gradient-to-r from-main via-main to-main hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-orange-800 shadow-md shadow-main dark:shadow-lg dark:shadow-orange/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-min loading" />
+                     <button className="btn  text-white bg-gradient-to-r from-main via-main to-main hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-orange-800 shadow-md shadow-main dark:shadow-lg dark:shadow-orange/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-min loading" />
                   ) : (
                      <FormButton
                         text="Subir"
                         type="submit"
-                        className="text-white bg-gradient-to-r from-main via-main to-main hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-main dark:focus:ring-main shadow-lg font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-3 w-min"
+                        className="text-white bg-gradient-to-r from-main via-main to-main hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-main dark:focus:ring-main shadow-lg font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-3 w-min mx-3 md:mx-0"
                      />
                   )}
                </div>
             </form>
          </div>
-         <div className="flex flex-col lg:mt-5 mx-auto max-w-fit max-h-fit">
+         <div className="flex flex-col mt-3 lg:mt-5 mx-auto max-w-fit max-h-fit">
             <h3 className="text-center text-amber-600 italic mb-3">Imagen preliminar</h3>
             <img src={book.image} alt={book.title} className="rounded-sm" />
          </div>

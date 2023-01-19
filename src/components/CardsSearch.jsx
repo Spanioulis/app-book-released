@@ -29,16 +29,6 @@ export const CardsSearch = ({
       }
    }, [users, user]);
 
-   // useEffect(() => {
-   //    if (email) {
-   //       let index = email.indexOf('@');
-   //       const username = email.substring(0, index);
-   //       setUsername(username);
-   //    } else {
-   //       setUsername('');
-   //    }
-   // }, [email]);
-
    return (
       <tbody>
          <tr>

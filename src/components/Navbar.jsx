@@ -19,7 +19,6 @@ export const Navbar = () => {
    useEffect(() => {
       if (user && users.length > 0) {
          const userName = users && users.find((item) => item.email === user.email);
-         console.log('userName', userName.username);
          setCurrentUser(userName.username);
       }
    }, [user, users]);
