@@ -11,17 +11,17 @@ export const Navbar = () => {
    const { user, signOutUser } = useContext(UserContext);
    const { users, getUsers } = useUsers();
 
-   const [currentUser, setCurrentUser] = useState('');
+   // const [currentUser, setCurrentUser] = useState('');
    const [colorTheme, setTheme] = useDarkTheme();
 
    const navigate = useNavigate();
 
-   useEffect(() => {
-      if (user && users.length > 0) {
-         const userName = users && users.find((item) => item.email === user.email);
-         setCurrentUser(userName.username);
-      }
-   }, [user, users]);
+   // useEffect(() => {
+   //    if (user && users.length > 0) {
+   //       const userName = users && users.find((item) => item.email === user.email);
+   //       setCurrentUser(userName.username);
+   //    }
+   // }, [user, users]);
 
    useEffect(() => {
       getUsers();
@@ -39,7 +39,7 @@ export const Navbar = () => {
    return (
       <nav className="navbar max-w-screen-2xl mx-auto text-metal dark:text-gray-300 py-5 px-0 dark:bg-stone-900 dark:bg-opacity-30 sticky top-0 z-50 backdrop-blur-sm">
          {/* START */}
-         <div className="navbar-start order-1 sm:order-2 justify-center gap-0 sm:gap-2 md:gap-4 text-base ml-3 lg:ml-10">
+         <div className="navbar-start order-1 sm:order-2 justify-start gap-0 sm:gap-2 md:gap-4 text-base ml-3 lg:ml-10">
             <div className="dropdown">
                <label tabIndex={0} className="btn btn-ghost md:hidden">
                   <svg
@@ -87,7 +87,7 @@ export const Navbar = () => {
                   </li>
                </ul>
             </div>
-            <div className="flex-1 order-2 sm:order-1">
+            <div className="order-2 sm:order-1">
                {user ? (
                   <Link to="/home" className="flex items-center">
                      <img src={logo} className="twist-logo mr-2 md:mr-3 h-9 lg:h-12" alt="Logo Ed Mundo!" />
@@ -185,8 +185,8 @@ export const Navbar = () => {
                >
                   {user ? (
                      <>
-                        <li className="text-sm lg:text-base text-center">{currentUser}</li>
-                        <li className="text-xs lg:text-sm text-center dark:text-slate-400 text-stone-700">
+                        {/* <li className="text-sm lg:text-base text-center">{currentUser}</li> */}
+                        <li className="text-xs lg:text-sm text-center dark:text-slate-400 text-stone-700 mt-2">
                            {user.email}
                         </li>
                         <li>
@@ -217,7 +217,7 @@ export const Navbar = () => {
                         <li>
                            <button
                               onClick={handleLogout}
-                              className="text-sm lg:text-base  text-main font-bold hover:bg-main hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-center  dark:hover:bg-main dark:focus:ring-main hover:font-bold ease-in duration-500"
+                              className="text-sm lg:text-base text-main font-bold hover:bg-main hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-center dark:hover:bg-main dark:focus:ring-main hover:font-bold ease-in duration-500"
                            >
                               <IconSVG
                                  className="w-5 lg:w-6 h-5 lg:h-6"

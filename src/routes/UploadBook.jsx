@@ -145,9 +145,9 @@ export const UploadBook = () => {
 
    return (
       <div className="flex flex-col sm:flex-row">
-         <div className="mt-5 mx-3 sm:mx-auto card max-w-sm shadow-2xl bg-base-100 dark:border-gray-800 dark:bg-metal flex justify-center">
+         <div className="mt-5 mx-auto card w-72 md:w-80 shadow-2xl bg-base-100 dark:border-gray-800 dark:bg-metal">
             <p className="text-center text-base mt-3 mx-7 text-red-500">{message}</p>
-            <form onSubmit={handleSubmit} className="flex flex-col py-3 gap-1 mb-1  mx-5">
+            <form onSubmit={handleSubmit} className="flex flex-col py-3 gap-1 mb-1 mx-5">
                <input
                   type="text"
                   placeholder="Busca por título..."
