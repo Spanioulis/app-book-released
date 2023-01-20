@@ -40,7 +40,7 @@ export const Profile = () => {
                <img src={img} alt="Not found books" className="illustration mx-auto" />
                <p>
                   ¡No has subido ningún libro, hazlo{' '}
-                  <Link to="/uppload" className="text-green-500 dark:text-blue-700">
+                  <Link to="/upload" className="text-green-500 dark:text-blue-700">
                      aquí
                   </Link>
                   !
