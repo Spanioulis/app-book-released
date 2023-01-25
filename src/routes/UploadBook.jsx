@@ -122,18 +122,22 @@ export const UploadBook = () => {
                setMessage('');
             }, 3000);
          } else {
+            const httpsImage = (exists?.[0]?.volumeInfo?.imageLinks?.thumbnail).replace(/^http:/, 'https:');
+            const httpsInfoLink = (exists?.[0]?.volumeInfo?.infoLink).replace(/^http:/, 'https:');
+            console.log('httpsImage', httpsImage);
+            console.log('httpsInfoLink', httpsInfoLink);
             setBook({
                available: true,
                title: exists?.[0]?.volumeInfo?.title,
                author: exists?.[0]?.volumeInfo?.authors?.[0],
                pages: exists?.[0]?.volumeInfo?.pageCount ?? 'Info no disponible',
                category: exists?.[0]?.volumeInfo?.categories?.[0] ?? 'Info no disponible',
-               image: exists?.[0]?.volumeInfo?.imageLinks?.thumbnail,
+               image: httpsImage,
                description:
                   exists?.[0]?.volumeInfo?.description ??
                   'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam dolor explicabo, consequatur laborum nam repellendus labore quidem recusandae perspiciatis reiciendis quos eaque exercitationem maxime cumque, aspernatur sit dolores molestiae necessitatibus!',
                publisher: exists?.[0]?.volumeInfo?.publisher ?? 'Info no disponible',
-               infoLink: exists?.[0]?.volumeInfo?.infoLink ?? 'Info no disponible'
+               infoLink: httpsInfoLink ?? 'Info no disponible'
             });
          }
       }
